@@ -1,13 +1,105 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\textbf{General Instructions. Read carefully before starting.}\\\\
+\textbf{General Instructions. Read carefully before starting.}\\
 
-\textbf{Solve 5 problems in all; at most 2 questions may be selected from the same section.}
+\textbf{Solve 5 problems in all; at most 2 questions may be selected from the same section.}\\
+
+Candidates registered in the following focus areas must answer two of their five questions from the relevant section as follows:\\
+
+Computer Architecture and High-Performance Computing: Section 1\\
+Communications & Networks: Section 3\\
+Electrical Power & Energy: Section 8\\
+Electromagnetics, Radiation Systems \& Microwave Engineering: Section 4\\
+Electronics, Photonics & MEMS: Section 6\\
+Signal \& Image Processing, Systems \& Controls: Section 3\\
+
+Please write your name and student number below:\\\\
+
+Solve each problem in a \underline{separate} blue book. Write the section number, problem number, and your student number on the front of each blue book. Do not write your name on the blue book.\\
+
+Submit solutions to only five \(5\) problems. Use only one blue book per problem.\\
+
+For each problem, make a special effort to give the answers in a clear form.\\
+
+The exam will begin at 10:00 a.m. and end promptly at 3:00 p.m.\\
+
+Only calculators provided by the department at the examination will be allowed. Personal items including cell phones and other electrical devices must be relinquished prior to the start of the examination.\\
+
+This is a closed book, closed notes examination.
+
+\subsection{Section 1}
 
 \begin{enumerate}
 
-\item[1.] \textbf{Decision Trees (10pt):} In class we discussed the example of buying a car and the bank using a Decision Tree to decide whether a client is in the high or low risk category for the loan. Our tree had 2 decision steps. \textbf{Q:} Redo the tree, but design it with a only a single decision step. Show that tree. 
+\item[1.] After graduating, you are asked to become the lead computer designer at New Computers Inc. You have invented a scheme that reduces the loads and stores normally associated with procedure calls and returns. The first thing you do is run some experiments with and without this optimization. Your experiments use the same state-of-the-art optimizing compiler that will be used with either version of the computer. These experiment reveal the following information:
+\begin{itemize}
+    \item The clock rate of the un-optimized version is 15\% higher.
+    \item 45\% of the instructions in the un-optimized version are loads and stores.
+    \item The optimized version executes one-third as many loads and stores as the un-optimized version.
+    \item For all other instructions the dynamic execution counts are unchanged.
+    \item All instructions \(including load and store\) take one clock cycle.
+\end{itemize}
+Which is faster? The optimized version or the un-optimized one. Justify your decision quantitatively by computing an improvement factor to validate your answer.
+
+\item[2.] The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows:\\
+
+The 32 bits number is divided as shown in figure \ref{fig:f1}.
+
+\begin{figure}
+\centering\fbox{\includegraphics[width=4.0in]{figures/2018s/2_a.png}}
+\caption{32 bits number}
+\label{fig:f1}
+\end{figure}
+
+A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0.\\
+
+The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$.\\
+
+Where the bias value is 127.\\
+
+Please answer the following questions:
+
+\begin{enumerate}
+    \item What are the maximum and minimum normalized numbers that can be computed using single precision format?
+    \item What are the maximum and minimum denormalized numbers that can be computed using single prevision format?
+    \item If we change the Exponent size to be 10 bits instead of 8 and the fraction to be 21 bits instead of 23 bits:
+    \begin{enumerate}
+        \item What should the bias value be?
+        \item Repeat question 2 for the new format.
+        \item Repeat question 3 for the new format
+    \end{enumerate}
+    \item Represent the following two decimal numbers in Single Precsion format:
+    \begin{enumerate}
+        \item 0.1
+        \item 33554431
+    \end{enumerate}
+    \item Take the values you computed in (d) and convert them back into decimal. Did the numbers change? Explain why.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{algorithm}
 \caption{A singe step decision tree}
