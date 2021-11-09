@@ -1,64 +1,42 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\textbf{General Instructions. Read carefully before starting.}\\
+General Instructions. Read carefully before starting. Solve 5 problems in all; at most 2 questions may be selected from the same section. Candidates registered in the following focus areas must answer two of their five questions from the relevant section as follows:\\
 
-\textbf{Solve 5 problems in all; at most 2 questions may be selected from the same section.}\\
-
-Candidates registered in the following focus areas must answer two of their five questions from the relevant section as follows:\\
-
-Computer Architecture and High-Performance Computing: Section 1\\
-Communications & Networks: Section 3\\
-Electrical Power & Energy: Section 8\\
-Electromagnetics, Radiation Systems \& Microwave Engineering: Section 4\\
-Electronics, Photonics & MEMS: Section 6\\
-Signal \& Image Processing, Systems \& Controls: Section 3\\
+\begin{itemize}
+    \item Computer Architecture and High-Performance Computing: Section 1
+    \item Communications & Networks: Section 3
+    \item Electrical Power & Energy: Section 8
+    \item Electromagnetics, Radiation Systems \& Microwave Engineering: Section 4
+    \item Electronics, Photonics & MEMS: Section 6
+    \item Signal \& Image Processing, Systems \& Controls: Section 3
+\end{itemize}
 
 Please write your name and student number below:\\\\
 
-Solve each problem in a \underline{separate} blue book. Write the section number, problem number, and your student number on the front of each blue book. Do not write your name on the blue book.\\
-
-Submit solutions to only five \(5\) problems. Use only one blue book per problem.\\
-
-For each problem, make a special effort to give the answers in a clear form.\\
-
-The exam will begin at 10:00 a.m. and end promptly at 3:00 p.m.\\
-
-Only calculators provided by the department at the examination will be allowed. Personal items including cell phones and other electrical devices must be relinquished prior to the start of the examination.\\
-
-This is a closed book, closed notes examination.
-
-\subsection{Section 1}
+Solve each problem in a \underline{separate} blue book. Write the section number, problem number, and your student number on the front of each blue book. Do not write your name on the blue book. Submit solutions to only five \(5\) problems. Use only one blue book per problem. For each problem, make a special effort to give the answers in a clear form. The exam will begin at 10:00 a.m. and end promptly at 3:00 p.m. Only calculators provided by the department at the examination will be allowed. Personal items including cell phones and other electrical devices must be relinquished prior to the start of the examination. This is a closed book, closed notes examination.
 
 \begin{enumerate}
 
-\item[1.] After graduating, you are asked to become the lead computer designer at New Computers Inc. You have invented a scheme that reduces the loads and stores normally associated with procedure calls and returns. The first thing you do is run some experiments with and without this optimization. Your experiments use the same state-of-the-art optimizing compiler that will be used with either version of the computer. These experiment reveal the following information:
+\subsection{Section 1}
+
+\item After graduating, you are asked to become the lead computer designer at New Computers Inc. You have invented a scheme that reduces the loads and stores normally associated with procedure calls and returns. The first thing you do is run some experiments with and without this optimization. Your experiments use the same state-of-the-art optimizing compiler that will be used with either version of the computer. These experiment reveal the following information:
 \begin{itemize}
     \item The clock rate of the un-optimized version is 15\% higher.
     \item 45\% of the instructions in the un-optimized version are loads and stores.
     \item The optimized version executes one-third as many loads and stores as the un-optimized version.
     \item For all other instructions the dynamic execution counts are unchanged.
-    \item All instructions \(including load and store\) take one clock cycle.
+    \item All instructions (including load and store) take one clock cycle.
 \end{itemize}
 Which is faster? The optimized version or the un-optimized one. Justify your decision quantitatively by computing an improvement factor to validate your answer.
 
-\item[2.] The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows:\\
-
-The 32 bits number is divided as shown in figure \ref{fig:f1}.
+\item The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows. The 32 bits number is divided as shown in figure \ref{fig:f1}. A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0. The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$. Where the bias value is 127. Please answer the following questions:
 
 \begin{figure}
 \centering\fbox{\includegraphics[width=4.0in]{figures/2018s/2_a.png}}
 \caption{32 bits number}
 \label{fig:f1}
 \end{figure}
-
-A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0.\\
-
-The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$.\\
-
-Where the bias value is 127.\\
-
-Please answer the following questions:
 
 \begin{enumerate}
     \item What are the maximum and minimum normalized numbers that can be computed using single precision format?
@@ -77,59 +55,98 @@ Please answer the following questions:
     \item Take the values you computed in (d) and convert them back into decimal. Did the numbers change? Explain why.
 \end{enumerate}
 
+\item For a hypothetical CPU which has 64 bit virtual address and 41 bit physical address with two levels of cache. The L1 cache is virtually indexed and physically tagged. The L1 size is 8KB. The page size is 8KB. The L2 cache is 4MB. The block size is 64 bytes. Please illustrate the translation of virtual address to physical address, as well as the interactions to the TLB and L1/L2 Cache. Indicate how many bits are used for page number, page offset, TLB index, TLB tag, cache index, cache tag, etc.
 
+\subsection{Section 2}
 
+\item Given \textbf{A} =
+    \begin{bmatrix} 
+	1 & 2 & 3 & 4 \\
+	-1 & 1 & 3 & 2\\
+	2 & 2 & 2 & 4 \\
+	\end{bmatrix},
+	\textbf{y\textsubscript{1}} =
+	\begin{bmatrix} 
+	2\\
+	-2\\
+	4\\
+	\end{bmatrix},
+	\textbf{y\textsubscript{2}} = 
+	\begin{bmatrix} 
+	1\\
+	1\\
+	1\\
+	\end{bmatrix}
 
+    \begin{enumerate}
+        \item Find a basis for the range space of \textbf{A}, R(\textbf{A})
+        \item Find a basis for the null space \textbf{A}, N(\textbf{A})
+        \item Find the rank and nullity of \textbf{A}
+        \item For the equation \textbf{y\textsubscript{1}} = \textbf{A}\textbf{x\textsubscript{1}}, where \textbf{x\textsubscript{1}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{1}}?
+        \item For the equation \textbf{y\textsubscript{2}} = \textbf{A}\textbf{x\textsubscript{2}}, where \textbf{x\textsubscript{2}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{2}}?
+        \item If a solution \textbf{x\textsubscript{1}} and/or \textbf{x\textsubscript{2}} exist in parts (d) and (e), find \underline{all} solutions.
+    \end{enumerate}
 
+\item For the system \textbf{A} =
+    \begin{bmatrix} 
+	-1 & 8\\
+	0.5 & -1\\
+	\end{bmatrix},
+	\textbf{b} =
+	\begin{bmatrix} 
+	1\\
+	0.5\\
+	\end{bmatrix},
+	\textbf{c} = 
+	\begin{bmatrix} 
+	-1\\
+	1\\
+	\end{bmatrix}
+	
+	\begin{enumerate}
+	    \item Design a state observer;
+	    \item Using the state estimates from part a), find an appropriate state feedback such that the system will have a purely oscillatory response with a natural frequency of oscillation $\omega_n = 2$ radians/second.
+	\end{enumerate}
+	
+\item Consider a system with a transfer function 
+$$\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$$
+Is it possible, using \underline{state feedback} to change it to
 
+    \begin{enumerate}
+        \item $\mathrm{G}(s)=\frac{(s-5)}{(s+1)(s+4)}$?
+        \item $\mathrm{G}(s)=\frac{s-5}{(s+1)(s+3)(s+4)}$?
+    \end{enumerate}
+    
+If yes, do it. Are the resulting systems controllable? observable? If no, explain why not.
 
+\subsection{Section 3}
 
+\item A binary source generates a sequence of symbols with probabilities p and 1-p, respectively. Given the first symbol in the sequence, the source continues to generate symbols until the opposite symbol is generated. Let X denote the length of the sequence, including the first symbol.
 
+    \begin{enumerate}
+        \item Find the probability mass function of X.
+        \item Find the expected value of X.
+    \end{enumerate}
+    
+\item Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
 
+    \begin{enumerate}
+        \item Determine the traffic intensity for the switch in Erlangs.
+        \item Determine the probability distribution of the number of messages in the buffer.
+        \item Determine the average waiting time of a message in the buffer in seconds.
+        \item Determine the total average time a message spends in the system, including the waiting time and the service time.
+    \end{enumerate}
 
+\item Let $\{\mathrm{Xn}: \mathrm{n}=1,2 \ldots\}$ be an infinite sequence of independent binary random variables with sample values \{0,1) and P\{X n=0\} = 2/3. Let $\text{Yn}=\sum_{\text{i=1}}^{\text{n}} \text{Xi}$ be a random process defined by Xn.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{algorithm}
-\caption{A singe step decision tree}
-\begin{algorithmic}[1]
-\If{$income > x$}
-    \State approve loan
-\Else
-    \State reject loan
-\end{algorithmic}
-\end{algorithm}
-
-\textbf{Q:} What role has the no in this case? \textbf{A:} Low savings low income, and high savings low income.
-
-\item[2.] \textbf{Perceptron - Warm-up (5pts each = 40pt):} \textbf{Q:} We call the model ‘neuromorphic’ (bio-inspired). Show the functions of biological cell versus the Perceptron model. \textbf{A:} A real neurons structure includes Dendrites $\rightarrow$ Axon (Myelin sheath) $\rightarrow$ Axon terminals. Artificial neurons have axons from a neuron $x_i$ and synapses $w_i$ connect via dendrites to cell body $\sum_{i} w_i x_i +b$. \textbf{Q:} What are the inputs called? \textbf{A:} Inputs and weights. \textbf{Q:} State the parameters of the perceptron algorithm including their name, symbol, and whether it’s a scalar, vector, or matrix? \textbf{A:} Input vector $\vec{x}$, weights vector $\vec{w}$, and bias scalar $b$. \textbf{Q:} What mathematical function is the response? \textbf{A:} The response in the form of the activation function producing a real number $a=\sum_{d=1}^{D} w_d x_d + b$. \textbf{Q:} What is the output if the response is positive or negative? \textbf{A:} If the activation value is negative the label $y$ is set to -1, and if the activation value is positive the label $y$ is set to +1. \textbf{Q:} At what point does an error occur between the mathematical relationship between $y$ and $a$? \textbf{A:} During training we only update weights and biases when $ya \leq 0$ because when $y = -1$  the current prediction is incorrect. \textbf{Q:} When an error is made during training what does the updated weight $w^{\prime}$ equal? \textbf{A:} $w^{\prime} = w - x$ because $w_d^{\prime} = w_d + yx$ and during an error $y=-1$. \textbf{Q:} What is the activation value exactly at the decision-boundary $B$? What is $a$ above and below $B$? \textbf{A:} At the decision boundary $B$ the value of the activation function $a$ changes from negative to positive and is zero along the boundary.    
-
-\item[3.] \textbf{Perceptron Model (20pt):} We discussed the perceptron training algorithm (e.g. Algorithms #5, from Daume, p. 43) in class. \textbf{Q:} Is it important to check whether the product or label and activation function are smaller than or equal to zero, or could we simply check for smaller than zero? Write an explanation of why you think the ‘equal’ symbol is, or is not relevant during perceptron training. \textbf{A:} $ya \leq 0$ is correct, and $ya < 0$ is incorrect when it comes to deciding if weights and bias should be updated during perceptron training. When $ya=0$ we know that the activation value  $a=0$ because the label $y$ can only equal +1 or -1. If the activation $a$ is positive it predicts that the current example is a positive example. Otherwise it predicts a negative example. Therefore 0 is a negative case. 
-
-\item[4.] \textbf{Perceptron Training Algorithm (3x10 = 30pt):} \textbf{Q Part-1:} We discussed the perceptron training Algorithm in class for an exemplary 'positive' example (i.e. y = +1). We found that the training algorithm (correctly so) increases the activation. Does this algorithm also work if the sample is 'negative'? Work out the training steps for a 'negative' example. Does it still work? Why?  \textbf{A:}
-$\vec{w} = \begin{bmatrix} -1 \\ 1 \\ -3 \\ \end{bmatrix}$ $\vec{x} = \begin{bmatrix} 2 \\ 3 \\ 1 \\ \end{bmatrix}$ $b=0$ $\sum_i w_i x_i +b = -2$ $\therefore y = -1$ The algorithm works if the activation value is negative because it sets the label to -1 which indicates an incorrect prediction and during training initiates a recalculation of weights and biases. \textbf{Q Part-2:} We discussed the geometrical interpretation of the perceptron’s ‘job’, i.e. to create a decision boundary $B$, that successfully and geometrically (i.e. spatially) separates the data, i.e. a plane of scattered data points in a 3-dimensional space. Graphically sketch the dot-product between the 2 vectors, such as between the weights and inputs (\textbf{A:} Figure \ref{fig:1}).  Here (Figure \ref{fig:2}), we have data in a 2D plane (x1, and x2). 
-\begin{figure}
-\centering\fbox{\includegraphics[height=2.0in]{figures/hw2/hw2_1.png}}
-\caption{Decision boundary}
-\label{fig:1}
-\end{figure}
-\begin{figure}
-\centering\fbox{\includegraphics[height=2.0in]{figures/hw2/hw2_2.png}}
-\caption{2D plane}
-\label{fig:2}
-\end{figure}
-The boundary (here a line), separates data. What does the output function look like for this? What it the bias $b$, and hence, what mathematical function does this data-set represent? \textbf{A:} $x_2 = x_1 + 1.5$, $b = 1.5$, $a =\sum_i w_i x_{i} + 1.5$. The data points form a square and the the decision boundary function is linear. \textbf{Q Part-3:} If permuting the data each iteration saves somewhere between 20\% and 50\% of your time, are  there any cases in which you might not want to permute the data every iteration? State your answer, and give an explanation. Provide 2 data set examples: one where permutations help and some where it will (likely) not help. \textbf{A:} Changing the data sets permutation between each training iteration is helpful when the variance in the data set is relatively high. The higher the variance the more helpful permeation will be during training.
-
+    \begin{enumerate}
+        \item For n=5, determine all sample functions of the random process.
+        \item Determine the probability mass function of Yn.
+        \item Find the expected value and variance of Yn.
+        \item Find the autocorrelation function of Yn, $\mathrm{R}\{\mathrm{Y}(\mathrm{n}, \mathrm{n}+\mathrm{k})\}=\mathrm{E}\{\mathrm{Yn} \mathrm{Yn}+\mathrm{k}\}$
+    \end{enumerate}
+    
+\subsection{Section 4}
+	
 \end{enumerate}
 \end{document}
