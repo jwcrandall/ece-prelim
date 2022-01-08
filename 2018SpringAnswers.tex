@@ -5,20 +5,13 @@
 
 \subsection{Section 1}
 
-\item After graduating, you are asked to become the lead computer designer at New Computers Inc. You have invented a scheme that reduces the loads and stores normally associated with procedure calls and returns. The first thing you do is run some experiments with and without this optimization. Your experiments use the same state-of-the-art optimizing compiler that will be used with either version of the computer. These experiment reveal the following information:
-\begin{itemize}
-    \item The clock rate of the un-optimized version is 15\% higher.
-    \item 45\% of the instructions in the un-optimized version are loads and stores.
-    \item The optimized version executes one-third as many loads and stores as the un-optimized version.
-    \item For all other instructions the dynamic execution counts are unchanged.
-    \item All instructions (including load and store) take one clock cycle.
-\end{itemize}
-Which is faster? The optimized version or the un-optimized one. Justify your decision quantitatively by computing an improvement factor to validate your answer.
+\item Compiler performance can be quantified by execution time $T$ (Eq. \ref{eq:executionTime}) where $IC$ is the instruction count in a given program, $CPI$ is number of cycles per instruction, and $CT$ is the clock time. Additionally $CT=1/f$ where $f$ is the clock rate.
 
+\begin{equation} \label{eq:executionTime}
+T = IC \times CPI \times CT
+\end{equation}
 
-
-
-
+The un-optimized compilers clock rate is 15\% higher than the optimized version $\therefore f_{u} = 1.15f_{o}$. The cycle time for the optimized compiler is $\therefore CT_o = 1.15CT_u$. The un-optimized compiler instructions are comprised of 45\% loads and stores and the optimized compiler instructions, which is 1/3 of the un-optimized, are comprised of 15\% loads and stores. However since it is given that all instructions, including load and store, take one clock cycle the percent of loads and stores is irrelevant and $\therefore CPI_o = CPI_u$. For the same program the instruction count for the optimized and un-optimized compilers will remain the same $\therefore IC_o = IC_u$. Clock time is the only factor the differs between compilers and $\because CT_o > CT_u \therefore T_o > T_u$. An increase in execution time for the optimized compiler is a degradation in performance and therefore the un-optimized compiler is the faster version.
 
 
 \item The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows. The 32 bits number is divided as shown in figure \ref{fig:f1}. A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0. The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$. Where the bias value is 127. Please answer the following questions:
