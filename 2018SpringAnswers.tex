@@ -14,29 +14,62 @@ T = IC \times CPI \times CT
 The un-optimized compilers clock rate is 15\% higher than the optimized version $\therefore f_{u} = 1.15f_{o}$. The cycle time for the optimized compiler is $\therefore CT_o = 1.15CT_u$. The un-optimized compiler instructions are comprised of 45\% loads and stores and the optimized compiler instructions, which is 1/3 of the un-optimized, are comprised of 15\% loads and stores. However since it is given that all instructions, including load and store, take one clock cycle the percent of loads and stores is irrelevant and $\therefore CPI_o = CPI_u$. For the same program the instruction count for the optimized and un-optimized compilers will remain the same $\therefore IC_o = IC_u$. Clock time is the only factor the differs between compilers and $\because CT_o > CT_u \therefore T_o > T_u$. An increase in execution time for the optimized compiler is a degradation in performance and therefore the un-optimized compiler is the faster version.
 
 
-\item The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows. The 32 bits number is divided as shown in figure \ref{fig:f1}. A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0. The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$. Where the bias value is 127. Please answer the following questions:
-
-\begin{figure}
-\centering\fbox{\includegraphics[width=4.0in]{figures/2018s/02q_a.png}}
-\caption{32 bits number}
-\label{fig:f1}
-\end{figure}
-
+\item 
 \begin{enumerate}
-    \item What are the maximum and minimum normalized numbers that can be computed using single precision format?
-    \item What are the maximum and minimum denormalized numbers that can be computed using single prevision format?
-    \item If we change the Exponent size to be 10 bits instead of 8 and the fraction to be 21 bits instead of 23 bits:
+    \item The maximum normalized number that can be computed using single bit precision is comprised of the sign bit $b_{31} = 0$ with $S=0$, exponent bits $b_{30} b_{29} \cdots b_{24}$ set to 1 and $b_{23}$ set to 0, accounting for the exponent bit values of all zeros and all ones reserved for special numbers, with the $Exponent = \sum_{i=0}^{7} b_{23+i} 2^{+i} = 254$, and fraction bits $b_{22} b_{21} \cdots b_{0}$ set to 1 with the $Fraction = \sum_{i=1}^{23} b_{23-i} 2^{-i} \approx 0.999$, resulting in the calculation $(-1)^0 \times (1+0.999) \times 2^{(254-127)} = 1 \times 1.999 \times \num{1.7014118e38} \approx \num{3.401e38}$. 
+    
+    The absolute minimum normalized number that can be computed using single bit precision is comprised of the sign bit $b_{31} = 1$ with $S=1$, $Exponent$ and $Fraction$ that same as for the maximum calculation, and calculated as $(-1)^1 \times (1+0.999) \times 2^{(254-127)} = -1 \times 1.999 \times \num{1.701e38} \approx \num{-3.401e38}$.
+    
+    \item The (absolute) maximum denormalized single bit precision number is comprised of sign bit $b_{31} = 0$ or $b_{31} = 1$, exponent bits $b_{30} b_{29} \cdots b_{23}$ set to 0, and fraction bits $b_{22} b_{21} \cdots b_{0}$ set to 1 with value $\sum_{i=1}^{23} b_{23-i} 2^{-i} = (1-2^{-23})$, resulting in a calculated value (positive example) of $(-1)^0 \times (0+(1-2^{-23}) \times 2^{(1-127)} \approx \pm\num{1.18e-38}$. 
+    
+    The absolute minimum denormalized single bit precision number differs from the maximum with fraction bits $b_{22} b_{21} \cdots b_{1}$ set to 0 and $b_{0}$ set to 1 with value $\sum_{i=1}^{23} b_{23-i} 2^{-i} = 2^{-23}$ resulting in a calculated value (positive example) of $(-1)^0 \times 0+2^{-23} \times 2^{(1-127)} \approx \pm\num{1.4e-45}$.
+    
+    \item 
     \begin{enumerate}
-        \item What should the bias value be?
-        \item Repeat question 2 for the new format.
-        \item Repeat question 3 for the new format
+        \item The original bias of 127 is half the maximum exponent value of 254, using that logic the new bias should equal $\frac{2^{10} - 2}{2} = \frac{1022}{2}=512$ 
+        
+        \item The absolute maximum normalized single bit precision number is comprised of sign bit $b_{31} = 0$ (positive example), exponent bits $b_{30} b_{29} \cdots b_{22}$ set to 1 and $b_{21}$ set to 0, accounting for all ones reserved for positive and negative infinity, with value $\sum_{i=0}^{9} b_{21+i} 2^{+i} = 1022$, and fraction bits $b_{20} b_{19} \cdots b_{0}$ set to 1 with value $\sum_{i=1}^{21} b_{21-i} 2^{-i} = (1-2^{-21})$, resulting in the calculation $(-1)^0 \times (1+1-2^{-21}) \times 2^{(1022-512)} \approx \pm \num{6.7e153}$. 
+        
+        The absolute minimum normalized number that can be computed using single bit precision is comprised of the sign bit $b_{31} = 1$ (positive example), exponent bits $b_{30} b_{29} \cdots b_{22}$ set to 0 and $b_{21}$ set to 1 with exponent value $\sum_{i=0}^{9} b_{21+i} 2^{+i} = 1$, and fraction bits $b_{20} b_{19} \cdots b_{0}$ set to 0 with fraction value $\sum_{i=1}^{21} b_{21-i} 2^{-i} = 0$, resulting in the calculation  $(-1)^1 \times (1+0) \times 2^{(1-512)} \approx \pm \num{1.49e-154}$.
+        
+        \item The absolute maximum denormalized single bit precision number is comprised of sign bit $b_{31} = 0$ (positive example), exponent bits $b_{30} b_{29} \cdots b_{21}$ set to 0, and fraction bits $b_{20} b_{19} \cdots b_{0}$ set to 1 with fraction value $\sum_{i=1}^{21} b_{21-i} 2^{-i} = (1-2^{-21})$, resulting in a calculated value (positive example) of $(-1)^0 \times (0+(1-2^{-21})) \times 2^{(1-512)} \approx \pm\num{1.49e-154}$. 
+        
+        The absolute minimum denormalized single bit precision number differs from the maximum with fraction bits $b_{20} b_{19} \cdots b_{1}$ set to 0 and $b_{0}$ set to 1 with fractional value $\sum_{i=1}^{21} b_{21-i} 2^{-i} = 2^{-21}$ resulting in a calculated value (positive example) of $(-1)^0 \times 0+2^{-21} \times 2^{(1-512)} \approx \pm\num{7.11e-161}$.
     \end{enumerate}
-    \item Represent the following two decimal numbers in Single Precsion format:
+    
+    \item
     \begin{enumerate}
-        \item 0.1
-        \item 33554431
+        \item Multiply the decimal fraction by 2, take the integer component, and repeat with the new fraction until a fraction of zero is found or the precision limit of 23 fraction digits is reached. Decimal 0.1 cannot be represented in single precision format exactly, only approximated.
+        \begin{itemize}[label={}]
+            \item $0.1 \times 2 = 0.2 = 0 + 0.2 \Rightarrow b_{22}=0$
+            \item $0.2 \times 2 = 0.4 = 0 + 0.4 \Rightarrow b_{21}=0$
+            \item $0.4 \times 2 = 0.8 = 0 + 0.8 \Rightarrow b_{20}=0$
+            \item $0.8 \times 2 = 1.6 = 1 + 0.6 \Rightarrow b_{19}=1$
+            \item $0.6 \times 2 = 1.2 = 1 + 0.2 \Rightarrow b_{18}=1$
+            \item $\cdots$
+            \item $0.2 \times 2 = 0.4 = 0 + 0.4 \Rightarrow b_{5}=0$
+            \item $0.4 \times 2 = 0.8 = 0 + 0.8 \Rightarrow b_{4}=0$
+            \item $0.8 \times 2 = 1.6 = 1 + 0.6 \Rightarrow b_{3}=1$
+            \item $0.6 \times 2 = 1.2 = 1 + 0.2 \Rightarrow b_{2}=1$
+            \item $0.2 \times 2 = 0.4 = 0 + 0.4 \Rightarrow b_{1}=0$
+            \item $0.4 \times 2 = 0.8 = 0 + 0.8 \Rightarrow b_{0}=0$
+        \end{itemize}
+        $(0.1)_{10} \approx (0.00011001100110011001100)_2 = (1.1001100110011001100)_2 \times 2^{-4}$ 
+        \begin{itemize}[label={}]
+            \item sign bit $b_{31}=(0)_2$
+            \item exponent $-4$ biased as $(127+(-4))_{10} = (123)_{10} = (01111011)_2$
+            \item fraction $(1001100110011001100)_2$
+            \item decimal 0.1 $\Rightarrow$ single precision 0 01111011 10011001100110011001101 
+        \end{itemize}
+        The final 1101 add additional precision after the 4 digit normalization shift. 
+        
+        \item To convert decimal 33554431 into single precision format (normalized) we first convert the integer in binary
     \end{enumerate}
-    \item Take the values you computed in (d) and convert them back into decimal. Did the numbers change? Explain why.
+    \item
+    \begin{enumerate}
+        \item $0$ $01111011$ $10011001100110011001101_2$ = 
+        \item $0$ $10011000$ $00000000000000000000000_2$ =
+    \end{enumerate}
 \end{enumerate}
 
 \item For a hypothetical CPU which has 64 bit virtual address and 41 bit physical address with two levels of cache. The L1 cache is virtually indexed and physically tagged. The L1 size is 8KB. The page size is 8KB. The L2 cache is 4MB. The block size is 64 bytes. Please illustrate the translation of virtual address to physical address, as well as the interactions to the TLB and L1/L2 Cache. Indicate how many bits are used for page number, page offset, TLB index, TLB tag, cache index, cache tag, etc.
