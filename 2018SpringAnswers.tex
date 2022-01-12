@@ -40,6 +40,9 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
     \item
     \begin{enumerate}
         \item Multiply the decimal fraction by 2, take the integer component, and repeat with the new fraction until a fraction of zero is found or the precision limit of 23 fraction digits is reached. Decimal 0.1 cannot be represented in single precision format exactly, only approximated.
+        
+        \medskip
+        
         \begin{itemize}[label={}]
             \item $0.1 \times 2 = 0.2 = 0 + 0.2 \Rightarrow b_{22}=0$
             \item $0.2 \times 2 = 0.4 = 0 + 0.4 \Rightarrow b_{21}=0$
@@ -54,17 +57,93 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
             \item $0.2 \times 2 = 0.4 = 0 + 0.4 \Rightarrow b_{1}=0$
             \item $0.4 \times 2 = 0.8 = 0 + 0.8 \Rightarrow b_{0}=0$
         \end{itemize}
-        $(0.1)_{10} \approx (0.00011001100110011001100)_2 = (1.1001100110011001100)_2 \times 2^{-4}$ 
-        \begin{itemize}[label={}]
-            \item sign bit $b_{31}=(0)_2$
-            \item exponent $-4$ biased as $(127+(-4))_{10} = (123)_{10} = (01111011)_2$
-            \item fraction $(1001100110011001100)_2$
-            \item decimal 0.1 $\Rightarrow$ single precision 0 01111011 10011001100110011001101 
-        \end{itemize}
-        The final 1101 add additional precision after the 4 digit normalization shift. 
         
-        \item To convert decimal 33554431 into single precision format (normalized) we first convert the integer in binary
+        \medskip
+        
+        $(0.1)_{10} \approx (0.00011001100110011001100)_2 = (1.1001100110011001100)_2 \times 2^{-4}$
+        
+        \medskip
+        
+        \begin{itemize}[label={}]
+            \item sign bit: $b_{31}=(0)_2$
+            \item exponent: $-4$ biased as $(127+(-4))_{10} = (123)_{10} = (01111011)_2$
+            \item fraction: $(1001100110011001100)_2$
+        \end{itemize}
+        
+        \medskip
+        
+        decimal: 0.1 $\Rightarrow$ single precision 0 01111011 10011001100110011001101 
+        
+        \medskip
+        
+        The final 1101 adds additional precision after the 4 digit normalization shift. 
+        
+        \medskip
+        
+        \item Take the whole number 33554431 and iteratively divide by 2 noting the quotient and remainder until a quotient of 0 is reached.\\ 
+
+        \begin{tabular}{ |c c c| } 
+            \hline
+            Division & Quotient & Remainder\\  
+            \hline\hline
+            33554431/2 & 16777215 & 1 \\ 
+            \hline
+            16777215/2 & 8388607 & 1 \\ 
+            \hline
+            8388607/2 & 4194303 & 1 \\ 
+            \hline
+            4194303/2 & 2097151 & 1 \\ 
+            \hline
+            2097151/2 & 1048575 & 1 \\ 
+            \hline
+            1048575/2 & 524287 & 1 \\ 
+            \hline
+            524287/2 & 262143 & 1 \\ 
+            \hline
+            262143/2 & 131071 & 1 \\ 
+            \hline
+            131071/2 & 65535 & 1 \\ 
+            \hline
+            65535/2 & 32767 & 1 \\ 
+            \hline
+            32767/2 & 16383 & 1 \\ 
+            \hline
+            16383/2 & 8191 & 1 \\ 
+            \hline
+            8191/2 & 4095 & 1 \\ 
+            \hline
+            4095/2 & 2047 & 1 \\ 
+            \hline
+            2047/2 & 1023 & 1 \\ 
+            \hline
+            1023/2 & 511 & 1 \\ 
+            \hline
+            511/2 & 255 & 1 \\ 
+            \hline
+            255/2 & 127 & 1 \\ 
+            \hline
+            127/2 & 63 & 1 \\ 
+            \hline
+            63/2 & 31 & 1 \\ 
+            \hline
+            31/2 & 15 & 1 \\ 
+            \hline
+            15/2 & 7 & 1 \\ 
+            \hline
+            7/2 & 3 & 1 \\ 
+            \hline
+            3/2 & 1 & 1 \\ 
+            \hline
+            1/2 & 0 & 1 \\ 
+            \hline
+        \end{tabular}
+        
+        \medskip
+        
+        Read the 25 bits from the bottom (Most Significant Bit $b_{24}$) to top (Least Significant Bit $b_{0}$). $(33554431)_{10} = (1111111111111111111111111)_{2}$
+        
     \end{enumerate}
+    
     \item
     \begin{enumerate}
         \item $0$ $01111011$ $10011001100110011001101_2$ = 
