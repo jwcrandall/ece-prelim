@@ -72,7 +72,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         \medskip
         
-        decimal: 0.1 $\Rightarrow$ single precision 0 01111011 10011001100110011001101 
+        decimal $(0.1)_{10}$ $\Rightarrow$ single precision $(0$ $01111011$ $10011001100110011001101)_{2}$ 
         
         \medskip
         
@@ -80,8 +80,9 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         \medskip
         
-        \item Take the whole number 33554431 and iteratively divide by 2 noting the quotient and remainder until a quotient of 0 is reached.\\ 
-
+        \item Iteratively divide 33554431 by 2 noting the quotient and remainder until a quotient of 0 is reached.\\ 
+        
+        \begin{center}
         \begin{tabular}{ |c c c| } 
             \hline
             Division & Quotient & Remainder\\  
@@ -137,17 +138,51 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
             1/2 & 0 & 1 \\ 
             \hline
         \end{tabular}
+        \end{center}
         
         \medskip
         
-        Read the 25 bits from the bottom (Most Significant Bit $b_{24}$) to top (Least Significant Bit $b_{0}$). $(33554431)_{10} = (1111111111111111111111111)_{2}$
+        Read the 25 bits from the bottom (Most Significant Bit) to top (Least Significant Bit), and normalize the binary value $(1.111111111111111111111111 \times 2^{24})_2$. When dealing with the positive whole number $33554431$ the value to the right of the decimal point is zero and the sign bit $b_{31} = 0$. Calculate the exponent bits $b_{30} b_{29} \cdots b_{23}$ with a bias of 127 and an exponent decimal value of $127+24=151$.
+        
+        \medskip
+        
+        \begin{center}
+        \begin{tabular}{ |c c c| } 
+            \hline
+            Division & Quotient & Remainder\\  
+            \hline\hline
+            151/2 & 75 & 1 \\ 
+            \hline
+            75/2 & 37 & 1 \\ 
+            \hline
+            37/2 & 18 & 1 \\ 
+            \hline
+            18/2 & 9 & 0 \\ 
+            \hline
+            9/2 & 4 & 1 \\ 
+            \hline
+            4/2 & 2 & 0 \\ 
+            \hline
+            2/2 & 1 & 0 \\ 
+            \hline
+            1/2 & 0 & 1 \\ 
+            \hline
+        \end{tabular}
+        \end{center}
+        
+        \medskip
+        
+        Read the 8 bits from the bottom (Most Significant Bit) to top (Least Significant Bit) where $b_{30}b_{29} \cdots b_{23} = (10010111)_2$ Determine the 23 bits of the mantissa (from left to right) from the right of the decimal point where $b_{22}b_{21} \cdots b_{0} = (11111111111111111111111)_{2}$. However we still have a remaining $1$. Compile the sign bit $b_{31}$, exponent bits $b_{30}b_{29} \cdots b_{23}$, and mantissa bits $b_{22}b_{21} \cdots b_{0}$ into IEEE 754 floating point single precision format where $(33554431)_{10} =$ $(0$ $10010111$ $11111111111111111111111)_2$ 
         
     \end{enumerate}
     
     \item
     \begin{enumerate}
-        \item $0$ $01111011$ $10011001100110011001101_2$ = 
-        \item $0$ $10011000$ $00000000000000000000000_2$ =
+        \item $(0$ $01111011$ $10011001100110011001101)_2$ contains the sign bit $b_{31} = 0$, the decimal value of the exponent bits $b_{23}*2^0 + b_{24}*2^1 + \cdots + b_{30}*2^7 = 1*2^0 + 1*2^1 + \cdots + 0*2^7 = 123$, and the decimal value of the mantissa bits $b_{22}*2^{-1} + b_{21}*2^{-2} + \cdots + b_{0}*2^{-23} = 1*2^{-1} + 0*2^{-2} + \cdots + 1*2^{-23} = 0.6000015735626221$. Calculate the decimal value using 
+        $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)} = (-1)^0 \times (1+0.6000015735626221) \times 2^{(123-127)} = 1.6000015735626221 \times 0.0625 = 0.10000009834766388125$. Decimal 0.1 cannot be represented in single precision format exactly (or any precision format), only approximated up to the maximum number of bits available in the mantissa, because as we can see in table # ... a loop of repeating values forms when multiplying the decimal by 2.
+        
+        \item $(0$ $10011000$ $00000000000000000000000)_2$ contains the sign bit $b_{31} = 0$, the exponent bits $b_{23}*2^0 + b_{24}*2^1 + \cdots + b_{30}*2^7 = 0*2^0 + 0*2^1 + \cdots + 1*2^7 = 152$, and the mantissa bits $b_{22}*2^{-1} + b_{21}*2^{-2} + \cdots + b_{0}*2^{-23} = 0*2^{-1} + 0*2^{-2} + \cdots + 0*2^{-23} = 0$. Calculate the decimal value using 
+        $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)} = (-1)^0 \times (1+0) \times 2^{(152-127)} = 33554432$.
     \end{enumerate}
 \end{enumerate}
 
