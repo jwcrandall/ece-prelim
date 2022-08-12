@@ -1,2 +1,3 @@
 # GW ECE Prelim study materials
-Anki collection package prelim.colpkg
+Use Overleaf to compile main.tex for pdf.  
+Load Anki collection package prelim.colpkg for flash cards.
