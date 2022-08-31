@@ -383,11 +383,55 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         \item \textbf{Q.} Find the rank and nullity of \textbf{A}.
 
-        \textbf{A.} The Rank of \textbf{A} is the number of pivots. By examining the $\text{rref(\textbf{A})}$ we see \textbf{A} has two pivot columns and two free columns. Therefore the rank $r=2$. The nullity of a matrix is the dimension of the null space of \textbf{A}, also called the kernel of \textbf{A}. The nullspace has dimension $n-r = 4-2 = 2$. We have 2 free variables.
+        \textbf{A.} The rank of \textbf{A} is the number of pivots. By examining the $\text{rref(\textbf{A})}$ we see \textbf{A} has two pivot columns ($c_1$ and $c_2$) and two free columns ($c_3$ and $c_4$). Therefore the rank $r=2$. The nullity of a matrix is the dimension of the null space of \textbf{A}, also called the kernel of \textbf{A}. The nullspace dimension is calculated by subtracting the $n$ columns by the rank $r$ where $n-r = 4-2 = 2$, indicating We have 2 free variables.
         
         \item \textbf{Q.} For the equation \textbf{y\textsubscript{1}} = \textbf{A}\textbf{x\textsubscript{1}}, where \textbf{x\textsubscript{1}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{1}}? 
         
-        \textbf{A.} 
+        \textbf{A.} Linear equations given by $Ax = b$ have a solution if and only if the rank of the matrix and the rank of the augmented matrix are equal. $\text{rank}(A)=\text{rank}(A|b)$. 
+
+        \begin{equation}
+        \begin{aligned}
+            \left[\begin{array}{ll} \textbf{A} & \textbf{y\textsubscript{1}}\end{array}\right] & =
+            \left[\begin{array}{lllll}
+            1 & 2 & 3 & 4 & 2 \\
+            -1 & 1 & 3 & 2 & -2 \\
+            2 & 2 & 2 & 4 & 4
+            \end{array}\right]\\
+            R_1 + R_2 & \Rightarrow R_2\\
+            & \left[\begin{array}{lllll}
+            1 & 2 & 3 & 4 & 2 \\
+            0 & 3 & 6 & 6 & 0 \\
+            2 & 2 & 2 & 4 & 4
+            \end{array}\right]\\
+            -2R_1 + R_3 & \Rightarrow R_3\\
+            & \left[\begin{array}{lllll}
+            1 & 2 & 3 & 4 & 2 \\
+            0 & 3 & 6 & 6 & 0 \\
+            0 & -2 & -4 & -4 & 0
+            \end{array}\right]\\
+            \frac{1}{3}R_2 & \Rightarrow R_2\\
+            & \left[\begin{array}{lllll}
+            1 & 2 & 3 & 4 & 2 \\
+            0 & 1 & 2 & 2 & 0 \\
+            0 & -2 & -4 & -4 & 0
+            \end{array}\right]\\
+            -2R_2 + R_1 & \Rightarrow R_1\\
+            & \left[\begin{array}{lllll}
+            1 & 0 & -1 & 0 & 2 \\
+            0 & 1 & 2 & 2 & 0 \\
+            0 & -2 & -4 & -4 & 0
+            \end{array}\right]\\
+            2R_2 + R_3 & \Rightarrow R_3\\
+            \operatorname{rref}(\textbf{A} \textbf{y\textsubscript{1}}) = & \left[\begin{array}{lllll}
+            1 & 0 & -1 & 0 & 2 \\
+            0 & 1 & 2 & 2 & 0 \\
+            0 & 0 & 0 & 0 & 0
+            \end{array}\right]\\
+            \text{rank}(\textbf{A}) = \text{rank}(\textbf{A} \textbf{y\textsubscript{1}}) & = 2
+        \end{aligned}
+        \end{equation}
+
+        A solution exist for \textbf{x\textsubscript{1}}.
         
         \item \textbf{Q.} For the equation \textbf{y\textsubscript{2}} = \textbf{A}\textbf{x\textsubscript{2}}, where \textbf{x\textsubscript{2}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{2}}? 
         
