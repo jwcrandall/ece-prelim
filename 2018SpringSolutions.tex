@@ -262,57 +262,40 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
 
     \begin{enumerate}
         \item \textbf{Q.} Find a basis for the range space of \textbf{A}, R(\textbf{A}) 
-        \textbf{A.} To find the basis of the range space, also referred to as the column space, Transform \textbf{A} into reduced row echelon form.
         
-        $$
-        \textbf{A} = \begin{bmatrix} 
-    	1 & 2 & 3 & 4 \\
-    	-1 & 1 & 3 & 2\\
-    	2 & 2 & 2 & 4 \\
+        \textbf{A.} To find the basis of the range space, also referred to as the column space, solve for the echelon form and reduced row echelon form of \textbf{A}. Start by row reducing the augmented matrix
+        
+        $$ 
+        \left[\begin{array}{ll}\textbf{A} & \textbf{b} \end{array}\right]  = \begin{bmatrix} 
+    	1 & 2 & 3 & 4 & b_1\\
+    	-1 & 1 & 3 & 2 & b_2\\
+    	2 & 2 & 2 & 4 & b_3\\
         \end{bmatrix}
         $$
         
         $$R_1 + R_2 \Rightarrow R_2$$  
-        
-        $$
-        \begin{bmatrix} 
-    	1 & 2 & 3 & 4 \\
-    	0 & 3 & 6 & 6\\
-    	2 & 2 & 2 & 4 \\
-        \end{bmatrix}
-        $$
-        
         $$-2R_1 + R_3 \Rightarrow R_3$$
          
         $$
         \begin{bmatrix} 
-    	1 & 2 & 3 & 4 \\
-    	0 & 3 & 6 & 6\\
-    	0 & -2 & -4 & -4 \\
+    	1 & 2 & 3 & 4 & b_1\\
+    	0 & 3 & 6 & 6 & b_1 + b_2 \\
+    	0 & -2 & -4 & -4 & -2b_1 + b_3 \\
         \end{bmatrix}
         $$
         
-        $$\frac{1}{3}R_2 \Rightarrow R_2$$
+        $$\frac{2}{3}R_2 + R_3 \Rightarrow R_3$$
         
         $$
+        \left[\begin{array}{ll} \textbf{U} & \textbf{c} \end{array}\right] =
         \begin{bmatrix} 
-    	1 & 2 & 3 & 4 \\
-    	0 & 1 & 2 & 2\\
-    	0 & -2 & -4 & -4 \\
+    	1 & 2 & 3 & 4 & b_1\\
+    	0 & 3 & 6 & 6 & b_1 + b_2 \\
+    	0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
         \end{bmatrix}
         $$
         
-        $$-2R_2 + R_1 \Rightarrow R_1$$
-        
-        $$
-        \begin{bmatrix} 
-    	1 & 0 & -1 & 0 \\
-    	0 & 1 & 2 & 2 \\
-    	0 & -2 & -4 & -4 \\
-        \end{bmatrix}
-        $$
-        
-        $$2R_2 + R_3 \Rightarrow R_3$$
+        From the above echelon form matrix, if the system $\textbf{A} \textbf{x}=\textbf{b}$ has a solution, then $-\frac{4}{3}b_1 + \frac{2}{3}b_2 + b_3 = 0$. We can also continue to solve for the reduced row echelon form
         
         $$
         \text{rref(\textbf{A})} = \begin{bmatrix} 
@@ -335,9 +318,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         \end{array}\right]\right\}
         $$
         
-        \item \textbf{Q.} Find a basis for the null space \textbf{A}, N(\textbf{A}) 
-        
-        \textbf{A.}
+        \item \textbf{Q.} Find a basis for the null space \textbf{A}, N(\textbf{A}) \textbf{A.}
         
         \begin{equation}
         \begin{aligned}
@@ -395,8 +376,8 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         \end{aligned}
         \end{equation}
         
-        \item \textbf{Q.} Find the rank and nullity of \textbf{A}.
-
+        \item \textbf{Q.} Find the rank and nullity of \textbf{A}. 
+        
         \textbf{A.} The rank of \textbf{A} is the number of pivots. By examining the $\text{rref(\textbf{A})}$ we see \textbf{A} has two pivot columns ($c_1$ and $c_2$) and two free columns ($c_3$ and $c_4$). Therefore the rank $r=2$. The nullity of a matrix is the dimension of the null space of \textbf{A}, also called the kernel of \textbf{A}. The nullspace dimension is calculated by subtracting the $n$ columns by the rank $r$ where $n-r = 4-2 = 2$, indicating we have 2 free variables.
         
         \item \textbf{Q.} For the equation \textbf{y\textsubscript{1}} = \textbf{A}\textbf{x\textsubscript{1}}, where \textbf{x\textsubscript{1}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{1}}? 
@@ -436,7 +417,8 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
             0 & -2 & -4 & -4 & 0
             \end{array}\right]\\
             2R_2 + R_3 & \Rightarrow R_3\\
-            \operatorname{rref}(\textbf{A} \textbf{y\textsubscript{1}}) = & \left[\begin{array}{lllll}
+            \operatorname{rref}(\textbf{A} \textbf{y\textsubscript{1}}) 
+            & = \left[\begin{array}{lllll}
             1 & 0 & -1 & 0 & 2 \\
             0 & 1 & 2 & 2 & 0 \\
             0 & 0 & 0 & 0 & 0
@@ -497,7 +479,147 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         \item \textbf{Q.} If a solution \textbf{x\textsubscript{1}} and/or \textbf{x\textsubscript{2}} exist in parts (d) and (e), find \underline{all} solutions.
 
-        \textbf{A.} The complete solution to \textbf{A}\textbf{x} = \textbf{y\textsubscript{1}} is composed of the particular and nullspace solutions. \textbf{x} = \textbf{x\textsubscript{p}} + \textbf{x\textsubscript{n}}.
+        \textbf{A.} The complete solution to \textbf{A}\textbf{x} = \textbf{y\textsubscript{1}} is composed of the particular and nullspace solutions. \textbf{x} = \textbf{x\textsubscript{p}} + \textbf{x\textsubscript{n}}. To solve for the null space solution consider 
+
+        $$
+        \text{rref(\textbf{A})} = \begin{bmatrix} 
+    	1 & 0 & -1 & 0 \\
+    	0 & 1 & 2 & 2 \\
+    	0 & 0 & 0 & 0 \\
+        \end{bmatrix}
+        $$
+
+        The special solutions to \textbf{A}\textbf{x}=0 is as follows:
+
+        $$
+        \left[\begin{array}{llll}
+    	1 & 0 & -1 & 0 \\
+    	0 & 1 & 2 & 2 \\
+    	0 & 0 & 0 & 0 \\
+        \end{array}\right]\left[\begin{array}{l}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4
+        \end{array}\right]=\left[\begin{array}{l}
+        0 \\
+        0 \\
+        0 \\
+        0
+        \end{array}\right]
+        $$
+
+        which is equivalent to 
+
+        $$
+        \begin{array}{r}
+        x_1 - x_3 = 0 \\
+        x_2 + 2x_3 + 2x_4 = 0
+        \end{array}
+        $$
+
+        Set free variables $x_3=1, x_4=0$ and substitute
+
+        $$
+        \begin{array}{r}
+        x_1 - 1 = 0 \\
+        x_1 = -1 \\
+        x_2 + 2 = 0 \\
+        x_2 = -2 \\
+        \end{array}
+        $$
+
+        Therefore, one of the special solutions is $
+        
+        $$\textbf{s}_1=\left[\begin{array}{c}-1 \\ -2 \\ 1 \\ 0\end{array}\right]$$
+
+        Set free variables $x_3=0, x_4=1$ and substitute
+
+        $$
+        \begin{array}{r}
+        x_1 = 0 \\
+        x_2 + 2 = 0 \\
+        x_2 = -2 \\
+        \end{array}
+        $$
+
+        Therefore, the additional special solutions is 
+        
+        $$\textbf{s}_2=\left[\begin{array}{c}0 \\ -2 \\ 0 \\ 1\end{array}\right]$$
+        
+        Therefore, the null space  \text{N}(\textbf{A}) in $R^4$ contains all $\textbf{x}_n=c_1 \textbf{s}_1+c_2 \textbf{s}_2$.\\ 
+        
+        For the particular solution $\textbf{x}_p$, free variables $x_3=0$ and $x_4=0$, consider $\textbf{U} x=\textbf{c}$
+
+        $$
+        \left[\begin{array}{ll} \textbf{U} & \textbf{c} \end{array}\right] =
+        \begin{bmatrix} 
+    	1 & 2 & 3 & 4 & b_1\\
+    	0 & 3 & 6 & 6 & b_1 + b_2 \\
+    	0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+        \end{bmatrix}
+        $$
+
+        $$\frac{1}{3} R_2 \Rightarrow R_2$$  
+
+        $$
+        \begin{bmatrix} 
+    	1 & 2 & 3 & 4 & b_1\\
+    	0 & 1 & 2 & 2 & \frac{1}{3}b_1 + \frac{1}{3}b_2 \\
+    	0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+        \end{bmatrix}
+        $$
+
+        $$R_1 - 2R_2 \Rightarrow R_1$$ 
+
+        $$
+        \begin{bmatrix} 
+    	1 & 0 & -1 & 0 & \frac{1}{3}b_1 - \frac{2}{3}b_2 \\
+    	0 & 1 & 2 & 2 & \frac{1}{3}b_1 + \frac{1}{3}b_2 \\
+    	0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+        \end{bmatrix}
+        $$
+
+        With that the matrix is in reduced row echelon form, when $\textbf{b}=\left(b_1, b_2, b_3\right)=(2,-2,4)$, 
+
+        $$
+        \left[\begin{array}{ll}
+        \mathbf{R} & \boldsymbol{d}
+        \end{array}\right]=\left[\begin{array}{ccccc}
+        1 & 0 & -1 & 0 & 2 \\
+        0 & 1 & 2 & 2 & 0 \\
+        0 & 0 & 0 & 0 & 0
+        \end{array}\right]
+        $$
+
+        Therefore, $\boldsymbol{d}=(2,0,0)$, and the particular solution is 
+        
+        $$\textbf{x}_p=\left[\begin{array}{c}2 \\ 0 \\ 0 \\ 0\end{array}\right]$$
+        
+        The complete solution is,
+        
+        $$
+        \begin{aligned}
+        \textbf{x} & =\textbf{x}_n+\textbf{x}_p \\
+        & = c_1 \textbf{s}_1 + c_2 \textbf{s}_2 + \textbf{x}_p \\
+        & = c_1\left[\begin{array}{c}
+        -1 \\
+        -2 \\
+        1 \\
+        0
+        \end{array}\right]+c_2\left[\begin{array}{c}
+        0 \\
+        -2 \\
+        0 \\
+        1
+        \end{array}\right]+\left[\begin{array}{c}
+        2 \\
+        0 \\
+        0 \\
+        0
+        \end{array}\right]
+        \end{aligned}
+        $$
         
     \end{enumerate}
 
