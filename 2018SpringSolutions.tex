@@ -306,6 +306,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         $$
         
         The dimension of the column space is rank $r=2$ defined by pivot columns 1 and 2. The basis (linearly independent vectors that span the space) for the range space are the pivot columns from the original matrix.
+        
         $$
         R(\textbf{A}) = \left\{\left[\begin{array}{r}
         1 \\
@@ -320,61 +321,59 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         \item \textbf{Q.} Find a basis for the null space \textbf{A}, N(\textbf{A}) \textbf{A.}
         
-        \begin{equation}
         \begin{aligned}
-            \textbf{A}\textbf{x} & = \textbf{0} \\
-            \text{rref(\textbf{A})} 
-            \left[\begin{array}{l}
-            x_{1} \\
-            x_{2} \\
-            x_{3} \\
-            x_{4}
-            \end{array}\right] 
-            & = \left[\begin{array}{l}
-            0 \\
-            0 \\
-            0
-            \end{array}\right]\\
-            x_1 - x_3 & = 0\\
-            x_2 + 2x_3 + 2x_4 & = 0\\
-            \text{rref(\textbf{A})} 
-            \left[\begin{array}{l}
-            x_3 \\
-            -2x_3 -2x_4 \\
-            x_3 \\
-            x_4
-            \end{array}\right] 
-            & = \left[\begin{array}{l}
-            0 \\
-            0 \\
-            0
-            \end{array}\right]\\
-            \textbf{x} & = 
-            x_3 \left[\begin{array}{l}
-            1 \\
-            -2 \\
-            1 \\
-            0
-            \end{array}\right]
-            + x_4 \left[\begin{array}{l}
-            0 \\
-            -2 \\
-            0 \\
-            1
-            \end{array}\right]\\
-            \text{N}(\textbf{A}) & =\operatorname{Span}\left\{\left[\begin{array}{c}
-            1 \\
-            -2 \\
-            1 \\
-            0
-            \end{array}\right],\left[\begin{array}{c}
-            0 \\
-            -2 \\
-            0 \\
-            1
-            \end{array}\right]\right\}
+        \textbf{A}\textbf{x} & = \textbf{0} \\
+        \text{rref(\textbf{A})} 
+        \left[\begin{array}{l}
+        x_{1} \\
+        x_{2} \\
+        x_{3} \\
+        x_{4}
+        \end{array}\right] 
+        & = \left[\begin{array}{l}
+        0 \\
+        0 \\
+        0
+        \end{array}\right]\\
+        x_1 - x_3 & = 0\\
+        x_2 + 2x_3 + 2x_4 & = 0\\
+        \text{rref(\textbf{A})} 
+        \left[\begin{array}{l}
+        x_3 \\
+        -2x_3 -2x_4 \\
+        x_3 \\
+        x_4
+        \end{array}\right] 
+        & = \left[\begin{array}{l}
+        0 \\
+        0 \\
+        0
+        \end{array}\right]\\
+        \textbf{x} & = 
+        x_3 \left[\begin{array}{l}
+        1 \\
+        -2 \\
+        1 \\
+        0
+        \end{array}\right]
+        + x_4 \left[\begin{array}{l}
+        0 \\
+        -2 \\
+        0 \\
+        1
+        \end{array}\right]\\
+        \text{N}(\textbf{A}) & =\operatorname{Span}\left\{\left[\begin{array}{c}
+        1 \\
+        -2 \\
+        1 \\
+        0
+        \end{array}\right],\left[\begin{array}{c}
+        0 \\
+        -2 \\
+        0 \\
+        1
+        \end{array}\right]\right\}
         \end{aligned}
-        \end{equation}
         
         \item \textbf{Q.} Find the rank and nullity of \textbf{A}. 
         
@@ -489,7 +488,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         \end{bmatrix}
         $$
 
-        The special solutions to \textbf{A}\textbf{x}=0 is as follows:
+        Solve for the special solutions to \textbf{A}\textbf{x}=0:
 
         $$
         \left[\begin{array}{llll}
@@ -525,11 +524,11 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         x_1 - 1 = 0 \\
         x_1 = -1 \\
         x_2 + 2 = 0 \\
-        x_2 = -2 \\
+        x_2 = -2
         \end{array}
         $$
 
-        Therefore, one of the special solutions is $
+        One of the special solutions is
         
         $$\textbf{s}_1=\left[\begin{array}{c}-1 \\ -2 \\ 1 \\ 0\end{array}\right]$$
 
@@ -549,7 +548,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         Therefore, the null space  \text{N}(\textbf{A}) in $R^4$ contains all $\textbf{x}_n=c_1 \textbf{s}_1+c_2 \textbf{s}_2$.\\ 
         
-        For the particular solution $\textbf{x}_p$, free variables $x_3=0$ and $x_4=0$, consider $\textbf{U} x=\textbf{c}$
+        For the particular solution $\textbf{x}_p$, free variables $x_3=0$ and $x_4=0$, consider row echelon form $\textbf{U} x=\textbf{c}$
 
         $$
         \left[\begin{array}{ll} \textbf{U} & \textbf{c} \end{array}\right] =
@@ -580,7 +579,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         \end{bmatrix}
         $$
 
-        With that the matrix is in reduced row echelon form, when $\textbf{b}=\left(b_1, b_2, b_3\right)=(2,-2,4)$, 
+        With the matrix in reduced row echelon form, and with $\textbf{b}=\left(b_1, b_2, b_3\right)=(2,-2,4)$, 
 
         $$
         \left[\begin{array}{ll}
@@ -596,7 +595,7 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
         
         $$\textbf{x}_p=\left[\begin{array}{c}2 \\ 0 \\ 0 \\ 0\end{array}\right]$$
         
-        The complete solution is,
+        The complete solution is
         
         $$
         \begin{aligned}
