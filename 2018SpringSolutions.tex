@@ -634,13 +634,236 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
 	\end{bmatrix},
 	\textbf{c} = 
 	\begin{bmatrix} 
-	-1\\
-	1\\
+	-1 & 1
 	\end{bmatrix}
 	
 	\begin{enumerate}
-	    \item Design a state observer;
-	    \item Using the state estimates from part a), find an appropriate state feedback such that the system will have a purely oscillatory response with a natural frequency of oscillation $\omega_n = 2$ radians/second.
+	    \item \textbf{Q.} Design a state observer; \textbf{A.} State observer matrix
+
+        $$
+        \textbf{Q}_O=\left[\begin{array}{c}
+        \textbf{c} \\
+        \textbf{c} \textbf{A} \\
+        \vdots \\
+        \textbf{c} \textbf{A}^{n-1}
+        \end{array}\right]
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_O & = \left[\begin{array}{l}
+        \textbf{c} \\
+        \textbf{c} \textbf{A}
+        \end{array}\right]_{2 \times 2} \\
+        \textbf{c} \textbf{A} &= \left[\begin{array}{ll}
+        -1 & 1
+        \end{array}\right]\left[\begin{array}{ll}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right] \\
+        \textbf{c} \textbf{A} &= \left[\begin{array}{ll}
+        1.5 & 7
+        \end{array}\right] \\
+        \textbf{Q}_O &= \left[\begin{array}{ll}
+        -1 & 1 \\
+        1.5 & 7
+        \end{array}\right] \\ 
+        |\textbf{Q}_O| &= -7 - 1.5 \\
+        & = - 8.5 \\
+        & \neq 0
+        \end{aligned}
+        $$
+
+        The determinant of the state observer matrix $\textbf{Q}_O$ is not zero, so the system is completely observable. 
+     
+	    \item \textbf{Q.} Using the state estimates from part a), find an appropriate state feedback such that the system will have a purely oscillatory response with a natural frequency of oscillation $\omega_n = 2$ radians/second. \textbf{A.} Solve for the state controller matrix
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C &= \left[\begin{array}{llll}
+        \textbf{b} & \textbf{A}\textbf{b} & \cdots &  \textbf{A}^{n-1} \textbf{b}
+        \end{array}\right] \text {. }
+        \end{aligned}
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C &= [\textbf{b} : \textbf{A}\textbf{b}] \\
+        \textbf{A} \textbf{b} &= \left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\left[\begin{array}{l}
+        1 \\
+        0.5
+        \end{array}\right] \\
+        & =\left[\begin{array}{c}
+        -5 \\
+        0
+        \end{array}\right] \\
+        \textbf{Q}_c &= \left[\begin{array}{cc}
+        1 & -5 \\
+        0.5 & 0
+        \end{array}\right] \\
+        |\textbf{Q}_C| &= 2.5\\
+        & \neq 0
+        \end{aligned}
+        $$
+
+        The determinant of the state controller matrix $\textbf{Q}_C$ is not zero, so the system is completely controllable. Solve for the characteristic polynomial 
+
+        $$
+        \begin{aligned}
+        |\lambda I-A| &= 0 \\
+        \left|\left[\lambda\left[\begin{array}{ll}
+        1 & 0 \\
+        0 & 1
+        \end{array}\right]-\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\right]\right| &=0 \\
+        \left|\left[\begin{array}{ll}
+        \lambda & 0 \\
+        0 & \lambda
+        \end{array}\right]-\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\right| &=0 \\
+        \left|\left[\begin{array}{ll}
+        \lambda+1 & 8 \\
+        -0.5 & \lambda+1
+        \end{array}\right]\right| &= 0 \\
+        (\lambda+1)^2+0.5 \times 8  &= 0 \\
+        \lambda^2+1+2 \lambda+4 &= 0 \\
+        x^2+2 \lambda+5 &= 0
+        \end{aligned}
+        $$
+
+        By comparing the standard 2nd order equation $\lambda^2+a_1 \lambda+a_2=0$ we define $a_1=2, a_2=5$. From the given system oscillation the poles of the system are $s_1, s_2= \pm j 2$. From the poles solve for the desired characteristic equation is 
+
+        $$
+        \begin{aligned}
+        (\lambda-j 2)(\lambda-(-j 2)) &= 0 \\
+        (\lambda-j 2)\left(\lambda+\lambda^2\right) &= 0 \\
+        \lambda^2-(j 2)^2 &= 0 \\
+        \lambda^2+2 &= 0
+        \end{aligned}
+        $$
+
+        Compare the standard equation $\lambda^2+\alpha_1 \lambda+\alpha_2=0$ and determine $\alpha_1=0, \alpha_2=2$. Solve for the inverse of the state controller matrix
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C^{-1} & =\left[\begin{array}{cc}
+        1 & -5 \\
+        0.5 & 0
+        \end{array}\right]^{-1} \\
+        & =\frac{\text { Adjoint } \textbf{Q}_c}{\text { det } \textbf{Q}_C} \\
+        & =\frac{1}{+2.5}\left[\begin{array}{ll}
+        0 & 5 \\
+        -0.5 & 1
+        \end{array}\right] \\
+        & =\left[\begin{array}{cc}
+        0 & 2 \\
+        -0.2 & 0.4
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the transformation vector
+
+        $$
+        \begin{aligned}
+        \textbf{P}_1 &= \left[\begin{array}{llll}
+        0 & 0 & \cdots & 1
+        \end{array}\right]_{1 \times n} \textbf{Q}_c^{-1} \\
+        &=\left[\begin{array}{ll}
+        0 & 1
+        \end{array}\right]_{1 \times 2}\left[\begin{array}{cc}
+        0 & 2 \\
+        -0.2 & 0.4
+        \end{array}\right]_{2 \times 2} \\
+        &=[0 \times 0+(1 \times-0.2) \quad (0 \times 2+1 \times 0.4)] \\
+        &=\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the transformation matrix 
+
+        $$
+        \textbf{P}_C=\left[\begin{array}{cc}
+        \textbf{P}_1 \\
+        \textbf{P}_1 \textbf{A} \\
+        \vdots \\
+        \textbf{P}_1 \textbf{A}^{n-1}
+        \end{array}\right]
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{P}_C & =\left[\begin{array}{l}
+        \textbf{P}_1 \\
+        \textbf{P}_1 \textbf{A}
+        \end{array}\right] \\
+        \textbf{P}_1 & =\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right] \\
+        \textbf{P}_1 \textbf{A} & =\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right]\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right] \\
+        & =[-0.2 \times-1)+(0.0 \times 0.5) \quad (-0.2 \times-8)+(0.4 \times-1)] \\
+        & =\left[\begin{array}{ll}
+        0.4 & 1.2
+        \end{array}\right] \\
+        \textbf{P}_C & =\left[\begin{array}{ll}
+        -0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the state feedback matrix
+
+        $$
+        \textbf{K}_f=\left[\begin{array}{llll}
+        \alpha_n-a_n & \alpha_{n-1}-\alpha_{n-1} & \cdots & \alpha_1-a_1
+        \end{array}\right] \textbf{P}_c
+        $$
+
+        when $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{K}_f & =\left[\begin{array}{ll}
+        a_2-a_2 & \alpha_1-a_1
+        \end{array}\right] \textbf{P}_c \\
+        & =\left[\begin{array}{ll}
+        2-5 & 0-2
+        \end{array}\right]\left[\begin{array}{cc}
+        -0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right] \\
+        & =\left[\begin{array}{ll}
+        -3 & -2
+        \end{array}\right]\left[\begin{array}{ll}
+        0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right] \\
+        & =\left[\begin{array}{ll}
+        -0.2 & -3.6
+        \end{array}\right]
+        \end{aligned}
+        $$
 	\end{enumerate}
 	
 \item Consider a system with a transfer function 
