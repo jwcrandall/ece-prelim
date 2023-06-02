@@ -868,14 +868,263 @@ The un-optimized compilers clock rate is 15\% higher than the optimized version 
 	
 \item Consider a system with a transfer function 
 $$\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$$
-Is it possible, using \underline{state feedback} to change it to
+Is it possible, using \underline{state feedback} to change it to (a) and or (b). If yes, do it. Are the resulting systems controllable? observable? If no, explain why not.
 
     \begin{enumerate}
-        \item $\mathrm{G}(s)=\frac{(s-5)}{(s+1)(s+4)}$?
-        \item $\mathrm{G}(s)=\frac{s-5}{(s+1)(s+3)(s+4)}$?
+        \item \textbf{Q.} $\mathrm{G}(s)=\frac{(s-5)}{(s+1)(s+4)}$?
+        \textbf{A.} Convert the given transfer function $\mathrm{G}(s)$ into controllable canonical form by taking the inverse Laplace transform of $\mathrm{Y}(s)$ and $\mathrm{U}(s)$. 
+
+        $$
+        \begin{aligned}    
+        \mathrm{G}(s) &= \frac{\mathrm{Y}(s)}{\mathrm{U}(s)} = \frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)} \left(\frac{\mathrm{X}(s)}{\mathrm{X}(s)}\right)\\
+        \mathrm{Y}(s) &= s^2 \mathrm{X}(s) - 7s \mathrm{X}(s) + 10 \mathrm{X}(s)\\
+        \mathrm{U}(s) &= s^3 \mathrm{X}(s) + 2s^2 \mathrm{X}(s) - 11s \mathrm{X}(s) - 12 \mathrm{X}(s) \\
+        y(t) &= \ddot{x}(t) - 7 \dot{x}(t) + 10x(t) \\
+        u(t) &= x^{(3)}(t) + 2\ddot{x}(t) - 11 \dot{x}(t) -12 x(t)\\
+        x_1 &= x \\
+        x_2 &= \dot{x} \\
+        x_3 &= \ddot{x} \\
+        x_c & = \left[\begin{array}{l}
+        x_1 \\
+        x_2 \\
+        x_3
+        \end{array}\right] \\
+        \dot{x}_c & =\left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        12 & 11 & -1
+        \end{array}\right] x_c+\left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right] u\\
+        y_c &= \left[\begin{array}{lll}
+        10 & -7 & 1
+        \end{array}\right] x_c
+        \end{aligned}
+        $$
+
+        Use full state feedback (pole placement) to change the transfer function to the desired value. Refer to Figure \ref{fig:06a_a}. Transform the transfer function  into controller canonical form.
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=4.0in]{figs/2018s/06a_a.png}}
+        \caption{ The state feedback method is used to change the position of poles of a system to any desired point in the complex plane. It can be used to make a system stable by moving the poles to the left side of the S plane if the system is unstable.}
+        \label{fig:06a_a}
+        \end{figure}
+
+        $$
+        \begin{aligned}
+        \frac{C(s)}{R(s)}&=\frac{G(s)}{1+G(s) H(s)}\\
+        G_f(s)&=\frac{G(s)}{1+G(s) H(s)}\\
+        G(s) H(s) + 1 &=\frac{G(s)}{G_f(s)}\\
+        & = \left(\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}\right)\left(\frac{(s+1)(s+4)}{(s-5)}\right)\\
+        G(s) H(s) & = \frac{(s-2)}{(s-3)} - 1\\
+        G(s) H(s) & = \frac{1}{(s-3)}\\
+        H(s) & = \left(\frac{1}{(s-3)}\right) \left(\frac{(s+1)(s-3)(s+4)}{(s-2)(s-5)}\right)\\
+        & = \frac{(s+1)(s+4)}{(s-2)(s-5)}
+        \end{aligned}
+        $$
+
+        By employing a plant with a transfer function $H(s)$ in a negative feedback $G(s)$ can be converted to $G_f(s)$.
+            
+        \item \textbf{Q.} $\mathrm{G}(s)=\frac{s-5}{(s+1)(s+3)(s+4)}$? \textbf{A.} To find the state-space representation of the transfer function $\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$, we can start by writing it in the following form:
+
+        $$
+        \mathrm{G}(s)=\frac{b_2 s^2+b_1 s+b_0}{a_3 s^3+a_2 s^2+a_1 s+a_0}=\frac{s^2-7s+10}{s^3-2s^2-5s-12}
+        $$
+        
+        where $b_2=1, b_1=-7, b_0=10, a_3=1, a_2=-2, a_1=-5$, and $a_0=-12$. The controllable-canonical form is as follows:
+
+        $$
+        \begin{aligned}
+        & A = \left[\begin{array}{cccccc}
+        -a_1 & -a_2 & -a_3 & \cdots & -a_{n-1} & -a_n \\
+        1 & 0 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 0 & 1 & \cdots & 0 & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & 0 & \cdots & 1 & 0
+        \end{array}\right] = \left[\begin{array}{ccc}
+        2 & 5 & 12 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right] \\
+        & B = \left[\begin{array}{c}
+        1 \\
+        0 \\
+        \vdots \\
+        0
+        \end{array}\right] = \left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right] \\
+        & C=\left[\begin{array}{lllll}
+        b_1 & b_2 & b_3 & \cdots & b_n
+        \end{array}\right] = \left[\begin{array}{lll}
+        1 & -7 & 10
+        \end{array}\right] \\
+        & D=\left[b_0\right] = \left[\begin{array}{ll}
+        0
+        \end{array}\right]\\
+        \end{aligned}
+        $$
+
+        Next, we need to find the state feedback gain matrix $\mathrm{K}$ that will place the closed-loop poles of the system at the desired locations. The closed-loop transfer function of the system with state feedback is given by:
+        
+        $$
+        \mathrm{G}_{\text {closed }}(s)=\frac{\mathrm{G}(s) \mathrm{K}}{1+\mathrm{G}(s) \mathrm{K}}
+        $$
+        
+        where $\mathrm{G}(s)$ is the original transfer function of the system. The desired closed-loop poles are $-1,-3$, and $-4$. Consider a linear continuous-time invariant system with a state-space representation
+        
+        $$
+        \begin{aligned}
+        \dot{x}(t) & =A x(t)+B u(t) \\
+        y(t) & =C x(t)
+        \end{aligned}
+        $$
+        
+        where $x$ is the state vector, $U$ is the input vector, and $A, B$ and $C$ are matrices of compatible dimensions that represent the dynamics of the system. Consider
+        
+        $$
+        \begin{aligned}
+        \dot{x} &= \left[\begin{array}{ccc}
+        2 & 5 & 12 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right] x+\left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right] u
+        \end{aligned}
+        $$
+        
+        Then
+
+        $$
+        \begin{aligned}
+        \operatorname{det}(s I-A) &= \operatorname{det}\left(\left[\begin{array}{ccc}
+        s & 0 & 0 \\
+        0 & s & 0 \\
+        0 & 0 & s
+        \end{array}\right] - \left[\begin{array}{ccc}
+        2 & 5 & 12 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right] \right)\\
+        &= \operatorname{det}\left(\left[\begin{array}{ccc}
+        s-2 & -5 & -12 \\
+        -1 & s & 0 \\
+        0 & -1 & s
+        \end{array}\right] \right)\\
+        & =(s-2)\left|\begin{array}{cc}
+        s & 0 \\
+        -1 & s
+        \end{array}\right|+5\left|\begin{array}{cc}
+        -1 & 0 \\
+        0 & s
+        \end{array}\right|-12 \left|\begin{array}{cc}
+        -1 & s \\
+        0 & -1
+        \end{array}\right|\\
+        & =(s-2)\left(s^2\right)+5(-1)(s)-12(-1)(-1) \\
+        & =s^3-2 s^2-5 s - 12
+        \end{aligned}
+        $$
+
+        Define $u= -K x = -\left[\begin{array}{lll}k_1 & k_2 & k_3 \end{array}\right] x$, then
+        
+        $$
+        \begin{aligned}            
+        A_{c l}&=A-B K\\
+        &=\left[\begin{array}{ccc}
+        2 & 5 & 12 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right]-\left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right]\left[\begin{array}{lll}
+        k_1 & k_2 & k_3
+        \end{array}\right]\\
+        &=\left[\begin{array}{ccc}
+        2-k_1 & 5-k_2 & 12-k_3 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        So then we have that
+        
+        $$
+        \begin{aligned}
+        \operatorname{det}\left(s I-A_{c l}\right) &= \operatorname{det}\left(\left[\begin{array}{ccc}
+        s & 0 & 0 \\
+        0 & s & 0 \\
+        0 & 0 & s
+        \end{array}\right] - \left[\begin{array}{ccc}
+        2-k_1 & 5-k_2 & 12-k_3 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+        \end{array}\right] \right)\\
+        &=\operatorname{det}\left(\left[\begin{array}{ccc}
+        s-\left(2-k_1\right) & -5+k_2 & -12+k_3 \\
+        -1 & s & 0 \\
+        0 & -1 & s
+        \end{array}\right]\right) \\
+        &=\left(s-\left(2-k_1\right)\right) \operatorname{det}\left(\left[\begin{array}{cc}
+        s & 0 \\
+        -1 & s
+        \end{array}\right]\right)\\
+        &+\left(-5+k_2\right) \operatorname{det}\left(\left[\begin{array}{cc}
+        -1 & 0 \\
+        0 & s
+        \end{array}\right]\right)\\
+        &+\left(-12+k_3\right) \operatorname{det}\left(\left[\begin{array}{cc}
+        -1 & s \\
+        0 & -1
+        \end{array}\right]\right) \\
+        &= \left(s-\left(2-k_1\right)\right)\left(s^2\right)+\left(-5+k_2\right)(-s)+\left(-12+k_3\right)(1)\\
+        &= s^3 + (k_1-2)s^2 + (-k_2 + 5)s + (k_3 - 12)\\
+        & = 0
+        \end{aligned}
+        $$
+        
+        Thus, by choosing $k_1$, $k_2$, and $k_3$ we can put $\lambda_i\left(A_{c l}\right)$ anywhere in the complex plane (assuming complex conjugate pairs of poles). To put the poles at $-1, 3$, and $-4$, compare the desired characteristic equation
+        
+        $$
+        (s+1)(s-3)(s+4)= s^3 + 2s^2 - 11s - 12 = 0
+        $$
+        
+        with the closed-loop one
+        
+        $$
+        s^3 + (k_1-2)s^2 + (-k_2 + 5)s + (k_3 - 12) = 0
+        $$
+        
+        to conclude that
+        
+        $$
+        \left.\begin{array}{c}
+        k_1-3 = 2 \\
+        -k_2 + 5 = -11 \\
+        k_3 - 12 = -12
+        \end{array}\right\} \begin{aligned}
+        & k_1 = 5 \\
+        & k_2 = 16 \\
+        & k_3 = 0
+        \end{aligned}
+        $$
+        
+        so that $K=\left[\begin{array}{lll}5 & 6 & 0\end{array}\right]$, which is called Pole Placement.
+        
     \end{enumerate}
     
-If yes, do it. Are the resulting systems controllable? observable? If no, explain why not.
+
 
 \subsection{Section 3 Communications \& Networks and Signal \& Image Processing, Systems \& Controls}
 
