@@ -872,8 +872,18 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
 
     \begin{enumerate}
         \item \textbf{Q.} $\mathrm{G}(s)=\frac{(s-5)}{(s+1)(s+4)}$?
-        \textbf{A.} a.) If the closed-loop dynamics can be represented by the state space equation $\dot{x} = \mathbf{A} x + \mathbf{B} u$
-        with output equation $y = \mathbf{C} x + \mathbf{D} u$ then the poles of the system transfer function are the roots of the characteristic equation given by $|s \mathbf{I}-\mathbf{A}|=0$. Full state feedback (FSF), or pole placement, is utilized by commanding the input vector $u$. Consider an input proportional (in the matrix sense) to the state vector, $u=-\mathbf{K} x$. Substituting into the state space equations above, we have
+        \textbf{A.} a.) If the closed-loop dynamics can be represented by the state space equation 
+        
+        $$\dot{x} = \mathbf{A} x + \mathbf{B} u$$
+        with output equation 
+        
+        $$y = \mathbf{C} x + \mathbf{D} u$$ 
+        
+        then the poles of the system transfer function are the roots of the characteristic equation given by 
+        
+        $$|s \mathbf{I}-\mathbf{A}|=0.$$ 
+        
+        Full state feedback (FSF), or pole placement, is utilized by commanding the input vector $u$. Consider an input proportional (in the matrix sense) to the state vector, $u=-\mathbf{K} x$. Substituting into the state space equations above, we have
         
         $$
         \begin{aligned}
@@ -888,9 +898,7 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
         |s \mathbf{I}-(\mathbf{A}-\mathbf{B K})|=0.
         $$
         
-        Comparing the terms of this equation with those of the desired characteristic equation yields the values of the feedback matrix $\mathbf{K}$ which force the closed-loop eigenvalues to the pole locations specified by the desired characteristic equation.
-        
-        Start by converting the given transfer function $\mathrm{G}(s)$ into controllable canonical form.
+        Comparing the terms of this equation with those of the desired characteristic equation yields the values of the feedback matrix $\mathbf{K}$ which force the closed-loop eigenvalues to the pole locations specified by the desired characteristic equation. Start by converting the given transfer function $\mathrm{G}(s)$ into controllable canonical form.
         
         $$
         \begin{aligned}
@@ -1026,7 +1034,108 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
         &= \frac{(s-5)}{(s+1)(s+4)}
         \end{aligned}
         $$
-            
+
+        Use the CCF (Controllable Canonical Form) to check the controllability. 
+
+        $$
+        \begin{aligned}
+        G(s) &= \frac{s-5}{s^2+5s+4}\\
+        \dot{x}(t) & =\underbrace{\left[\begin{array}{ccc}
+        0 & 1 \\
+        -a_0 & -a_1
+        \end{array}\right]}_{A_c}x(t)+\underbrace{\left[\begin{array}{l}
+        0 \\
+        1
+        \end{array}\right]}_{B_c} u(t) \\
+        & =\left[\begin{array}{cc}
+        0 & 1 \\
+        -4 & -5
+        \end{array}\right]x(t)+\left[\begin{array}{l}
+        0 \\
+        1
+        \end{array}\right] u(t) \\
+        y(t) & =\underbrace{\left[\begin{array}{ll}
+        b_0 & b_1
+        \end{array}\right]}_{C_c}x(t)\\
+        & =\left[\begin{array}{ll}
+        -5 & 1
+        \end{array}\right]x(t)
+        \end{aligned}
+        $$
+        
+        If the rank of,
+        
+        $$
+        \begin{aligned}  
+        Q_c &= \left[B A B A^2 B \ldots A^{n-1} B\right]\\
+        &= \left[\left[\begin{array}{l}
+        0 \\
+        1
+        \end{array}\right] \left[\begin{array}{cc}
+        0 & 1 \\
+        -4 & -5
+        \end{array}\right] \left[\begin{array}{l}
+        0 \\
+        1
+        \end{array}\right] \right]\\
+        & = \left[\begin{array}{cc}
+        0 & 1 \\
+        1 & -5
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        is 2 which is the same as the rank of $A_c$, therefor the system is Controllable. Use the OCF (Observable Canonical form) to check the observability.
+
+        $$
+        \begin{aligned}
+        G(s) &= \frac{s-5}{s^2+5s+4}\\
+        \dot{x}(t) &= \underbrace{\left[\begin{array}{ll}
+        -a_1 & 1 \\
+        -a_0 & 0
+        \end{array}\right]}_{A_o} x(t)+\underbrace{\left[\begin{array}{l}
+        b_1 \\
+        b_0
+        \end{array}\right]}_{B_0} u(t) \\
+        \dot{x}(t) &= \left[\begin{array}{lll}
+        -5 & 1 \\
+        -4 & 0
+        \end{array}\right] x(t) + \left[\begin{array}{l}
+        1 \\
+        -5
+        \end{array}\right] u(t) \\
+        y(t) &= \underbrace{\left[\begin{array}{lll}
+        1 & 0
+        \end{array}\right]}_{C_o} x(t) \\
+        y(t) &= \left[\begin{array}{ll}
+        1 & 0
+        \end{array}\right] x(t)
+        \end{aligned}
+        $$
+        
+        The rank of
+        
+        $$
+        \begin{aligned}
+        Q_o &= \left[C^T A^T C^T\left(A^2\right)^T C^2 \ldots\left(A^{n-1}\right)^T C^T\right]\\
+        &= \left[ \left[\begin{array}{l}
+        1 \\
+        0
+        \end{array}\right] \left[\begin{array}{ll}
+        -5 & -4 \\
+        1 & 0
+        \end{array}\right] \left[\begin{array}{l}
+        1 \\ 0
+        \end{array}\right] \right] \\
+        & = \left[\begin{array}{ll}
+        1 & -5 \\
+        0 & 1
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        is 2 which is the same as $A_o$, and therefor the system is Observable.
+        
         \item \textbf{Q.} $\mathrm{G}(s)=\frac{s-5}{(s+1)(s+3)(s+4)}$? \textbf{A.} To find the state-space representation of the transfer function $\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$, we can start by writing it in the following form:
 
         $$
