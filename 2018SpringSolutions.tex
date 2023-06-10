@@ -1329,7 +1329,168 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
         \end{aligned}
         $$
         
-        so that $K=\left[\begin{array}{lll}5 & 6 & 0\end{array}\right]$, which is called Pole Placement.
+        so that $K=\left[\begin{array}{lll}5 & 6 & 0\end{array}\right]$, which is called Pole Placement. Use the CCF (Controllable Canonical Form) to check the controllability. 
+
+        $$
+        \begin{aligned}
+        G(s) &= \frac{s-5}{(s+1)(s+3)(s+4)}\\
+        &= \frac{s-5}{s^3+8 s^2+19 s+12}\\
+        \dot{x}(t) & =\underbrace{\left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        -a_0 & -a_1 & -a_2
+        \end{array}\right]}_{A_c}x(t)+\underbrace{\left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right]}_{B_c} u(t) \\
+        & =\left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        -12 & -19 & -8
+        \end{array}\right]x(t)+\left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right] u(t) \\
+        y(t) & =\underbrace{\left[\begin{array}{lll}
+        b_0 & b_1 & b_2
+        \end{array}\right]}_{C_c}x(t)\\
+        & =\left[\begin{array}{lll}
+        -5 & 1 & 0
+        \end{array}\right]x(t)
+        \end{aligned}
+        $$
+        
+        If the rank of,
+        
+        $$
+        \begin{aligned}  
+        Q_c &= \left[B A B A^2 B \ldots A^{n-1} B\right]\\
+        A^2 & = \left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        -12 & -19 & -8
+        \end{array}\right] \left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        -12 & -19 & -8
+        \end{array}\right] \\
+        & = \left[\begin{array}{ccc}
+        0 & 0 & 1 \\
+        -12 & -19 & -8 \\
+        96 & 140 & 45
+        \end{array}\right]\\
+        Q_c &= \left[\left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right] \left[\begin{array}{ccc}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        -12 & -19 & -8
+        \end{array}\right] \left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right] \left[\begin{array}{ccc}
+        0 & 0 & 1 \\
+        -12 & -19 & -8 \\
+        96 & 140 & 45
+        \end{array}\right] \left[\begin{array}{l}
+        0 \\
+        0 \\
+        1
+        \end{array}\right] \right]\\
+        & = \left[\begin{array}{ccc}
+        0 & 0 & 1 \\
+        0 & 1 & -8 \\
+        1 & -8 & 45
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        is 3 which is the same as the rank of $A_c$, therefor the system is Controllable. Use the OCF (Observable Canonical form) to check the observability.
+
+        $$
+        \begin{aligned}
+        G(s) &= \frac{s-5}{(s+1)(s+3)(s+4)}\\
+        &= \frac{s-5}{s^3+8 s^2+19 s+12}\\
+        \dot{x}(t) &= \underbrace{\left[\begin{array}{lll}
+        -a_2 & 1 & 0 \\
+        -a_1 & 0 & 1 \\
+        -a_0 & 0 & 0
+        \end{array}\right]}_{A_o} x(t)+\underbrace{\left[\begin{array}{l}
+        b_2 \\
+        b_1 \\
+        b_0
+        \end{array}\right]}_{B_o} u(t) \\
+        \dot{x}(t) &= \left[\begin{array}{lll}
+        -8 & 1 & 0 \\
+        -19 & 0 & 1 \\
+        -12 & 0 & 0
+        \end{array}\right] x(t) + \left[\begin{array}{l}
+        0 \\
+        1 \\
+        -5
+        \end{array}\right] u(t) \\
+        y(t) &= \underbrace{\left[\begin{array}{lll}
+        1 & 0 & 0
+        \end{array}\right]}_{C_o} x(t) \\
+        y(t) &= \left[\begin{array}{lll}
+        1 & 0 & 0
+        \end{array}\right] x(t)
+        \end{aligned}
+        $$
+        
+        The rank of
+        
+        $$
+        \begin{aligned}
+        Q_o &= \left[C^T A^T C^T\left(A^2\right)^T C^2 \ldots\left(A^{n-1}\right)^T C^T\right]\\
+        A^2 &= \left[\begin{array}{lll}
+        -8 & 1 & 0 \\
+        -19 & 0 & 1 \\
+        -12 & 0 & 0
+        \end{array}\right] \left[\begin{array}{lll}
+        -8 & 1 & 0 \\
+        -19 & 0 & 1 \\
+        -12 & 0 & 0
+        \end{array}\right]\\
+        & = \left[\begin{array}{ccc}
+        45 & -8 & 1 \\
+        140 & -19 & 0 \\
+        96 & -12 & 0
+        \end{array}\right] \\
+        Q_o &= \left[ \left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right] \left[\begin{array}{lll}
+        -8 & 1 & 0 \\
+        -19 & 0 & 1 \\
+        -12 & 0 & 0
+        \end{array}\right] \left[ \left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right] \left[\begin{array}{ccc}
+        45 & -8 & 1 \\
+        140 & -19 & 0 \\
+        96 & -12 & 0
+        \end{array}\right] \left[ \left[\begin{array}{l}
+        1 \\
+        0 \\
+        0
+        \end{array}\right] \right] \\
+        & = \left[\begin{array}{ll}
+        1 & -5 \\
+        0 & 1
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        is 2 which is the same as $A_o$, and therefor the system is Observable.
         
     \end{enumerate}
     
