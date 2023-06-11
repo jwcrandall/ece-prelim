@@ -1470,7 +1470,7 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
         -8 & 1 & 0 \\
         -19 & 0 & 1 \\
         -12 & 0 & 0
-        \end{array}\right] \left[ \left[\begin{array}{l}
+        \end{array}\right] \left[\begin{array}{l}
         1 \\
         0 \\
         0
@@ -1478,19 +1478,20 @@ Is it possible, using \underline{state feedback} to change it to (a) and or (b).
         45 & -8 & 1 \\
         140 & -19 & 0 \\
         96 & -12 & 0
-        \end{array}\right] \left[ \left[\begin{array}{l}
+        \end{array}\right] \left[\begin{array}{l}
         1 \\
         0 \\
         0
         \end{array}\right] \right] \\
-        & = \left[\begin{array}{ll}
-        1 & -5 \\
-        0 & 1
-        \end{array}\right]
+        & = \left[\begin{array}{lll}
+        1 & -8 & 45\\
+        0 & -19 & 140 \\
+        0 & -12 & 96
+        \end{array} \right]
         \end{aligned}
         $$
         
-        is 2 which is the same as $A_o$, and therefor the system is Observable.
+        is 3 which is the same as the rank of $A_o$, and therefor the system is Observable.
         
     \end{enumerate}
     
