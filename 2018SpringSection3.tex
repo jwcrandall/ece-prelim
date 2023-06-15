@@ -1,16 +1,36 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \begin{enumerate}
-\subsection[3]{Section 3 Communications \& Networks and Signal \& Image Processing, Systems \& Controls}
 
-\item A binary source generates a sequence of symbols with probabilities p and 1-p, respectively. Given the first symbol in the sequence, the source continues to generate symbols until the opposite symbol is generated. Let X denote the length of the sequence, including the first symbol.
+\subsection*{Section 3 Communications \& Networks and Signal \& Image Processing, Systems \& Controls}
+
+\item [7.] A binary source generates a sequence of symbols with probabilities p and 1-p, respectively. Given the first symbol in the sequence, the source continues to generate symbols until the opposite symbol is generated. Let X denote the length of the sequence, including the first symbol.
 
     \begin{enumerate}
-        \item Find the probability mass function of X.
+        \item \textbf{Q.} Find the probability mass function of X. \textbf{Theory.} The probability mass function (pmf) (or frequency function) of a discrete random variable $X$ assigns probabilities to the possible values of the random variable. More specifically, if $x_1, x_2, \ldots$ denote the possible values of a random variable $X$, then the probability mass function is denoted as $p$ and we write
+        
+        $$
+        p\left(x_i\right)=P\left(X=x_i\right)=P(\underbrace{\left\{s \in S \mid X(s)=x_i\right\}}_{\text {set of outcomes resulting in } X=x_i}) .
+        $$
+        
+        $p\left(x_i\right)$ is shorthand for $P\left(X=x_i\right)$, which represents the probability of the event that the random variable $X$ equals $x_i$. The geometric distribution gives the probability that the first occurrence of success requires $k$ independent trials, each with success probability $p$. If the probability of success on each trial is $p$, then the probability that the $k$ th trial is the first success is
+        
+        $$
+        \operatorname{Pr}(X=k)=(1-p)^{k-1} p
+        $$
+        
+        for $k=1,2,3,4, \ldots$. The above form of the geometric distribution is used for modeling the number of trials up to and including the first success. \textbf{A.} Suppose the $1^{\text{st}}$ symbol is generated with probability $1-p_o$ and the opposite symbol with probability $p_o$. The probability mass function of the sequence length $X$ such that the opposite symbol occurs at the $k^{\text{th}}$ time is
+        
+        $$
+        P[X = k] = (1-p_o)^{k-1}p_o
+        $$
+
+        where $p_o>0, k \in 1,2,3,\dots$.
+        
         \item Find the expected value of X.
     \end{enumerate}
     
-\item Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
+\item [8.] Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
 
     \begin{enumerate}
         \item Determine the traffic intensity for the switch in Erlangs.
@@ -19,7 +39,7 @@
         \item Determine the total average time a message spends in the system, including the waiting time and the service time.
     \end{enumerate}
 
-\item Let $\{\mathrm{Xn}: \mathrm{n}=1,2 \ldots\}$ be an infinite sequence of independent binary random variables with sample values \{0,1) and P\{X n=0\} = 2/3. Let $\text{Yn}=\sum_{\text{i=1}}^{\text{n}} \text{Xi}$ be a random process defined by Xn.
+\item [9.] Let $\{\mathrm{Xn}: \mathrm{n}=1,2 \ldots\}$ be an infinite sequence of independent binary random variables with sample values \{0,1) and P\{X n=0\} = 2/3. Let $\text{Yn}=\sum_{\text{i=1}}^{\text{n}} \text{Xi}$ be a random process defined by Xn.
 
     \begin{enumerate}
         \item For n=5, determine all sample functions of the random process.
@@ -27,5 +47,6 @@
         \item Find the expected value and variance of Yn.
         \item Find the autocorrelation function of Yn, $\mathrm{R}\{\mathrm{Y}(\mathrm{n}, \mathrm{n}+\mathrm{k})\}=\mathrm{E}\{\mathrm{Yn} \mathrm{Yn}+\mathrm{k}\}$
     \end{enumerate}
+    
 \end{enumerate}
 \end{document}
