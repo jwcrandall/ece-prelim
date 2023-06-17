@@ -24,10 +24,40 @@
         $$
         P[X = k] = (1-p_o)^{k-1}p_o
         $$
-
-        where $p_o>0, k \in 1,2,3,\dots$.
         
-        \item Find the expected value of X.
+        where $p_o>0, k \in 1,2,3,\dots$.
+        \item \textbf{Q.} Find the expected value of X. \textbf{Theory} The mean $\mu$ (or expected value $E[X]$) of a random variable $X$ is the sum of the weighted possible values for $X$; weighted, that is, by their respective probabilities. If $S$ is the set of all possible values for $X$, then the formula for the mean is:
+
+        $$
+        \mu &= \sum_{x \in S} x \cdot p(x)\\
+        $$
+
+        Given that $0<1-p<1$ we can use the geometric series formula to obtain:
+        
+        $$
+        \left(\sum_{k=1}^{\infty}(1-p)^k\right)=\frac{1-p}{p}
+        $$
+
+        \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        E[X] &= \sum_{k=1}^{\infty} k(1-p)^{k-1} \cdot p \\
+        & =p(1-p)^{-1} \sum_{k=1}^{\infty} k(1-p)^k \\
+        & =\frac{p}{1-p} \sum_{k=1}^{\infty} k q^k, q=1-p \\
+        S & =\sum_{k=1}^{\infty} k q^k\\
+        &=q+2 q^2+3 q^3+\ldots \\
+        qS & =q^2+2 q^3+\ldots \\
+        (1-q)S &= q+q^2+q^3+\ldots && \text{geometric series}\\
+        &= \frac{q}{1-q} \\
+        S &= \frac{q}{(1-q)^2}\\
+        E[X] &= \frac{p}{1-p} \times \frac{1-p}{p^2}\\
+        &=\frac{1}{p}
+        \end{aligned}
+        $$ 
+
+
+        
     \end{enumerate}
     
 \item [8.] Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
