@@ -26,6 +26,7 @@
         $$
         
         where $p_o>0, k \in 1,2,3,\dots$.
+        
         \item \textbf{Q.} Find the expected value of X. \textbf{Theory} The mean $\mu$ (or expected value $E[X]$) of a random variable $X$ is the sum of the weighted possible values for $X$; weighted, that is, by their respective probabilities. If $S$ is the set of all possible values for $X$, then the formula for the mean is:
 
         $$
@@ -55,18 +56,56 @@
         &=\frac{1}{p}
         \end{aligned}
         $$ 
-
-
-        
+ 
     \end{enumerate}
     
 \item [8.] Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
 
     \begin{enumerate}
-        \item Determine the traffic intensity for the switch in Erlangs.
-        \item Determine the probability distribution of the number of messages in the buffer.
-        \item Determine the average waiting time of a message in the buffer in seconds.
-        \item Determine the total average time a message spends in the system, including the waiting time and the service time.
+        \item \textbf{Q.} Determine the traffic intensity for the switch in Erlangs. \textbf{Theory} The erlang (symbol E) is a dimensionless unit that is used in telephony as a measure of offered load or carried load on service-providing elements such as telephone circuits or telephone switching equipment. Length of a message $=800$ bits. Arrival Rate $(\lambda)=16$ $\mathrm{messages}/\mathrm{sec}$. ie $\lambda=800 \times 16$ $\mathrm{bits}/\mathrm{sec}$ and Service Rate $(\mu)=64 \times 10^3$ $\mathrm{bits}/\mathrm{sec}$. \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        & \text { Traffic Intensity }=\frac{\lambda}{\mu} \\
+        &=\frac{800 \times 18}{4164 \times 10^3} \\
+        &=0.2 \\
+        & \therefore \text { Traffic Intensity }=0.2
+        \end{aligned}
+        $$
+
+        \item \textbf{Q.} Determine the probability distribution of the number of messages in the buffer. \textbf{A.}
+
+        
+        $$
+        \begin{aligned}
+        & =\frac{\lambda^2}{\mu(\mu-\lambda)} \\
+        & \Rightarrow \frac{(12800)^2}{64000(64000-12800)} \\
+        & \Rightarrow \frac{12800 \times 12800}{64000 \times 51200} \\
+        & \Rightarrow 0.05
+        \end{aligned}
+        $$
+        
+        \item \textbf{Q.}Determine the average waiting time of a message in the buffer in seconds. \textbf{A.} Average waiting time of a message in the Buffer.
+        
+        $$
+        \begin{aligned}
+        & =\frac{\lambda}{\mu(\mu-\lambda)} \\
+        & =\frac{12800}{64000(64000-12800)} \\
+        & =\frac{1}{64000 \times 51250}
+        \end{aligned}
+        $$  
+        
+        \item \textbf{Q.}Determine the total average time a message spends in the system, including the waiting time and the service time. \textbf {A.} Average waiting time 
+        (Total)
+        
+        $$
+        \begin{aligned}
+        & \Rightarrow \frac{1}{\mu-\lambda} \\
+        & \Rightarrow \frac{1}{64000-12800} \\
+        & \Rightarrow \frac{1}{51200}
+        \end{aligned}
+        $$
+        
     \end{enumerate}
 
 \item [9.] Let $\{\mathrm{Xn}: \mathrm{n}=1,2 \ldots\}$ be an infinite sequence of independent binary random variables with sample values \{0,1) and P\{X n=0\} = 2/3. Let $\text{Yn}=\sum_{\text{i=1}}^{\text{n}} \text{Xi}$ be a random process defined by Xn.
