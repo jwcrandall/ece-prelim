@@ -62,47 +62,57 @@
 \item [8.] Messages arriving at a central office switch are exponentially distributed in length, with average length 800 bits and average arrival rate of 16 messages per second. The switch has an infinite buffer and is served by a 64 kilobit per second transmission circuit.
 
     \begin{enumerate}
-        \item \textbf{Q.} Determine the traffic intensity for the switch in Erlangs. \textbf{Theory} The erlang (symbol E) is a dimensionless unit that is used in telephony as a measure of offered load or carried load on service-providing elements such as telephone circuits or telephone switching equipment. Length of a message $=800$ bits. Arrival Rate $(\lambda)=16$ $\mathrm{messages}/\mathrm{sec}$. ie $\lambda=800 \times 16$ $\mathrm{bits}/\mathrm{sec}$ and Service Rate $(\mu)=64 \times 10^3$ $\mathrm{bits}/\mathrm{sec}$. \textbf{A.}
+        \item \textbf{Q.} Determine the traffic intensity for the switch in Erlangs. \textbf{Theory} The erlang (symbol E) is a dimensionless unit that is used in telephony as a measure of offered load or carried load on service-providing elements such as telephone circuits or telephone switching equipment. In a digital network, the traffic intensity is:
+        
+        $$
+        \frac{a L}{R}
+        $$
+        
+        where $a$ is the average arrival rate of packets (e.g. in packets per second), $L$ is the average packet length (e.g. in bits), and $R$ is the transmission rate (e.g. bits per second). A traffic intensity greater than one erlang means that the rate at which bits arrive exceeds the rate bits can be transmitted and queuing delay will grow without bound (if the traffic intensity stays the same). If the traffic intensity is less than one erlang, then the router can handle more average traffic. \textbf{A.} Length of a message $=800$ bits. Arrival Rate $(\lambda)=16$ $\mathrm{messages}/\mathrm{sec}$. ie $\lambda=800 \times 16$ $\mathrm{bits}/\mathrm{sec}$ and Service Rate $(\mu)=64 \times 10^3$ $\mathrm{bits}/\mathrm{sec}$. 
         
         $$
         \begin{aligned}
-        & \text { Traffic Intensity }=\frac{\lambda}{\mu} \\
-        &=\frac{800 \times 18}{4164 \times 10^3} \\
-        &=0.2 \\
-        & \therefore \text { Traffic Intensity }=0.2
+        \text { Traffic Intensity } \rho& =\frac{\lambda}{\mu} \\
+        & =\frac{800 \times 16}{64 \times 10^3} \\
+        & =0.2 \\
         \end{aligned}
         $$
 
-        \item \textbf{Q.} Determine the probability distribution of the number of messages in the buffer. \textbf{A.}
-
+        \item \textbf{Q.} Determine the probability distribution of the number of messages in the buffer. \textbf{A.} The buffer occupancy probability distribution can be derived by using the Poisson distribution. The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant rate and independently of the time since the last event. In this case, the arrival of messages into an infinite buffer is Poisson distributed with average arrival rate 16 messages per second. The average length of each message is 800 bits. The transmission circuit is 64 kilobit per second. The probability distribution of the number of messages in the buffer can be derived as follows: Let $X$ be the number of messages in the buffer. Then $\mathrm{X}$ has a Poisson distribution with parameter $\rho=16^* 800 /\left(64^* 10^{\wedge} 3\right)=$ 0.2. The probability mass function ( $\mathrm{pmf})$ of $\mathrm{X}$ is given by:
+        
+        $$
+        \operatorname{Pr}(X=k)=\frac{\rho^k e^{-\rho}}{k!}
+        $$
+        
+        where $\mathrm{k}=0,1,2, \ldots$. Therefore, the probability distribution of the number of messages in the buffer is Poisson with parameter $\rho=0.2$. The expected value of $X$ for a Poisson distribution is $E(X)=\rho=0.2$.
+        
+        \item \textbf{Q.}Determine the average waiting time of a message in the buffer in seconds. \textbf{A.} Let $\mathrm{W}$ be the average waiting time of a message in the buffer. Then $\mathrm{W }= L/\lambda$ where $\mathrm{L}$ is the average number of messages in the buffer and $\lambda$ is the arrival rate. The arrival rate is $\lambda =800 \times 16 = 12800$ $\mathrm{bits}/\mathrm{sec}$. Let $X$ be the number of messages in the buffer. Then $\mathrm{X}$ has a Poisson distribution with parameter $\rho=0.2$ The expected value of $X$ is $E(X)=\rho=0.2$. Therefore, the average number of messages in the buffer is 0.2. Thus, $W = L/\lambda=\left(800\right.$ bits $\left.{ }^* 0.2\right) /(64$ kilobit per second) $=0.0025$ seconds. Therefore, the average waiting time of a message in the buffer is 0.0025 seconds.
         
         $$
         \begin{aligned}
-        & =\frac{\lambda^2}{\mu(\mu-\lambda)} \\
-        & \Rightarrow \frac{(12800)^2}{64000(64000-12800)} \\
-        & \Rightarrow \frac{12800 \times 12800}{64000 \times 51200} \\
-        & \Rightarrow 0.05
-        \end{aligned}
-        $$
-        
-        \item \textbf{Q.}Determine the average waiting time of a message in the buffer in seconds. \textbf{A.} Average waiting time of a message in the Buffer.
-        
-        $$
-        \begin{aligned}
-        & =\frac{\lambda}{\mu(\mu-\lambda)} \\
+        T_b & =\frac{\lambda}{\mu(\mu-\lambda)} \\
         & =\frac{12800}{64000(64000-12800)} \\
-        & =\frac{1}{64000 \times 51250}
+        & =\frac{1}{d}
         \end{aligned}
         $$  
         
-        \item \textbf{Q.}Determine the total average time a message spends in the system, including the waiting time and the service time. \textbf {A.} Average waiting time 
-        (Total)
+        \item \textbf{Q.}Determine the total average time a message spends in the system, including the waiting time and the service time. \textbf{Theory} Using Little's Theorem, where $\rho=\frac{\lambda}{\mu}<1$, the average delay is given by
         
         $$
         \begin{aligned}
-        & \Rightarrow \frac{1}{\mu-\lambda} \\
-        & \Rightarrow \frac{1}{64000-12800} \\
-        & \Rightarrow \frac{1}{51200}
+        T&=\frac{N}{\lambda}\\
+        &=\frac{\rho}{\lambda(1-\rho)}\\
+        &=\frac{1}{\mu-\lambda}
+        \end{aligned}
+        $$   
+        
+        \textbf {A.} 
+        
+        $$
+        \begin{aligned}
+        T &= \frac{1}{\mu-\lambda} \\
+        &= \frac{1}{64000-12800} \\
+        &= \frac{1}{51200}
         \end{aligned}
         $$
         
