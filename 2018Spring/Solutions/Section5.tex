@@ -1,0 +1,32 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\begin{enumerate}
+
+\subsection{Section 5} 
+
+\item In the following:
+
+    \begin{enumerate}
+        \item Find the Fourier transform of 
+        $$x(t)=\frac{\sin (\pi 2 B t)}{\pi 2 B t} \cos \left(2 \pi f_{c} t\right)$$
+        where $f_{c}>2 B>0$.
+        \item Find the Hilbert transform $\hat{x}(t) \text { of } x(t)$.
+        \item Find the analytic signal $\psi(t) \text { of } x(t)$.
+        \item Find the complex envelope $\gamma(t) \text { of } x(t)$.
+    \end{enumerate}
+    
+\item Assume that $x[n]$ is a real-valued discrete-time signal and $h[n]$ is a real-valud impulse response of linear time-invariant discrete-time system. Let $y_{1}[n]=x[n] \star h[n]$ represent filtering the signal in the forward direction, where $\star$ stands for convolution. Now filter $y_{1}[n]$ backward to obtain $y_{2}[n]=y_{1}[-n] \star h[n]$. The output is then given by reversing $y_{2}[n]$ to obtain $y[n]=y_{2}[-n]$.
+
+    \begin{enumerate}
+        \item Show that this set of operation is equivalently represented by a filter with impulse response $h_{o}[n]$ as $y[n]=x[n] \star h_{o}[n]$ and express $h_{o}[n]$ in terms of $h[n]$.
+        \item Show that $h_{o}[n]$ is an even signal and find the phase response of a system having impulse response $h_{o}[n]$. Is the system causal?
+        \item Let $H(z)$ and $H_{o}(z)$ be z-transforms of $h[n]$ and $h_{o}[n]$, respectively, and that $h[n]$ is causal. If $H(z)=1 /\left(1-0.9 z^{-1}\right)$ find $H_{o}(z)$, the region of convergence of $H_{o}(z)$, and $h_{o}[n]$.
+        \item Repeat (c) if $H(z)=1-0.9 z^{-1}$.
+    \end{enumerate}
+    
+\item Solve the differential equation
+    $$y^{\prime \prime}(t)+2 y^{\prime}(t)+y(t)=u(t-1)$$
+for $t \geq 0$ using the Laplace transform. $u(t)$ is the unit step function and the initial conditions are $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$.
+
+\end{enumerate}
+\end{document}
