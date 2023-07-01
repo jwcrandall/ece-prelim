@@ -9,19 +9,22 @@ $$H_{z}(x, y)=C e^{-j 640 \pi x / 3} \cos (160 \pi y)$$
 where x and y are both in meters.
     
     \begin{enumerate}
-        \item \textbf{Q.} Is this a TE\textsubscript{n} or TM\textsubscript{n} mode? What is n? Is it a propagating or non-propagating mode? \textbf{A.} Consider the propagation direction is $x$ instead of $z$. The general form of a magnetic field for Transverse Magnetic (TM) mode is
+        \item \textbf{Q.} Is this a TE\textsubscript{n} or TM\textsubscript{n} mode? What is n? Is it a propagating or non-propagating mode? \textbf{Theory.} For Transverse electric (TE) modes there is no electric field in the direction of propagation. These are sometimes called H modes because there is only a magnetic field along the direction of propagation (H is the conventional symbol for magnetic field). For Transverse magnetic (TM) modes there is no magnetic field in the direction of propagation. These are sometimes called E modes because there is only an electric field along the direction of propagation. We will compare the given magnetic-field expression with the one obtained in the textbook after the study of the parallel-plate waveguides. Based on the comparison, we will obtain the mode type, $\bar{\gamma}$ and $a$. \textbf{A.} Consider the propagation direction is $x$ instead of $z$. The general form of a magnetic field for Transverse Magnetic (TM) mode is
         
         $$
-        H z(x, y)=C_1 e^{-\gamma^x} \cos \left(\frac{m \pi}{a}\right) y.
+        H_z(x, y)=C_1 e^{-\gamma^x} \cos \left(\frac{m \pi}{a}\right) y.
         $$
         
-        By comparing equations this is $\mathrm{TM_n}$ mode
+        and by comparing equations it is clear that the given magnetic field expression represents a $\mathrm{TM_n}$ mode of a waveguide  where the guide propagation constant
 
         $$
-        \begin{aligned}
-        \gamma &= \frac{j 640 \pi}{3} \mathrm{rad}/\mathrm{m}\\
-        \frac{m \pi}{a} &= 160 \pi
-        \end{aligned}
+        \bar{\gamma} &= \frac{j 640 \pi}{3} \mathrm{rad}/\mathrm{m}
+        $$
+
+        and
+
+        $$
+        \frac{m \pi}{a} &= 160 \pi.
         $$
         
         Here $a=2.5 \mathrm{~cm}=2.5 \times 10^{-2} \mathrm{m}$
@@ -35,45 +38,118 @@ where x and y are both in meters.
 
         Therefore, it is $\mathrm{TM_4}$ mode. The constant $\gamma$ is purely imaginary therefore it is a propagating mode.
         
-        \item \textbf{Q.} What is the operating frequency? \textbf{A.}
-
+        \item \textbf{Q.} What is the operating frequency? \textbf{Theory.} To obtain $f$, we need to obtain the cut off frequency $f_{c m}$ using
+        
+        $$
+        f_{cm}=\frac{mc}{2 a}
+        $$
+        
+        Next, we will solve the following equation for $f$ :
+        $$
+        \bar{\gamma}_m=j \beta \sqrt{1-\left(\frac{f_{c m}}{f}\right)^2}=\frac{j 2 \pi f}{c} \sqrt{1-\left(\frac{f_{c m}}{f}\right)^2}
+        $$
+        
+        \textbf{A.} The cutoff frequency of the $\mathrm{TM}_4$ mode is
+        
         $$
         \begin{aligned}
-        b_{c2} &= \frac{m c}{2 a} \\
-        &= \frac{4 \times 3 \times 10^8}{2 \times 2.5 \times 10^{-2}} \\
-        &= 24 \mathrm{GHz} \\
-        r_2 = \alpha_2 = \frac{640}{3} &= \beta \sqrt{\left(\frac{b c_2}{f}\right)^2-1} \\
-        \frac{640}{3} &= \frac{2 \pi f}{c} \sqrt{\left(\frac{b c_2}{b}\right)^2-1}
+        f_{c 4} & =\frac{m c}{2 a} \\
+        & =\frac{4\left(3 \times 10^8\right)}{2\left(2.5 \times 10^{-2}\right)} \\
+        & =24 \mathrm{GHz}
         \end{aligned}
         $$
-        squaring on both sides,
-        $$
-        \left(\frac{640}{3}\right)^2=\frac{4 \pi^2 f^2}{c^2}\left[\left(\frac{f c_2}{f}\right)-1\right]
-        $$
+
+        Because the $\mathrm{TM}_4$ mode is a propagating mode, the mode propagation constant is given by
         
         $$
         \begin{aligned}
-        \left(\frac{640}{3}\right)^2 & =\frac{4 \pi^2 f^2}{\left(3 \times 10^8\right)^2}\left[\frac{24 \times 10^9}{f}-1\right] \\
-        1.637 \times 10^{20} & =\frac{f^2}{f}\left[24 \times 10^9-1\right] \\
-        1.037 \times 10^{20} & =\left(24 \times 10^9\right) 6-f \\
-        1.037 \times 10^{20} & =\left(24 \times 10^9\right) f \\
-        f & =\frac{1.037 \times 10^{20}}{24 \times 10^9} \\
-        f & =4.32 \mathrm{GHz}
+        \bar{\gamma}_4 & =j \beta \sqrt{1-\left(\frac{f_{c m}}{f}\right)^2} \\
+        & =j \frac{2 \pi f}{c} \sqrt{1-\left(\frac{f_{c 4}}{f}\right)^2} \\
+        & =j \frac{2 \pi}{c} \sqrt{f^2-f_{c 4}^2}
         \end{aligned}
         $$
-        
-        \item \textbf{Q.} Find the corresponding electric field. \textbf{A.}
 
+        Substituting $\bar{\gamma}_4=\frac{j 640 \pi}{3}$ and $f_{c 4}=24 \mathrm{GHz}$ gives
+        
         $$
-        H(x, y)=\frac{E(x, y)}{\eta}
+        \frac{j 640 \pi}{3}=\frac{j 2 \pi}{3 \times 10^8} \sqrt{f^2-\left(24 \times 10^9\right)^2}
         $$
         
-        where $\eta$ is the intrinsic impedance, 
+        or
+        
+        $$
+        f^2-\left(24 \times 10^9\right)^2=\left(32 \times 10^9\right)^2
+        $$
+        
+        Thus,
+        
+        $$
+        f=40 \mathrm{GHz}
+        $$
+        
+        \item \textbf{Q.} Find the corresponding electric field. \textbf{Theory.} To obtain the electric field we will use the following relations:
+        
+        $$
+        \begin{gathered}
+        \mathbf{E}=E_x \hat{\mathbf{x}}+E_y \hat{\mathbf{y}} \\
+        E_x=\frac{1}{j \omega \epsilon_0} \frac{\partial H_z}{\partial y} \text { and } E_y=-\frac{1}{j \omega \epsilon_0} \frac{\partial H_z}{\partial x}
+        \end{gathered}
+        $$ 
+        
+        \textbf{A.} For a TM mode of a waveguide that is infinite in extent in the $x$ and $z$ directions and waves are guided in $x$ direction, we have
+        
+        $$
+        H_x=0 ; E_x \neq 0
+        $$
+        
+        and
+        
+        $$
+        \begin{gathered}
+        \mathbf{E}=E_x \hat{\mathbf{x}}+E_y \hat{\mathbf{y}} \\
+        \mathbf{H}=H_z \hat{\mathbf{z}}
+        \end{gathered}
+        $$
+        
+        It is given that
+        
+        $$
+        H_z(x, y)=C_1 e^{-j 640 \pi x / 3} \cos (160 \pi y)
+        $$
+
+        We can obtain $E_x$ as
         
         $$
         \begin{aligned}
-        \eta &= 120 \pi=377 \Omega \\
-        E(x, y) &= 377 C_1 \text { exp }\left(-j \frac{640 \pi}{3}\right) x \cos (160 \pi y) \hat{x}
+        E_x & =\frac{1}{j \omega \epsilon_0} \frac{\partial H_z}{\partial y} \\
+        & =\frac{1}{j \omega \epsilon_0} \frac{\partial}{\partial y}\left[C_1 e^{-j 640 \pi x / 3} \cos (160 \pi y)\right] \\
+        & =\frac{C_1 e^{-j 640 \pi x / 3}}{j \omega \epsilon_0} \frac{\partial}{\partial y}[\cos (160 \pi y)] \\
+        & =-\frac{160 \pi C_1 e^{-j 640 \pi x / 3}}{j 2 \pi f \epsilon_0} \sin (160 \pi y) \\
+        & =-\frac{160 \pi}{j 2 \pi f \epsilon_0} C_1 \sin (160 \pi y) e^{-j 640 \pi x / 3} \\
+        & =\frac{j 160 \pi}{2 \pi \epsilon_0\left(40 \times 10^9\right)} C_1 \sin (160 \pi y) e^{-j 640 \pi x / 3} \\
+        & =j 225.9 C_1 \sin (160 \pi y) e^{-j 640 \pi x / 3}
+        \end{aligned}
+        $$
+
+        We find $E_y$ as follows:
+        
+        $$
+        \begin{aligned}
+        E_y & =-\frac{1}{j \omega \epsilon_0} \frac{\partial H_z}{\partial x} \\
+        & =-\frac{1}{j \omega \epsilon_0} \frac{\partial}{\partial x}\left[C_1 e^{-j 640 \pi x / 3} \cos (160 \pi y)\right] \\
+        & =-\frac{C_1}{j 2 \pi f \epsilon_0} \cos (160 \pi y) \frac{\partial}{\partial x}\left[e^{-j 640 \pi x / 3}\right] \\
+        & =-\frac{C_1}{j 2 \pi f \epsilon_0} \cos (160 \pi y)\left[\frac{-j 640 \pi}{3} e^{-j 640 \pi x / 3}\right] \\
+        & =-\frac{-j 640 \pi}{j 2 \pi \epsilon_0\left(40 \times 10^9\right)} \cos (160 \pi y) e^{-j 640 \pi x / 3} \\
+        & =301.2 C_1 \cos (160 \pi y) e^{-j 640 \pi x / 3}
+        \end{aligned}
+        $$
+
+        We can express the total electric field as
+        
+        $$
+        \begin{aligned}
+        \mathbf{E} & =E_x \hat{\mathbf{x}}+E_y \hat{\mathbf{y}} \\
+        & =C_1 e^{-j 640 \pi x / 3}[j 225.9 \sin (160 \pi y) \hat{\mathbf{x}}+301.2 \cos (160 \pi y) \hat{\mathbf{y}}]
         \end{aligned}
         $$
         
