@@ -168,10 +168,51 @@ $$\begin{aligned}
 \end{aligned}$$
 
     \begin{enumerate}
-        \item What is the frequency f of the electromagnetic field (Hz)?
-        \item Describe the equi-phase surfaces of the field. Write a general equation for the equi-phase surfaces.
-        \item Describe the constant magnitude-of-field surfaces. Write a general equation for these equal-magnitude surfaces.
-        \item Evaluate the average power as a function of position.
+        \item \textbf{Q.} What is the frequency f of the electromagnetic field (Hz)? \textbf{A.}
+
+        $$
+        \begin{aligned}
+        |\vec{k}| &=\sqrt{k k^*}\\
+        &= \sqrt{(-j \cdot j)+2^2}\\
+        &= \sqrt{5}
+        \end{aligned}
+        $$
+        
+        Given $\mu_0=4 \pi \times 10^{-7}, \epsilon_0=8.85 \times 10^{-12}$
+        $\therefore$ velocity, $c=\frac{1}{\sqrt{\mu_0 \epsilon_0}}=2.99 \times 10^8 \mathrm{~m} / \mathrm{s}$ $\therefore$ frequency, 
+        
+        $$
+        \begin{aligned}
+        f \lambda &=c \\
+        f \frac{2 \pi}{k} &= C \\
+        f &=\frac{C \cdot k}{2 \pi}\\
+        &= \frac{2.99 \times 10^8 \times \sqrt{5}}{2 \pi} \mathrm{Hz} \\
+        &= 1.064 \times 10^8 \mathrm{~Hz} \\
+        \end{aligned}
+        $$
+        
+        \item \textbf{Q.} Describe the equi-phase surfaces of the field. Write a general equation for the equi-phase surfaces. \textbf{A.} The equi-phase surfaces are defined as those surfaces over which the phase of the electromagnetic field is continuous. Here phase $=\vec{k} \cdot \vec{r}$
+        $\therefore$ Equi-phare surfaces equns:
+        $\vec{k} \cdot \vec{r}=$ cost.
+        or, $(-j \hat{y}+2 \hat{z}) \cdot(x \hat{x}+y \hat{y}+z \hat{z})=$ cost.
+        or, $-j y+2 z=$ cost.
+        
+        \item \textbf{Q.} Describe the constant magnitude-of-field surfaces. Write a general equation for these equal-magnitude surfaces. \textbf{A.} Constant magnitude of field surfaces are the surfaces over which the magnitude of the field is cont. Since $\vec{E}_0=\hat{x}$, The field magnitude is 1. cons which is satisfied over the surfaces $\vec{k}: \vec{r}=2 n \pi, n \in$ II
+        
+        $$
+        \text { or }-j y+2 z=2 n \pi, n \in \mathbb{I}
+        $$
+        
+        \item \textbf{Q.} Evaluate the average power as a function of position. \textbf{A.} 
+        
+        $$
+        \begin{aligned}
+        & \langle p\rangle=\frac{1}{2} \epsilon_0 C E_0^2 \\
+        & \text { since } E_0=1 \quad \therefore\langle p\rangle=\frac{1}{2} \times 8.854 \times 3 \times 10^8 \times 10^{-12} \text { watt } \\
+        & =1.328 \times 10^{-3} \mathrm{watt}
+        \end{aligned}
+$$
+        
     \end{enumerate}
 
 \item [12.] A plane wave is incident in the interface between two dielectrics $\varepsilon_1$ and $\varepsilon_2$, $\varepsilon_1 > \varepsilon_2$ as shown in figure \ref{fig:12q_a}.
