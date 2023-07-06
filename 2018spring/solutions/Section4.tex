@@ -212,13 +212,13 @@ $$\begin{aligned}
 
         where $C$ is a constant.
         
-        \item \textbf{Q.} Describe the constant magnitude-of-field surfaces. Write a general equation for these equal-magnitude surfaces. \textbf{A.} The constant magnitude of field surfaces are the surfaces over which the magnitude of the field is constant. Since $\vec{E}_0=\hat{x}$, the field magnitude is 1. Which is satisfied over the surfaces $\vec{k}: \vec{r}=2 n \pi$, $n \in \mathbb{I}$ or
+        \item \textbf{Q.} Describe the constant magnitude-of-field surfaces. Write a general equation for these equal-magnitude surfaces. \textbf{A1.} The constant magnitude of field surfaces are the surfaces over which the magnitude of the field is constant. Since $\vec{E}_0=\hat{x}$, the field magnitude is 1. Which is satisfied over the surfaces $\vec{k}: \vec{r}=2 n \pi$, $n \in \mathbb{I}$ or
         
         $$
         -j y+2 z=2 n \pi, n \in \mathbb{I}
         $$
         
-        The magnitude of the electric field phasor is given by the magnitude of the complex exponential:
+        \textbf{A2.} The magnitude of the electric field phasor is given by the magnitude of the complex exponential:
         
         $$
         |E(r)|=\left|E_0\right|\left|\varepsilon^{-j k \cdot-}\right|=\left|E_0\right|
@@ -226,14 +226,12 @@ $$\begin{aligned}
         
         Since the magnitude of the electric field is constant and equal to $\left|E_0\right|$, all points in space have the same magnitude of the electric field. Therefore, the constant magnitude-of-field surfaces are all points in space, and the general equation for these equal-magnitude surfaces is not applicable.
         
-        Is there anything else you would like to know?
-        
         \item \textbf{Q.} Evaluate the average power as a function of position. \textbf{A1.} 
         
         $$
         \begin{aligned}
-        & \langle p\rangle=\frac{1}{2} \epsilon_0 C E_0^2 \\
-        & \text { since } E_0=1 \quad \therefore\langle p\rangle=\frac{1}{2} \times 8.854 \times 3 \times 10^8 \times 10^{-12} \text { watt } \\
+        \langle p\rangle &= \frac{1}{2} \epsilon_0 C E_0^2 \\
+        \text { since } E_0 &= 1 \quad \therefore\langle p\rangle=\frac{1}{2} \times 8.854 \times 3 \times 10^8 \times 10^{-12} \text { watt } \\
         & =1.328 \times 10^{-3} \mathrm{watt}
         \end{aligned}
         $$
@@ -241,12 +239,12 @@ $$\begin{aligned}
         \textbf{A2.} The average power per unit area of an electromagnetic wave is given by the Poynting vector $S=\frac{1}{2} \operatorname{Re}\left(E \times H^*\right)$ where $E$ and $H$ are the electric and magnetic field phasors respectively. The asterisk denotes the complex conjugate. The average power per unit area is given by the magnitude of the Poynting vector. In this case, we have $E(r)=E_0 \varepsilon^{-j k-r}$ where $k=-j \hat{y}+2 \hat{z}$ and $E_0=\hat{x}$. The magnetic field phasor is given by $H=\frac{k \times E}{\omega \mu_0}$ where $\omega$ is the angular frequency. Using these equations, we can calculate the Poynting vector as
         
         $$
-        \begin{gathered}
-        S=\frac{1}{2} \operatorname{Re}\left(\hat{x} \times \frac{-j \hat{y}+2 \hat{z}}{\omega \mu_0}\right) \\
-        =\frac{-1}{2 \omega \mu_0} \operatorname{Re}(\hat{x} \times(-j \hat{y})+\hat{x} \times(2 \hat{z})) \\
-        =\frac{-1}{2 \omega \mu_0} \operatorname{Re}(-j \hat{x}) \\
-        =\frac{\hat{x}}{2 \omega \mu_0}
-        \end{gathered}
+        \begin{aligned}
+        S &= \frac{1}{2} \operatorname{Re}\left(\hat{x} \times \frac{-j \hat{y}+2 \hat{z}}{\omega \mu_0}\right) \\
+        &= \frac{-1}{2 \omega \mu_0} \operatorname{Re}(\hat{x} \times(-j \hat{y})+\hat{x} \times(2 \hat{z})) \\
+        &= \frac{-1}{2 \omega \mu_0} \operatorname{Re}(-j \hat{x}) \\
+        &= \frac{\hat{x}}{2 \omega \mu_0}
+        \end{aligned}
         $$
         
         Therefore, the average power per unit area is given by the magnitude of the Poynting vector which is
@@ -266,15 +264,68 @@ $$\begin{aligned}
 \item [12.] A plane wave is incident in the interface between two dielectrics $\varepsilon_1$ and $\varepsilon_2$, $\varepsilon_1 > \varepsilon_2$ as shown in figure \ref{fig:12q_a}.
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=2.0in]{figures/2018s/12q_a.png}}
-\caption{Plane wave incident incident in the interface between two dielectrics}
+\centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/12q_a.png}}
+\caption{Plane wave incident in the interface between two dielectrics}
 \label{fig:12q_a}
 \end{figure}
 
     \begin{enumerate}
-        \item Find the angle $\theta_{1c}$ such that all waves incident with $\theta_1 > \theta_{1c}$ are "totally reflected".
+        \item \textbf{Q.} Find the angle $\theta_{1c}$ such that all waves incident with $\theta_1 > \theta_{1c}$ are "totally reflected". \textbf{Theory} In electromagnetism, the absolute permittivity, often simply called permittivity and denoted by the Greek letter $\varepsilon$ (epsilon), is a measure of the electric polarizability of a dielectric. The standard $\mathrm{SI}$ unit for permittivity is farad (unit of electrical capacitance) per meter $\left(\mathrm{F} / \mathrm{m}\right.$ or $\left.\mathrm{F} \cdot \mathrm{m}^{-1}\right)$
+
+        $$
+        \frac{\mathrm{F}}{\mathrm{m}}=\frac{\mathrm{C}}{\mathrm{V} \cdot \mathrm{m}}=\frac{\mathrm{C}^2}{\mathrm{~N} \cdot \mathrm{m}^2}=\frac{\mathrm{C}^2 \cdot \mathrm{s}^2}{\mathrm{~kg} \cdot \mathrm{m}^3}=\frac{\mathrm{A}^2 \cdot \mathrm{s}^4}{\mathrm{~kg} \cdot \mathrm{m}^3}
+        $$
+                
+        The critical angle is the angle of incidence above which total internal reflection occurs. Total internal reflection occurs when light travels from a medium with a higher index of refraction to one with a lower index of refraction, and the angle of incidence is greater than the critical angle 1. The critical angle can be calculated using Snell's law, which states that $n_1 \sin \theta_1=n_2 \sin \theta_2$. When the incident angle equals the critical angle $\left(\theta_1=\theta_{1 c}\right)$, the angle of refraction is $90^{\circ}\left(\theta_2=90^{\circ}\right)$. Noting that $\sin 90^{\circ}=1$, Snell's law in this case becomes $n_1 \sin \theta_{1 c}=n_2$. 
+        
+        \textbf{A.} A uniform plane wave is obliquely incident on the planar boundary between two semi-infinite material regions. 
+        
+        $$
+        \theta^r=\theta^i
+        $$
+        
+        i.e., angle of reflection equals angle of incidence. The refractive index of electromagnetic radiation equals
+        
+        $$
+        n=\sqrt{\varepsilon_{\mathrm{r}} \mu_{\mathrm{r}}},
+        $$
+        
+        where $\varepsilon_{\mathrm{r}}$ is the material's relative permittivity, and $\mu_{\mathrm{r}}$ is its relative permeability. The relative permittivity (in older texts, dielectric constant) is the permittivity of a material expressed as a ratio with the electric permittivity of a vacuum. In electromagnetism, permeability is the measure of magnetization produced in a material in response to an applied magnetic field. From Snell's law $n_1 \sin \theta_1=n_2 \sin \theta_2$:
+        
+        $$
+        \sqrt{\mu_{r 1} \epsilon_{r 1}} \sin \theta^i=\sqrt{\mu_{r 2} \epsilon_{r 2}} \sin \theta^t
+        $$
+        
+        where "$r$" in the subscripts indicates the relative (unitless) quantities. The associated formula for $\psi^t$ explicitly is:
+        
+        $$
+        \theta^t=\arcsin \left(\sqrt{\frac{\mu_{r 1} \epsilon_{r 1}}{\mu_{r 2} \epsilon_{r 2}}} \sin \theta^i\right)
+        $$
+        
+        When $\mu_{r 1} \epsilon_{r 1} > \mu_{r 2} \epsilon_{r 2}, \theta^t>\theta^r$; i.e., the transmitted wave appears to bend away from the surface normal. In fact, $\theta^t$ can be as large as $\pi / 2$ (corresponding to propagation parallel to the boundary) for angles of incidence which are less than $\pi / 2$. What happens if the angle of incidence is further increased? When calculating $\theta^t$, one finds that the argument of the arcsine function becomes greater than 1. Since the possible values of the sine function are between -1 and +1 , the arcsine function is undefined. Clearly our analysis is inadequate in this situation. To make sense of this, let us begin by identifying the threshold angle of incidence $\theta_c^i$  From the analysis in the previous paragraph,
+        
+        $$
+        \sqrt{\frac{\mu_{r 1} \epsilon_{r 1}}{\mu_{r 2} \epsilon_{r 2}}} \sin \theta_c^i=1
+        $$
+        
+        therefore,
+        
+        $$
+        \theta_c^i=\arcsin \sqrt{\frac{\mu_{r 2} \epsilon_{r 2}}{\mu_{r 1} \epsilon_{r 1}}}
+        $$
+        
+        This is known as the critical angle. When $\theta^i<\theta_c^i$, our existing theory applies. When $\theta^i \geq \theta_c^i$, the situation is, at present, unclear. For non-magnetic materials, the equation simplifies to
+        
+        $$
+        \theta_c^i=\arcsin \sqrt{\frac{\epsilon_{r 2}}{\epsilon_{r 1}}}
+        $$
+
+        When the angle of incidence $\theta^i$ exceeds the critical angle $\theta_c^i$, the magnitude of the reflection coefficient is 1. In this case, all power is reflected, and no power is transmitted into the second medium. This is total internal reflection.
+        
         \item For $\theta_1 > \theta_{1c}$, describe the field (if any) in the region $z > 0$ in the $\varepsilon_2$ dielectric.
+        
         \item If \underline{$E$} is perpendicular to the plane of the incidence, $\underline{E} = E_y \hat{y}$, find the phase of the reflection coefficient.
+    
     \end{enumerate}
 
 \end{enumerate}
