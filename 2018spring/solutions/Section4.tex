@@ -322,9 +322,83 @@ $$\begin{aligned}
 
         When the angle of incidence $\theta^i$ exceeds the critical angle $\theta_c^i$, the magnitude of the reflection coefficient is 1. In this case, all power is reflected, and no power is transmitted into the second medium. This is total internal reflection.
         
-        \item For $\theta_1 > \theta_{1c}$, describe the field (if any) in the region $z > 0$ in the $\varepsilon_2$ dielectric.
+        \item \textbf{Q.} For $\theta_1 > \theta_{1c}$, describe the field (if any) in the region $z > 0$ in the $\varepsilon_2$ dielectric. \textbf{A.} As seen above for $\theta_1>\theta_c \rightarrow$ all wave will be reflected back in medium 1. So, there is no field inside the medium 2.
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/12s_a.png}}
+        \caption{S Polarization}
+        \label{fig:12s_a}
+        \end{figure}
         
-        \item If \underline{$E$} is perpendicular to the plane of the incidence, $\underline{E} = E_y \hat{y}$, find the phase of the reflection coefficient.
+        \item \textbf{Q.} If \underline{$E$} is perpendicular to the plane of the incidence, $\underline{E} = E_y \hat{y}$, find the phase of the reflection coefficient. \textbf{A.} $xz$ is the plane of incidence, and $xy$ is the plane of interface. S polarization is the perpendicular polarization, and the $E$ field sticks up out of the plane of incidence. P polarization is the parallel polarization, and $E$ field lies parallel to the plane of incidence. In this problem we have S polarization where the E-field is in Y axis. The intrinsic impedances of medium 1 and 2 are
+
+        $$
+        \begin{aligned}
+        \eta_1 & =\sqrt{\frac{\mu_1}{\epsilon_1}} \\
+        \eta_2 & =\sqrt{\frac{\mu_2}{\epsilon_2}}
+        \end{aligned}
+        $$
+        
+        The total electric E field is
+        
+        $$
+        E_i(z=0)+E_r(z=0)=E_{t}(z=0).
+        $$
+        
+        The total magnetic H field is
+        
+        $$
+        -H_i(z=0) \cos \theta_i+ H_r(z=0) \cos \theta_r = -H_t(z=0) \cos \theta_t.
+        $$
+        
+         where we know the $H$ field signs due to the right hand rule relationship between the pointing vector $\mathbf{k}$ (thumb), $E$ field (index) and $H$ (middle) field. We knows that
+        
+        $$
+        \frac{E}{H}=\eta \text { so } \Rightarrow \eta_i=\frac{E_i}{H_i} ; \eta_r=\frac{E_r}{H_r} \text {; and } \eta_t=\frac{E_t}{H_t}
+        $$
+        
+        so
+        
+        $$
+        \begin{aligned}
+        -\frac{E_i}{\eta_i} \cos \theta i+\frac{E_r}{\eta_r} \cos \theta_r &=-\frac{E_t}{\eta_t} \cos \theta_t \\
+        &=-\frac{E_r+E_i}{\eta_t} \cos \theta_t \\
+        &=-\frac{E_r}{\eta_t} \cos \theta_1-\frac{E_i}{\eta_t} \cos \theta_t \\
+        \frac{E_r}{\eta_r} \cot \theta_r+\frac{E_r}{\eta_t} \cos \theta t &= \frac{E_i}{\eta_i} \cos \theta_i-\frac{E_i}{\eta_t} \cos \theta_t
+        \end{aligned}
+        $$
+        
+         We can relabel the impedances and angles because the incident and reflected wave are in the same medium and because the incident and reflected angles are the same
+        
+        $$
+        \begin{aligned}
+        \eta_r=\eta_i&=\eta_1\\
+        \eta_t &= \eta_2 \\
+         \theta_i &= \theta_r\\
+        E_r\left[\frac{1}{\eta_1} \cos \theta_r+\frac{1}{\eta_2} \cot \theta_t\right] &= E_i\left[\frac{1}{\eta_i} \cos \theta_i - \frac{1}{\eta_2} \cos \theta_t\right]
+       
+        \end{aligned}
+        $$
+
+        Admittance is defined as
+        
+        $$
+        Y \equiv \frac{1}{Z} \equiv \frac{1}{\eta}
+        $$
+        
+        where $Y$ is the admittance, measured in siemens, and $Z$ is the impedance, measured in ohms.
+    
+        $$
+        \frac{E_{y,r}}{E_{y,i}} = \frac{ Y_1 \cos \theta_i - Y_2 \cos \theta_t}{Y_1 \cos \theta_i + Y_2 \cos \theta_t}
+        $$
+        
+        The refection coefficient in medium 1 is
+        
+        $$
+        r_{\perp} = r_s = \frac{E_{y,r}}{E_{y,i}} =\frac{ Y_1 \cos \theta_i - Y_2 \cos \theta_t}{Y_1 \cos \theta_i + Y_2 \cos \theta_t}
+        $$
+        
+        From here we can calculate phase and magnitude of the reflection coefficient.
     
     \end{enumerate}
 
