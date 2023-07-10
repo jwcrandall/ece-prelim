@@ -8,11 +8,15 @@
 
     \begin{enumerate}
         \item \textbf{Q.} Find the Fourier transform of 
-        $$x(t)=\frac{\sin (\pi 2 B t)}{\pi 2 B t} \cos \left(2 \pi f_{c} t\right)$$
-        where $f_{c}>2 B>0$. \textbf{Theory.} The Fourier transform (FT) is a transform that converts a function into a form that describes the frequencies present in the original function. The output of the transform is a complex-valued function of frequency. 
+        
+        $$
+        x(t)=\frac{\sin (\pi 2 B t)}{\pi 2 B t} \cos \left(2 \pi f_{c} t\right)
+        $$
+        
+        where $f_{c}>2 B>0$. \textbf{Theory.} $f_c$ is carrier frequency. The Fourier transform (FT) is a transform that converts a function into a form that describes the frequencies present in the original function. The output of the transform is a complex-valued function of frequency. 
 
         $$
-        \hat{x}(\omega)=\int_{-\infty}^{\infty} x(t) e^{-i 2 \pi f t} dt
+        \hat{x}(f)=\int_{-\infty}^{\infty} x(t) e^{-i 2 \pi f t} dt
         $$
 
         Here, the transform of function $x(t)$ at frequency $\omega$ is denoted by the complex number $\hat{x}(\omega)$, which is just one of several common conventions. All values of $\omega$ produces the frequency domain function. When the independent variable $t$ represents time, the transform variable $\omega$ represents angular frequency. For example, if time is measured in seconds, then frequency is in hertz. Angular frequency is related to frequency by $\omega=2 \pi \xi$. Euler's identity for any real number $x$: $e^{i x}=\cos x+i \sin x$. Euler's identity relationship to trigonometry: $\cos x=\operatorname{Re}\left(e^{i x}\right)=\frac{e^{i x}+e^{-i x}}{2}$, and $\sin x=\operatorname{Im}\left(e^{i x}\right)=\frac{e^{i x}-e^{-i x}}{2 i}$. Complex exponential Fourier transform: 
@@ -61,18 +65,84 @@
 
         for $B \in \mathbb{R} \wedge f \in \mathbb{R}$.
 
-        \item \textbf{Q.} Find the Hilbert transform $\hat{x}(t) \text { of } x(t)$. \textbf{Theory} \textbf{A.}
-        \item \textbf{Q.} Find the analytic signal $\psi(t) \text { of } x(t)$. \textbf{Theory} \textbf{A.}
-        \item \textbf{Q.} Find the complex envelope $\gamma(t) \text { of } x(t)$. \textbf{Theory} \textbf{A.}
+        \item \textbf{Q.} Find the Hilbert transform $\hat{x}(t) \text { of } x(t)$. \textbf{Theory} The Hilbert transform is a specific singular integral that takes a function, $u(t)$ of a real variable and produces another function of a real variable $H(u)(t)$. The Hilbert transform is given by the Cauchy principal value of the convolution with the function $1 /(\pi t)$. The Hilbert transform of $u$ can be thought of as the convolution of $u(t)$ with the function $h(t)=\frac{1}{\pi t}$, known as the Cauchy kernel. Because $1 / t$ is not integrable across $t=0$, the integral defining the convolution does not always converge. Instead, the Hilbert transform is defined using the Cauchy principal value (denoted here by p.v.). Explicitly, the Hilbert transform of a function (or signal) $u(t)$ is given by
+        
+        $$
+        \mathrm{H}(u)(t)=\frac{1}{\pi} \mathrm{p} \cdot \mathrm{v} \cdot \int_{-\infty}^{+\infty} \frac{u(\tau)}{t-\tau} \mathrm{d} \tau
+        $$
+        
+        provided this integral exists as a principal value. When 
+        
+        $$
+        \begin{aligned}
+        f(x) &= \cos x \\
+        \mathcal{H}[f(x)] &= -\sin y
+        \end{aligned}
+        $$
+
+        and when 
+
+        $$
+        \begin{aligned}
+        f(x) &= \frac{\sin x}{x}\\
+        \mathcal{H}[f(x)] &= \frac{\cos y-1}{y}
+        \end{aligned}
+        $$
+        
+        \textbf{A.}
+
+        $$
+        \begin{aligned}
+        \hat{x}(t) = \mathcal{H}[x(t)] &= \frac{1}{\pi} P V \int_{-\infty}^{\infty} \frac{x(\tau) d \tau}{t-\tau}\\
+        &= \frac{1}{\pi} P V \int_{-\infty}^{\infty} \frac{1}{t-\tau} \frac{\sin (\pi 2 B \tau)}{\pi 2 B \tau} \cos \left(2 \pi f_{c} \tau \right) d\tau
+        \end{aligned}
+        $$
+        
+        \item \textbf{Q.} Find the analytic signal $\psi(t) \text { of } x(t)$. \textbf{Theory.} In mathematics and signal processing, an analytic signal is a complex-valued function that has no negative frequency components. The real and imaginary parts of an analytic signal are real-valued functions related to each other by the Hilbert transform. Analytic signal:  $ \psi(t)=x(t)+i H\{x(t)\}$ \textbf{A.}
+
+        
+        \item \textbf{Q.} Find the complex envelope $\gamma(t) \text { of } x(t)$. \textbf{Theory.} \textbf{A.}
     \end{enumerate}
     
 \item [14.] Assume that $x[n]$ is a real-valued discrete-time signal and $h[n]$ is a real-valued impulse response of linear time-invariant discrete-time system. Let $y_{1}[n]=x[n] \star h[n]$ represent filtering the signal in the forward direction, where $\star$ stands for convolution. Now filter $y_{1}[n]$ backward to obtain $y_{2}[n]=y_{1}[-n] \star h[n]$. The output is then given by reversing $y_{2}[n]$ to obtain $y[n]=y_{2}[-n]$.
 
     \begin{enumerate}
-        \item Show that this set of operation is equivalently represented by a filter with impulse response $h_{o}[n]$ as $y[n]=x[n] \star h_{o}[n]$ and express $h_{o}[n]$ in terms of $h[n]$.
-        \item Show that $h_{o}[n]$ is an even signal and find the phase response of a system having impulse response $h_{o}[n]$. Is the system causal?
-        \item Let $H(z)$ and $H_{o}(z)$ be z-transforms of $h[n]$ and $h_{o}[n]$, respectively, and that $h[n]$ is causal. If $H(z)=1 /\left(1-0.9 z^{-1}\right)$ find $H_{o}(z)$, the region of convergence of $H_{o}(z)$, and $h_{o}[n]$.
-        \item Repeat (c) if $H(z)=1-0.9 z^{-1}$.
+        \item \textbf{Q.} Show that this set of operation is equivalently represented by a filter with impulse response $h_{o}[n]$ as $y[n]=x[n] \star h_{o}[n]$ and express $h_{o}[n]$ in terms of $h[n]$. \textbf{Theory.} The output of a discrete time LTI system is completely determined by the input and the system's response to a unit impulse. We can determine the system's output, $y[n]$, if we know the system's impulse response, $h[n]$, and the input, $x[n]$. The output for a unit impulse input is called the impulse response. \textbf{A.} Let's start by expressing $y_2[n]$ in terms of $x[n]$ and $h[n]$. We have
+        
+        $$
+        \begin{aligned}
+        y_2[n]&=y_1[-n] \star h[n] \\
+        &=(x[-n] \star h[-n]) \star h[n] .
+        \end{aligned}
+        $$
+        
+        Using the associative property of convolution, we can write this as 
+        
+        $$
+        y_2[n]=x[-n] \star(h[-n] \star h[n]).
+        $$
+        
+        Reversing $y_2[n]$ to obtain $y[n]$ gives us 
+        
+        $$
+        y[n]=y_2[-n]=x[n] \star(h[n] \star h[-n]).
+        $$
+        
+        Therefore, the impulse response of the equivalent filter is given by $h_o[n]=h[n] \star h[-n]$.
+        
+        \item \textbf{Q.} Show that $h_{o}[n]$ is an even signal and find the phase response of a system having impulse response $h_{o}[n]$. Is the system causal? \textbf{A.} Since $h_o[n]=h[n] \star h[-n]$, we have $h_o[-n]=h[-n] \star h[n]=h_o[n]$. This shows that $h_o[n]$ is an even signal. The frequency response of a system with impulse response $h_o[n]$ is given by $H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] e^{-j \omega n}$. Since $h_o[n]$ is an even signal, we have $H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] \cos (\omega n)$. Therefore, the phase response of the system is zero for all $\omega$. The system is causal if and only if $h_o[n]=0$ for all $n<0$ . Since $h_o[n]$ is the convolution of two signals, it is non-zero for all values of $n$ for which at least one of the signals being convolved is non-zero. Therefore, if either $h[n]$ or $h[-n]$ is non-zero for some negative value of $n$, then the system is not causal.
+        
+        \item \textbf{Q.} Let $H(z)$ and $H_{o}(z)$ be z-transforms of $h[n]$ and $h_{o}[n]$, respectively, and that $h[n]$ is causal. If $H(z)=1 /\left(1-0.9 z^{-1}\right)$ find $H_{o}(z)$, the region of convergence of $H_{o}(z)$, and $h_{o}[n]$. \textbf{A.} Since $h_o[n]=h[n] \star h[-n]$, we have $H_o(z)=H(z) H\left(z^{-1}\right)$. Substituting the given expression for $H(z)$, we get $H_o(z)=\frac{1}{1-0.9 z^{-1}} \frac{1}{1-0.9 z}=\frac{1}{\left(1-0.9 z^{-1}\right)(1-0.9 z)}$. The region of convergence of $H(z)$ is $|z|>0.9$, and the region of convergence of $H\left(z^{-1}\right)$ is $\left|z^{-1}\right|>0.9$, or equivalently, $|z|<\frac{10}{9}$. Therefore, the region of convergence of $H_o(z)$ is the intersection of these two regions, which is $\frac{10}{9}>|z|>0.9$. To find $h_o[n]$, we can use partial fraction expansion to write $H_0(z)$ as $\frac{A}{1-0.9 z^{-1}}+\frac{B}{1-0.9 z}$. Solving for $A$ and $B$, we find that $A=\frac{1}{0.9+0.9^2}$ and $B=-\frac{1}{0.9+0.9^2}$. Therefore, we have $h_o[n]=A(0.9)^n u[n]+B(-0.9)^n u[-n-1]$, where $u[n]$ is the unit step function.
+        
+        \item \textbf{Q.} Repeat (c) if $H(z)=1-0.9 z^{-1}$. \textbf{A.} Since $h_o[n]=h[n] \star h[-n]$, we have
+        $H_o(z)=H(z) H\left(z^{-1}\right)$. Substituting the given expression for $H(z)$, we get
+        
+        $$
+        H_0(z)=\left(1-0.9 z^{-1}\right)(1-0.9 z)=1-0.9 z^{-1}-0.9 z+0.81
+        $$
+        
+        The region of convergence of $H(z)$ is the entire $z$ plane except for $z=0$, and the region of convergence of $H\left(z^{-1}\right)$ is the entire $z$-plane except for $z=\infty$. Therefore, the region of convergence of $H_o(z)$ is the entire $z$-plane except for $z=0$ and $z=\infty$. Since $H_o(z)$ is a polynomial in $z$ and $z^{-1}$, its inverse $z$-transform can be obtained directly from its coefficients. We have $h_o[n]=\delta[n]-0.9 \delta[n-1]-0.9 \delta[n+1]+0.81 \delta[n]$, where $\delta[n]$ is the unit impulse function.
+        
     \end{enumerate}
     
 \item [15.] Solve the differential equation
