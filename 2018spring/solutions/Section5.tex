@@ -107,7 +107,25 @@
 \item [14.] Assume that $x[n]$ is a real-valued discrete-time signal and $h[n]$ is a real-valued impulse response of linear time-invariant discrete-time system. Let $y_{1}[n]=x[n] \star h[n]$ represent filtering the signal in the forward direction, where $\star$ stands for convolution. Now filter $y_{1}[n]$ backward to obtain $y_{2}[n]=y_{1}[-n] \star h[n]$. The output is then given by reversing $y_{2}[n]$ to obtain $y[n]=y_{2}[-n]$.
 
     \begin{enumerate}
-        \item \textbf{Q.} Show that this set of operation is equivalently represented by a filter with impulse response $h_{o}[n]$ as $y[n]=x[n] \star h_{o}[n]$ and express $h_{o}[n]$ in terms of $h[n]$. \textbf{Theory.} The output of a discrete time LTI system is completely determined by the input and the system's response to a unit impulse. We can determine the system's output, $y[n]$, if we know the system's impulse response, $h[n]$, and the input, $x[n]$. The output for a unit impulse input is called the impulse response. \textbf{A.} Let's start by expressing $y_2[n]$ in terms of $x[n]$ and $h[n]$. We have
+        \item \textbf{Q.} Show that this set of operation is equivalently represented by a filter with impulse response $h_{o}[n]$ as $y[n]=x[n] \star h_{o}[n]$ and express $h_{o}[n]$ in terms of $h[n]$. \textbf{Theory.} The output of a discrete time LTI system is completely determined by the input and the system's response to a unit impulse. We can determine the system's output, $y[n]$, if we know the system's impulse response, $h[n]$, and the input, $x[n]$. The output for a unit impulse input is called the impulse response. Convolution abides by the following mathematical properties: commutative 
+        
+        $$
+        a[n] * b[n]=b[n] * a[n],
+        $$ 
+        
+        associative 
+        
+        $$
+        (a[n] * b[n]) * c[n]=a[n] *(b[n] * c[n]),
+        $$
+        
+        and distributive 
+        
+        $$
+        a[n] * b[n]+a[n] * c[n]=a[n] *(b[n]+c[n]).
+        $$
+        
+        \textbf{A.} Let's start by expressing $y_2[n]$ in terms of $x[n]$ and $h[n]$. We have
         
         $$
         \begin{aligned}
@@ -128,9 +146,57 @@
         y[n]=y_2[-n]=x[n] \star(h[n] \star h[-n]).
         $$
         
-        Therefore, the impulse response of the equivalent filter is given by $h_o[n]=h[n] \star h[-n]$.
+        Therefore, the impulse response of the equivalent filter is given by 
         
-        \item \textbf{Q.} Show that $h_{o}[n]$ is an even signal and find the phase response of a system having impulse response $h_{o}[n]$. Is the system causal? \textbf{A.} Since $h_o[n]=h[n] \star h[-n]$, we have $h_o[-n]=h[-n] \star h[n]=h_o[n]$. This shows that $h_o[n]$ is an even signal. The frequency response of a system with impulse response $h_o[n]$ is given by $H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] e^{-j \omega n}$. Since $h_o[n]$ is an even signal, we have $H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] \cos (\omega n)$. Therefore, the phase response of the system is zero for all $\omega$. The system is causal if and only if $h_o[n]=0$ for all $n<0$ . Since $h_o[n]$ is the convolution of two signals, it is non-zero for all values of $n$ for which at least one of the signals being convolved is non-zero. Therefore, if either $h[n]$ or $h[-n]$ is non-zero for some negative value of $n$, then the system is not causal.
+        $$
+        h_o[n]=h[n] \star h[-n].
+        $$
+        
+        \item \textbf{Q.} Show that $h_{o}[n]$ is an even signal and find the phase response of a system having impulse response $h_{o}[n]$. Is the system causal? \textbf{Theory.} The impulse response $h(n)$ of a filter is even when it satisfies 
+        
+        $$
+        h(n)=h(-n), \quad n \in \mathbf{Z}.
+        $$
+
+        Note that every even signal is symmetric, but not every symmetric signal is even. To be even, it must be symmetric about time 0. A zero-phase filter cannot be causal (except in the trivial case when the filter is a constant scale factor $h(n)=g \delta(n))$. It is a well known Fourier symmetry that real, even signals have real, even Fourier transforms. Therefore, a real, even impulse response corresponds to a real, even frequency response. This follows immediately from writing the Discrete Time Fourier Transform (DTFT) of $h$ in terms of a cosine and sine transform:
+        
+        $$
+        H\left(e^{j \omega T}\right)=\mathbf{D T F T}_{\omega T}(h)=\sum_{n=-\infty}^{\infty} h(n) \cos (\omega n T)-j \sum_{n=-\infty}^{\infty} h(n) \sin (\omega n T)
+        $$
+        
+        Since $h$ is even, cosine is even, and sine is odd; and since even times even is even, and even times odd is odd; and since the sum over an odd function is zero, we have that
+        
+        $$
+        H\left(e^{j \omega T}\right)=\sum_{n=-\infty}^{\infty} h(n) \cos (\omega n T)
+        $$
+        
+        for any real, even impulse-response $h$. Thus, the frequency response $H\left(e^{j \omega T}\right)$ is a real, even function of $\omega$. A real frequency response has phase zero when it is positive, and phase $\pi$ when it is negative. Therefore, we define a zero-phase filter as follows: A filter is said to be zero phase when its frequency response $H\left(e^{j \omega T}\right)$ is a real and even function of radian frequency $\omega$, and when $H\left(e^{j \omega T}\right)>0$ in the filter passband(s). In signal processing, a causal filter is a linear and time-invariant causal system. The word causal indicates that the filter output depends only on past and present inputs. A filter whose output also depends on future inputs is non-causal, whereas a filter whose output depends only on future inputs is anticausal.
+
+        \textbf{A.} Since 
+
+        $$
+        h_o[n]=h[n] \star h[-n],
+        $$
+        
+        we have 
+        
+        $$
+        h_o[-n]=h[-n] \star h[n]=h_o[n].
+        $$
+        
+        This shows that $h_o[n]$ is an even signal. The frequency response of a system with impulse response $h_o[n]$ is given by 
+        
+        $$
+        H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] e^{-j \omega n}.
+        $$
+        
+        Since $h_o[n]$ is an even signal, we have 
+        
+        $$
+        H_o\left(e^{j \omega}\right)=\sum_{n=-\infty}^{\infty} h_o[n] \cos (\omega n).
+        $$
+        
+        Therefore, the phase response of the system is zero for all $\omega$. The system is causal if and only if $h_o[n]=0$ for all $n<0$ . Since $h_o[n]$ is the convolution of two signals, it is non-zero for all values of $n$ for which at least one of the signals being convolved is non-zero. Therefore, if either $h[n]$ or $h[-n]$ is non-zero for some negative value of $n$, then the system is not causal.
         
         \item \textbf{Q.} Let $H(z)$ and $H_{o}(z)$ be z-transforms of $h[n]$ and $h_{o}[n]$, respectively, and that $h[n]$ is causal. If $H(z)=1 /\left(1-0.9 z^{-1}\right)$ find $H_{o}(z)$, the region of convergence of $H_{o}(z)$, and $h_{o}[n]$. \textbf{A.} Since $h_o[n]=h[n] \star h[-n]$, we have $H_o(z)=H(z) H\left(z^{-1}\right)$. Substituting the given expression for $H(z)$, we get $H_o(z)=\frac{1}{1-0.9 z^{-1}} \frac{1}{1-0.9 z}=\frac{1}{\left(1-0.9 z^{-1}\right)(1-0.9 z)}$. The region of convergence of $H(z)$ is $|z|>0.9$, and the region of convergence of $H\left(z^{-1}\right)$ is $\left|z^{-1}\right|>0.9$, or equivalently, $|z|<\frac{10}{9}$. Therefore, the region of convergence of $H_o(z)$ is the intersection of these two regions, which is $\frac{10}{9}>|z|>0.9$. To find $h_o[n]$, we can use partial fraction expansion to write $H_0(z)$ as $\frac{A}{1-0.9 z^{-1}}+\frac{B}{1-0.9 z}$. Solving for $A$ and $B$, we find that $A=\frac{1}{0.9+0.9^2}$ and $B=-\frac{1}{0.9+0.9^2}$. Therefore, we have $h_o[n]=A(0.9)^n u[n]+B(-0.9)^n u[-n-1]$, where $u[n]$ is the unit step function.
         
