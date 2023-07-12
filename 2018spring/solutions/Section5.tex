@@ -254,9 +254,75 @@
         
     \end{enumerate}
     
-\item [15.] Solve the differential equation
+\item [15.] \textbf{Q.} Solve the differential equation
     $$y^{\prime \prime}(t)+2 y^{\prime}(t)+y(t)=u(t-1)$$
-for $t \geq 0$ using the Laplace transform. $u(t)$ is the unit step function and the initial conditions are $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$.
+for $t \geq 0$ using the Laplace transform. $u(t)$ is the unit step function and the initial conditions are $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$. \textbf{A.} We are given the differential equation:
+
+$$
+y^{\prime \prime}(t)+2 y^{\prime}(t)+y(t)=u(t-1)
+$$
+
+where $u(t)$ is the unit step function and the initial conditions are $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$. Taking the Laplace transform of both sides of the differential equation, we get:
+
+$$
+s^{2} Y(s)+2 s Y(s)+Y(s)=\frac{e^{-s}}{s}
+$$
+
+where $Y(s)$ is the Laplace transform of $y(t)$. Simplifying this expression, we get:
+
+$$
+Y(s)=\frac{1}{s^{2}+2 s+1} \cdot \frac{e^{-s}}{s}=\frac{1}{(s+1)^{2}} \cdot \frac{e^{-s}}{s}
+$$
+
+Using partial fraction expansion, we can write:
+
+$$
+\frac{1}{(s+1)^{2}}=\frac{A}{s+1}+\frac{B}{(s+1)^{2}}
+$$
+
+where $A$ and $B$ are constants. Solving for $A$ and $B$, we get:
+
+$$
+A=1, \quad B=-2
+$$
+
+Substituting these values in the partial fraction expansion, we get:
+
+$$
+\frac{1}{(s+1)^{2}}=\frac{1}{s+1}-\frac{2}{(s+1)^{2}}
+$$
+
+Therefore, we have:
+
+$$
+Y(s)=\frac{e^{-s}}{(s+1)^{2}}=\mathcal{L}\left\{\left(t-1\right) u(t-1)\right\}=\mathcal{L}\left\{\left(t-1\right)\right\} \cdot \mathcal{L}\left\{u(t-1)\right\}
+$$
+
+where $\mathcal{L}$ denotes the Laplace transform. Taking the inverse Laplace transform of $\frac{e^{-s}}{(s+1)^{2}}$, we get:
+
+$$
+y_{p}(t)=t e^{-t} u(t-1)
+$$
+
+where $y_{p}(t)$ is a particular solution. The homogeneous solution is given by:
+
+$$
+y_{h}(t)=c_{1} e^{-t}+c_{2} t e^{-t}
+$$
+
+where $c_{1}$ and $c_{2}$ are constants determined by the initial conditions. Using the initial conditions $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$, we get:
+
+$$
+c_{1}=1, \quad c_{2}=0
+$$
+
+Therefore, the general solution is given by:
+
+$$
+y(t)=y_{h}(t)+y_{p}(t)=e^{-t}+t e^{-t} u(t-1)
+$$
+
+Thus, we have solved the differential equation using Laplace transform.
 
 \end{enumerate}
 \end{document}
