@@ -14,7 +14,7 @@
             \item $E_{\mathrm{C}}$ : The conduction band edge should be indicated in situations where electrons might be transported at the bottom of the conduction band, such as in an $n$-type semiconductor. The conduction band edge may also be indicated in an insulator, simply to demonstrate band bending effects.
             \item $E_{\mathrm{V}}$ : The valence band edge likewise should be indicated in situations where electrons (or holes) are transported through the top of the valence band such as in a p-type semiconductor.
             \item $E_{\mathrm{i}}$ : The intrinsic Fermi level may be included in a semiconductor, to show where the Fermi level would have to be for the material to be neutrally doped (i.e., an equal number of mobile electrons and holes).
-            \item $E_{\text {imp }}$ : Impurity energy level. Many defects and dopants add states inside the band gap of a semiconductor or insulator. It can be useful to plot their energy level to see whether they are ionized or not. ${ }^{[3]}$
+            \item $E_{\text {imp }}$ : Impurity energy level. Many defects and dopants add states inside the band gap of a semiconductor or insulator. It can be useful to plot their energy level to see whether they are ionized or not.
             \item $E_{\mathrm{vac}}$ : In a vacuum, the vacuum level shows the energy $-e \phi$, where $\phi$ is the electrostatic potential. The vacuum can be considered as a sort of insulator, with $E_{\mathrm{vac}}$ playing the role of the conduction band edge. At a vacuum-material interface, the vacuum energy level is fixed by the sum of work function and Fermi level of the material.
             \item Electron affinity level: Occasionally, a "vacuum level" is plotted even inside materials, at a fixed height above the conduction band, determined by the electron affinity. This "vacuum level" does not correspond to any actual energy band and is poorly defined (electron affinity strictly speaking is a surface, not bulk, property); however, it may be a helpful guide in the use of approximations such as Anderson's rule or the Schottky-Mott rule.
         \end{itemize}
@@ -76,23 +76,42 @@
         \label{fig:16a_f}
         \end{figure}
 
-
-        
     \end{enumerate}
 
 \item [17.] MOS Capacitor
 
+    \begin{figure}
+    \centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/17q_a.png}}
+    \caption{Schematic of the poly depletion capacitance's upon gating this MOS capacitor. $\mathrm{T}=300\mathrm{K}$. Gate and body are Silicon. The gate oxide is \ch{SiO2}, $\mathrm{t}_{\mathrm{ox}} = 2 \mathrm{~nm}$ }
+    \label{fig:17q_a}
+    \end{figure}
+
     \begin{enumerate}
-        \item Draw the band diagram of a MOS system where the "metal" work function $\Phi_{\mathrm{M}}$ is larger than the silicon work function $\Phi_{\mathrm{S}}$. Assume that there are no applied voltages at the p-type substrate (doping $\mathrm{N}_{\mathrm{A}}$) and the gate. On the diagram clearly label the following parameters and functions: electron affinity in the semiconductor $\chi_{\mathrm{Sc}}$, the Fermi level $\mathrm{E}_{\mathrm{F}}$, the conduction and valance band edges $\mathrm{E}_{\mathrm{c}}$ and $\mathrm{E}_{\mathrm{V}}$, the band-gap $\mathrm{E}_{\mathrm{g}}$, the mid-gap $\mathrm{E}_{i}$, the thickness of the oxide $\mathrm{t}_{\mathrm{ox}}$, the potential drop in the oxide $\phi_{\mathrm{ox}}$, and the potential drop in the semiconductor $\phi(\mathrm{x})$
-        \item For this device, what is the most likely outcome when no voltages are applied: inversion or accumulation? Why?
-        \item Poly-Silicon Gate Depletion (refer to Figure \ref{fig:17q_a}): Assume the voltage $\mathrm{V}_{\mathrm{ox}} = \qty{1}{\volt}$ across a $\qty{2}{\nano\meter}$ thin \ch{SiO2} oxide. The $\mathrm{P}^{+}$ poly gate doping is $\mathrm{N}_{\text {poly }}=1 \times 10^{19} \mathrm{~cm}^{-3}$ and the substrate is n-doped with $\mathrm{N}_{\mathrm{D}}=10^{17} \mathrm{~cm}^{-3}$. Find the poly depletion width, $\mathrm{W}_{\mathrm{dep }}$.
+        \item \textbf{Q.} Draw the band diagram of a MOS system where the "metal" work function $\Phi_{\mathrm{M}}$ is larger than the silicon work function $\Phi_{\mathrm{S}}$. Assume that there are no applied voltages at the p-type substrate (doping $\mathrm{N}_{\mathrm{A}}$) and the gate. On the diagram clearly label the following parameters and functions: electron affinity in the semiconductor $\chi_{\mathrm{Sc}}$, the Fermi level $\mathrm{E}_{\mathrm{F}}$, the conduction and valance band edges $\mathrm{E}_{\mathrm{c}}$ and $\mathrm{E}_{\mathrm{V}}$, the band-gap $\mathrm{E}_{\mathrm{g}}$, the mid-gap $\mathrm{E}_{i}$, the thickness of the oxide $\mathrm{t}_{\mathrm{ox}}$, the potential drop in the oxide $\phi_{\mathrm{ox}}$, and the potential drop in the semiconductor $\phi(\mathrm{x})$. 
+        
+        \textbf{Theory} Figure \ref{fig:17t_a} The potential difference between conduction band and free space is called electron affinity and is denoted by $\chi_{\mathrm{Sc}}$. $E_0$ or $E_{vac}$ is the vacume energy level where the electron is free from the material.
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17t_a.png}}
+        \caption{Energy-band diagrams of metal-n-[(a) and (c)] or p-[(b) and (d)] type semiconductor contacts. Depending on the difference between work functions of the metal qφ M and of the semiconductor qφ S , the band bending results in either a depletion [(a) and (b)] or an accumulation [(c) and (d)] of charges at the metal-semiconductor interface.}
+        \label{fig:17t_a}
+        \end{figure}
+        
+        \textbf{A.} Figure \ref{fig:17a_a} 
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17a_a.png}}
+        \caption{MOS system where the "metal" work function $\Phi_{\mathrm{M}}$ is larger than the silicon work function $\Phi_{\mathrm{S}}$. No applied voltages at the p-type substrate (doping $\mathrm{N}_{\mathrm{A}}$) and the gate. Electron affinity in the semiconductor $\chi_{\mathrm{Sc}}$, Fermi level $\mathrm{E}_{\mathrm{F}}$, conduction and valance band edges $\mathrm{E}_{\mathrm{c}}$ and $\mathrm{E}_{\mathrm{V}}$, band-gap $\mathrm{E}_{\mathrm{g}}$, mid-gap $\mathrm{E}_{i}$, thickness of oxide $\mathrm{t}_{\mathrm{ox}}$, potential drop in the oxide $\phi_{\mathrm{ox}}$, and potential drop in the semiconductor $\phi(\mathrm{x})$.}
+        \label{fig:17a_a}
+        \end{figure}
+        
+        \item \textbf{Q.} For this device, what is the most likely outcome when no voltages are applied: inversion or accumulation? Why? \textbf{Theory} Figure \ref{fig:17t_a} \textbf{A.} Reference figure \ref{fig:17t_a}, inversion is more likely because $\Phi_{\mathrm{M}} > \Phi_{\mathrm{S}}$ and because the mos has a p-type substrate.
+        
+        \item \textbf{Q.} Poly-Silicon Gate Depletion (refer to Figure \ref{fig:17q_a}): Assume the voltage $\mathrm{V}_{\mathrm{ox}} = \qty{1}{\volt}$ across a $\qty{2}{\nano\meter}$ thin \ch{SiO2} oxide. The $\mathrm{P}^{+}$ poly gate doping is $\mathrm{N}_{\text {poly }}=1 \times 10^{19} \mathrm{~cm}^{-3}$ and the substrate is n-doped with $\mathrm{N}_{\mathrm{D}}=10^{17} \mathrm{~cm}^{-3}$. Find the poly depletion width, $\mathrm{W}_{\mathrm{dep }}$. \textbf{Theory} \textbf{A.}
+        
     \end{enumerate}
     
-\begin{figure}
-\centering\fbox{\includegraphics[width=3.0in]{figures/2018s/17q_a.png}}
-\caption{Schematic of the poly depletion capacitances upon gating this MOS capacitor. $\mathrm{T}=300\mathrm{K}$}. Gate and body are Silicon. The gate ocide is \ch{SiO2}, $\mathrm{t}_{\mathrm{ox}} = 2 \mathrm{~nm}$}
-\label{fig:17q_a}
-\end{figure}
+
 
 \item [18.] Basic \textit{pn}-junction operation.\\
 
