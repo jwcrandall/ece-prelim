@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.27">
-<info created="D:20230720110358" modified="D:20230720110358"/>
+<info created="D:20230720110358" modified="D:20230722172421"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -313,30 +313,13 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<path layer="alpha" stroke="black">
+<path layer="alpha" matrix="1 0 0 1 0 -64" stroke="black">
 512 768 m
 384 768 l
 </path>
-<path matrix="1 0 0 1 0 -16" stroke="black">
-320 752 m
-256 720 l
-</path>
-<path stroke="black">
-320 640 m
-256 608 l
-256 384 l
-320 416 l
-h
-</path>
-<path matrix="1 0 0 1 0 -16" stroke="black">
+<path matrix="1 0 0 1 0 48" stroke="black">
 256 720 m
 64 720 l
-</path>
-<path stroke="black">
-384 768 m
-368 768
-320 736
-320 736 c
 </path>
 <path stroke="black">
 320 512 m
@@ -354,35 +337,13 @@ h
 512 480 m
 384 480 l
 </path>
-<path stroke="black">
-384 576 m
-368 576
-320 544 c
-</path>
-<path stroke="black">
-384 480 m
-368 480
-320 448 c
-</path>
-<path stroke="black" arrow="normal/normal" rarrow="normal/normal">
-128 704 m
-128 416 l
-</path>
-<path stroke="black" arrow="normal/normal" rarrow="normal/normal">
+<path matrix="1 0 0 1 0 -32" stroke="black" arrow="normal/normal" rarrow="normal/normal">
 320 768 m
 320 736 l
 </path>
-<path stroke="black" arrow="normal/normal" rarrow="normal/normal">
+<path matrix="1 0 0 1 0 32" stroke="black" arrow="normal/normal" rarrow="normal/normal">
 256 736 m
 256 704 l
-</path>
-<path stroke="black" arrow="normal/normal" rarrow="normal/normal">
-384 768 m
-384 576 l
-</path>
-<path matrix="1 0 0 1 16 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
-416 768 m
-416 512 l
 </path>
 <path matrix="1 0 0 1 32 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
 448 576 m
@@ -401,12 +362,7 @@ h
 384 528 l
 384 528 l
 </path>
-<path stroke="black" dash="dashed">
-384 528 m
-368 528
-320 496 c
-</path>
-<text transformations="translations" pos="528 768" stroke="black" type="label" width="19.97" height="6.812" depth="1.49" valign="baseline" style="math">E_{vac}</text>
+<text matrix="1 0 0 1 0 -64" transformations="translations" pos="528 768" stroke="black" type="label" width="19.97" height="6.812" depth="1.49" valign="baseline" style="math">E_{vac}</text>
 <text transformations="translations" pos="528 576" stroke="black" type="label" width="11.413" height="6.812" depth="1.49" valign="baseline" style="math">E_c</text>
 <text transformations="translations" pos="528 528" stroke="black" type="label" width="10.671" height="6.812" depth="1.49" valign="baseline" style="math">E_i</text>
 <text transformations="translations" pos="528 480" stroke="black" type="label" width="12.088" height="6.812" depth="1.49" valign="baseline" style="math">E_v</text>
@@ -419,7 +375,55 @@ h
 <text transformations="translations" pos="368 672" stroke="black" type="label" width="0" height="0" depth="0" valign="baseline" style="math"></text>
 <text transformations="translations" pos="352 672" stroke="black" type="label" width="14.674" height="4.297" depth="1.93" valign="baseline" style="math">\chi_{\mathrm{Sc}}</text>
 <text transformations="translations" pos="288 496" stroke="black" type="label" width="12.315" height="6.132" depth="1.49" valign="baseline" style="math">\mathrm{t}_{\mathrm{ox}}</text>
-<text transformations="translations" pos="224 720" stroke="black" type="label" width="14.377" height="6.926" depth="1.93" valign="baseline" style="math">\phi_{\mathrm{ox}}</text>
-<text transformations="translations" pos="288 752" stroke="black" type="label" width="18.943" height="7.473" depth="2.49" valign="baseline" style="math">\phi(\mathrm{x})</text>
+<text matrix="1 0 0 1 0 32" transformations="translations" pos="224 720" stroke="black" type="label" width="14.377" height="6.926" depth="1.93" valign="baseline" style="math">\phi_{\mathrm{ox}}</text>
+<text matrix="1 0 0 1 0 -32" transformations="translations" pos="288 752" stroke="black" type="label" width="18.943" height="7.473" depth="2.49" valign="baseline" style="math">\phi(\mathrm{x})</text>
+<path stroke="black">
+256 640 m
+320 608 l
+320 384 l
+256 416 l
+h
+</path>
+<path stroke="black">
+256 768 m
+320 736 l
+</path>
+<path stroke="black">
+384 704 m
+368 704
+320 736 c
+</path>
+<path matrix="1 0 0 1 -16 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
+144 768 m
+144 416 l
+</path>
+<path matrix="1 0 0 1 -16 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
+400 704 m
+400 576 l
+</path>
+<path matrix="1 0 0 1 -16 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
+448 704 m
+448 512 l
+</path>
+<path stroke="black">
+384 576 m
+368 576
+320 592 c
+</path>
+<path stroke="black">
+384 480 m
+368 480
+320 496 c
+</path>
+<path stroke="black" dash="dashed">
+384 528 m
+368 528
+320 544 c
+</path>
+<path stroke="black" dash="dashed">
+208 544 m
+208 544
+208 544 c
+</path>
 </page>
 </ipe>
