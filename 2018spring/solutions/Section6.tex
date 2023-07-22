@@ -89,7 +89,7 @@
     \begin{enumerate}
         \item \textbf{Q.} Draw the band diagram of a MOS system where the "metal" work function $\Phi_{\mathrm{M}}$ is larger than the silicon work function $\Phi_{\mathrm{S}}$. Assume that there are no applied voltages at the p-type substrate (doping $\mathrm{N}_{\mathrm{A}}$) and the gate. On the diagram clearly label the following parameters and functions: electron affinity in the semiconductor $\chi_{\mathrm{Sc}}$, the Fermi level $\mathrm{E}_{\mathrm{F}}$, the conduction and valance band edges $\mathrm{E}_{\mathrm{c}}$ and $\mathrm{E}_{\mathrm{V}}$, the band-gap $\mathrm{E}_{\mathrm{g}}$, the mid-gap $\mathrm{E}_{i}$, the thickness of the oxide $\mathrm{t}_{\mathrm{ox}}$, the potential drop in the oxide $\phi_{\mathrm{ox}}$, and the potential drop in the semiconductor $\phi(\mathrm{x})$. 
         
-        \textbf{Theory} Figure \ref{fig:17t_a} The potential difference between conduction band and free space is called electron affinity and is denoted by $\chi_{\mathrm{Sc}}$. $E_0$ or $E_{vac}$ is the vacume energy level where the electron is free from the material.
+        \textbf{Theory} Reference figure \ref{fig:17t_a} and recall that the potential difference between conduction band and free space is called electron affinity and is denoted by $\chi_{\mathrm{Sc}}$. $E_0$ or $E_{vac}$ is the vacuum energy level where the electron is free from the material.
 
         \begin{figure}
         \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17t_a.png}}
@@ -97,7 +97,7 @@
         \label{fig:17t_a}
         \end{figure}
         
-        \textbf{A.} Figure \ref{fig:17a_a} 
+        \textbf{A.} Shown in figure \ref{fig:17a_a} 
 
         \begin{figure}
         \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17a_a.png}}
@@ -105,9 +105,36 @@
         \label{fig:17a_a}
         \end{figure}
         
-        \item \textbf{Q.} For this device, what is the most likely outcome when no voltages are applied: inversion or accumulation? Why? \textbf{Theory} Figure \ref{fig:17t_a} \textbf{A.} Reference figure \ref{fig:17t_a}, inversion is more likely because $\Phi_{\mathrm{M}} > \Phi_{\mathrm{S}}$ and because the mos has a p-type substrate.
+        \item \textbf{Q.} For this device, what is the most likely outcome when no voltages are applied: inversion or accumulation? Why? \textbf{A.} Referencing figure \ref{fig:17t_a}, accumulation is more likely because $\Phi_{\mathrm{M}} > \Phi_{\mathrm{S}}$ and because the MOS has a p-type substrate.
         
-        \item \textbf{Q.} Poly-Silicon Gate Depletion (refer to Figure \ref{fig:17q_a}): Assume the voltage $\mathrm{V}_{\mathrm{ox}} = \qty{1}{\volt}$ across a $\qty{2}{\nano\meter}$ thin \ch{SiO2} oxide. The $\mathrm{P}^{+}$ poly gate doping is $\mathrm{N}_{\text {poly }}=1 \times 10^{19} \mathrm{~cm}^{-3}$ and the substrate is n-doped with $\mathrm{N}_{\mathrm{D}}=10^{17} \mathrm{~cm}^{-3}$. Find the poly depletion width, $\mathrm{W}_{\mathrm{dep }}$. \textbf{Theory} \textbf{A.}
+        \item \textbf{Q.} Poly-Silicon Gate Depletion (refer to Figure \ref{fig:17q_a}): Assume the voltage $\mathrm{V}_{\mathrm{ox}} = \qty{1}{\volt}$ across a $\qty{2}{\nano\meter}$ thin \ch{SiO2} oxide. The $\mathrm{P}^{+}$ poly gate doping is $\mathrm{N}_{\text {poly }}=1 \times 10^{19} \mathrm{~cm}^{-3}$ and the substrate is n-doped with $\mathrm{N}_{\mathrm{D}}=10^{17} \mathrm{~cm}^{-3}$. Find the poly depletion width, $\mathrm{W}_{\mathrm{dep }}$. \textbf{Theory} A heavily doped film of polycrystalline silicon (poly-Si) is typically employed as the gate-electrode material in modern MOS devices. Refer to figure \ref{fig:17q_b}, and figure \ref{fig:17ac_b}. There are practical limits to the electrically active dopant concentration (usually less than $1 \times 10^{20} \mathrm{~cm}^{-3}$). The gate must be considered as a semiconductor, rather than a metal. 
+      
+        $$
+        W_{poly}=\sqrt{\frac{2 \varepsilon_{Si} V_{poly}}{q N_{poly}}}
+        $$
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17q_b.png}}
+        \caption{Heavily doped film of polycrystalline silicon (poly-Si)}
+        \label{fig:17q_b}
+        \end{figure}
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/17ac_b.png}}
+        \caption{Si biased to inversion}
+        \label{fig:17ac_b}
+        \end{figure}
+        
+        \textbf{A.} The elementary charge, usually denoted by $e = 1.602176634 \times 10^{-19} \mathrm{C}$, $q$ in this problem, is the electric charge carried by a single proton or, equivalently, the magnitude of the negative electric charge carried by a single electron, which has charge $-1 e$. The $\mathrm{p}^{+}$ poly gate doping is $\mathrm{N}_{\text {poly }}=1 \times 10^{19} \mathrm{~cm}^{-3}$. The voltage $\mathrm{V}_{\mathrm{ox}} = \qty{1}{\volt}$ is across a $t_{ox} = \qty{2}{\nano\meter}$ thin \ch{SiO2} oxide. Vacuum permittivity, commonly denoted $\varepsilon_0$ (pronounced "epsilon nought" or "epsilon zero"), is the value of the absolute dielectric permittivity of classical vacuum. It may also be referred to as the permittivity of free space, the electric constant, or the distributed capacitance of the vacuum. It is an ideal (baseline) physical constant. Its CODATA value is: $\varepsilon_0=8.8541878128(13) \times 10^{-12} \mathrm{~F} \cdot \mathrm{m}^{-1}$ (farads per meter), with a relative uncertainty of $1.5 \times 10^{-10}$. The silicon dioxide $\mathrm{SiO}_2$ relative dielectric constant is 3.9. Gauss's Law dictates $W_{poly}=\varepsilon_{ox} {\varepsilon_{ox}} / q N_{poly}$.
+
+        $$
+        \begin{aligned}
+        W_{poly} &= \frac{\varepsilon_{ox} \varepsilon_{ox}}{q N_{poly}}\\
+        &= \frac{\varepsilon_{ox} V_{ox}}{t_{ox} q N_{poly}} \\
+        &= \frac{3.9 \times 8.85 \times 10^{-14}(\mathrm{~F} / \mathrm{cm}) \cdot 1 \mathrm{~V}}{2 \times 10^{-7} \mathrm{~cm} \cdot 1.6 \times 10^{-19} \mathrm{C} \cdot 8 \times 10^{19} \mathrm{~cm}^{-3}} \\
+        & =1.3 \mathrm{~nm}
+        \end{aligned}
+        $$
         
     \end{enumerate}
     
