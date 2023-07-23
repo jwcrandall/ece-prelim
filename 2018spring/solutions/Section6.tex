@@ -145,10 +145,131 @@
 Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon diode that has a uniform cross section and constant doping on both sides of the \textit{pn}-junction. The diode is doped as follows: $\mathrm{N}_{\mathrm{a}}=8.0 \times 10^{16} \mathrm{~cm}^{-3}$ \textit{p}-type and $\mathrm{N}_{\mathrm{d}}=1 \mathrm{x} 10^{16} \mathrm{~cm}^{-3}$ \textit{n}-type. For this material, the minority-carrier lifetimes are: $\tau_{\mathrm{n}}=4 \times 10^{-6} \mathrm{~s}$ and $\tau_{\mathrm{p}}=1 \times 10^{-6} \mathrm{~s}$, respectively. You may assume that the effects within the space-charge region are negligible and that the minority carriers flow only by diffusion in the charge neutral regions.
 
     \begin{enumerate}
-        \item Draw/sketch the band-diagram for this system. Also, plot the electrostatic potential, the net charge density and the and the corresponding electric field.
-        \item Determine the value of the built-in potential across the \textit{pn}-junction.
-        \item Calculate the density of the minority carriers at the edge of the space-charge region for a forward bias of 0.3V.
-        \item Under bias condition, calculate and plot the minority and majority carrier currents as a function of distance from the junction.
+        \item \textbf{Q.} Draw/sketch the band-diagram for this system. Also, plot the electrostatic potential, the net charge density and the corresponding electric field. \textbf{A.}
+        
+        \item \textbf{Q.} Determine the value of the built-in potential across the \textit{pn}-junction. \textbf{A.} The built-in potential across the pn junction can be determined using the formula:
+        
+        $$
+        V_{b i}=\frac{k T}{q} \ln \left(\frac{N_a N_d}{n_i^2}\right)
+        $$
+        
+        where $k$ is the Boltzmann constant, $T$ is the temperature in Kelvin, $q$ is the elementary charge, $N_a$ and $N_d$ are the acceptor and donor concentrations respectively, and $n_i$ is the intrinsic carrier concentration. For silicon at room temperature, $n_i$ is approximately $1.45 \times 10^{10} \mathrm{~cm}^{-3}$. Substituting the given values into the formula, we get:
+        
+        $$
+        V_{b i}=\frac{k T}{q} \ln \left(\frac{8.0 \times 10^{16} \mathrm{~cm}^{-3} \times 1.0 \times 10^{16} \mathrm{~cm}}{\left(1.45 \times 10^{10} \mathrm{~cm}^{-3}\right)^2}\right).
+        $$
+
+        At room temperature $(T=300 K)$, this simplifies to:
+        
+        $$
+        V_{b i}=0.0259 \mathrm{~V} \times \ln \left(3.01 \times 10^{24}\right)=0.74 \mathrm{~V}
+        $$
+        
+        So, the built-in potential across the pnjunction is approximately $0.74 \mathrm{~V}$.
+        
+        \item \textbf{Q.} Calculate the density of the minority carriers at the edge of the space-charge region for a forward bias of 0.3V. \textbf{A.} The density of minority carriers at the edge of the space-charge region for a forward bias voltage $V$ can be calculated using the formula:
+        
+        $$
+        n_p=n_{p 0} e^{q V / k T}
+        $$
+        
+        for the $\mathrm{p}$-side, and
+        
+        $$
+        p_n=p_{n 0} e^{q V / k T}
+        $$
+        
+        for the $\mathrm{n}$-side, where
+        
+        $$
+        n_{p 0}
+        $$
+        
+        and $p_{n 0}$ are the equilibrium minority carrier concentrations on the $\mathrm{p}$-side and $\mathrm{n}$-side respectively, $q$ is the elementary charge, $k$ is the Boltzmann constant, and $T$ is the temperature in Kelvin. The equilibrium minority carrier concentrations can be calculated using the formula:
+        
+        $$
+        n_{p 0}=\frac{n_i^2}{N_a}
+        $$
+        
+        for the $\mathrm{p}$-side, and
+        
+        $$
+        p_{n 0}=\frac{n_i^2}{N_d}
+        $$
+        
+        for the $\mathrm{n}$-side, where $N_a$ and $N_d$ are the acceptor and donor concentrations respectively, and $n_i$ is the intrinsic carrier concentration. Substituting the given values into these formulas, we get:
+        
+        $$
+        n_{p 0}=\frac{\left(1.45 \times 10^{10} \mathrm{~cm}^{-3}\right)^2}{8.0 \times 10^{16} \mathrm{~cm}^{-3}}=2.6 \times 10^3 \mathrm{~cm}^{-3}
+        $$
+        
+        and
+        
+        $$
+        p_{n 0}=\frac{\left(1.45 \times 10^{10} \mathrm{~cm}^{-3}\right)^2}{1.0 \times 10^{16} \mathrm{~cm}^{-3}}=2.1 \times 10^4 \mathrm{~cm}^{-3}
+        $$
+        
+        For a forward bias of $0.3 \mathrm{~V}$, we get:
+        
+        $$
+        n_p=\left(2.6 \times 10^3 \mathrm{~cm}^{-3}\right) e^{(0.3 V)\left(1.6 \times 10^{-19} \mathrm{C}\right) /\left(1.38 \times 10^{-23} J\right)}
+        $$
+        
+        and
+        
+        $$
+        p_n=\left(2.1 \times 10^4 \mathrm{~cm}^{-3}\right) e^{(0.3 V)\left(1.6 \times 10^{-19} \mathrm{C}\right) /\left(1.38 \times 10^{-23} J\right)}
+        $$
+        
+        So, at a forward bias of $0.3 \mathrm{~V}$, the density of minority carriers at the edge of the space-charge region is approximately $7.5 \times 10^{4}$ $\mathrm{cm}^{-3}$ on the $p$-side and $6.1 \times 10^{5} \mathrm{~cm}^{-3}$ on the n-side.
+        
+        \item \textbf{Q.} Under bias condition, calculate and plot the minority and majority carrier currents as a function of distance from the junction. \textbf{A.} Under bias conditions, the minority and majority carrier currents in a pn-junction diode can be calculated using the following formulas:
+        For the minority carrier current on the $\mathrm{p}$ side:
+        $$
+        J_p=q D_p \frac{u\left(r l_p\right)}{d x}
+        $$
+        where
+        $q$
+        is the elementary charge,
+        $D_p$
+        is the diffusion coefficient of holes, and
+        $n_p$
+        is the density of electrons (minority carriers) on the $p$-side.
+        For the minority carrier current on the $\mathrm{n}$ side:
+        $$
+        J_n=q D_n \frac{u\left(\mu_n\right)}{d x}
+        $$
+        where
+        $D_n$
+        is the diffusion coefficient of electrons, and
+        $p_n$
+        is the density of holes (minority carriers) on the $\mathrm{n}$-side.
+        
+        For the majority carrier current on the $\mathrm{p}$ side:
+        $$
+        J_p=q \mu_p p_p E
+        $$
+        where
+        $\mu_p$
+        is the mobility of holes,
+        $$
+        p_p
+        $$
+        is the density of holes (majority carriers) on the p-side, and
+        $E$ is the electric field.
+        For the majority carrier current on the $\mathrm{n}$ side:
+        $$
+        J_n=q \mu_n n_n E
+        $$
+        where
+        $$
+        \mu_n
+        $$
+        is the mobility of electrons,
+        $$
+        n_n
+        $$
+        is the density of electrons (majority carriers) on the $\mathrm{n}$-side.
     \end{enumerate}
 
 \end{enumerate}
