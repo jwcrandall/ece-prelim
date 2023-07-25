@@ -145,7 +145,13 @@
 Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon diode that has a uniform cross section and constant doping on both sides of the \textit{pn}-junction. The diode is doped as follows: $\mathrm{N}_{\mathrm{a}}=8.0 \times 10^{16} \mathrm{~cm}^{-3}$ \textit{p}-type and $\mathrm{N}_{\mathrm{d}}=1 \mathrm{x} 10^{16} \mathrm{~cm}^{-3}$ \textit{n}-type. For this material, the minority-carrier lifetimes are: $\tau_{\mathrm{n}}=4 \times 10^{-6} \mathrm{~s}$ and $\tau_{\mathrm{p}}=1 \times 10^{-6} \mathrm{~s}$, respectively. You may assume that the effects within the space-charge region are negligible and that the minority carriers flow only by diffusion in the charge neutral regions.
 
     \begin{enumerate}
-        \item \textbf{Q.} Draw/sketch the band-diagram for this system. Also, plot the electrostatic potential, the net charge density and the corresponding electric field. \textbf{A.}
+        \item \textbf{Q.} Draw/sketch the band-diagram for this system. Also, plot the electrostatic potential, the net charge density and the corresponding electric field. \textbf{A.} Figure \ref{fig:18a_a}.
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/18a_a.png}}
+        \caption{Ideal so-called "long-base" abrupt \textit{pn}-junction band diagram. (a) Step PN junction; (b) depletion approximation; (c) space charge profile; (d) electric field from integration of $\rho / \varepsilon_s$ (Poisson's equation); (e) electric potential from integrating $-\mathscr{E}$; and (f) energy band diagram.}
+        \label{fig:18a_a}
+        \end{figure}
         
         \item \textbf{Q.} Determine the value of the built-in potential across the \textit{pn}-junction. \textbf{A.} The built-in potential across the pn junction can be determined using the formula:
         
@@ -223,53 +229,176 @@ Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon dio
         
         So, at a forward bias of $0.3 \mathrm{~V}$, the density of minority carriers at the edge of the space-charge region is approximately $7.5 \times 10^{4}$ $\mathrm{cm}^{-3}$ on the $p$-side and $6.1 \times 10^{5} \mathrm{~cm}^{-3}$ on the n-side.
         
-        \item \textbf{Q.} Under bias condition, calculate and plot the minority and majority carrier currents as a function of distance from the junction. \textbf{A.} Under bias conditions, the minority and majority carrier currents in a pn-junction diode can be calculated using the following formulas:
-        For the minority carrier current on the $\mathrm{p}$ side:
-        $$
-        J_p=q D_p \frac{u\left(r l_p\right)}{d x}
-        $$
-        where
-        $q$
-        is the elementary charge,
-        $D_p$
-        is the diffusion coefficient of holes, and
-        $n_p$
-        is the density of electrons (minority carriers) on the $p$-side.
-        For the minority carrier current on the $\mathrm{n}$ side:
-        $$
-        J_n=q D_n \frac{u\left(\mu_n\right)}{d x}
-        $$
-        where
-        $D_n$
-        is the diffusion coefficient of electrons, and
-        $p_n$
-        is the density of holes (minority carriers) on the $\mathrm{n}$-side.
+        \item \textbf{Q.} Under bias condition, calculate and plot the minority and majority carrier currents as a function of distance from the junction. \textbf{A.} Steps for solving pn junction problems under bias.
         
-        For the majority carrier current on the $\mathrm{p}$ side:
+        \begin{itemize}
+            \item[1.] Solve minority carrier diffusion equations using the boundary conditions at the edge of the depletion region and contacts to obtain the decay of the minority carrier concentrations.
+            \item[2.] Compute the minority carrier current densities in the quasi-neutral regions.
+            \item[3.] Find the solutions for the currents at the edges of the depletion region and add the current densities at each edge of the depletion region.
+        \end{itemize}
+        
+        Start with holes on the quasi-neutral n-region. To simplify the math, shift the origin to the 
+        
         $$
-        J_p=q \mu_p p_p E
+        \quad 0=D_{\mathrm{P}} \frac{d^2 \Delta p_{\mathrm{n}}}{d x^{\prime 2}}-\frac{\Delta p_{\mathrm{n}}}{\tau_{\mathrm{p}}}
+        $$ 
+        
+        n-edge: $x^{\prime} \geq 0$ shown in Figure \ref{fig:18ad_a}. Then apply boundary conditions: 
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=2.0in]{2018spring/figures/18ad_a.png}}
+        \caption{Shift origin to N edge}
+        \label{fig:18ad_a}
+        \end{figure}
+
         $$
-        where
-        $\mu_p$
-        is the mobility of holes,
+        \begin{aligned}
+        & \Delta p_{\mathrm{n}}\left(x^{\prime} \rightarrow \infty\right)=0 \\
+        & \Delta p_{\mathrm{n}}\left(x^{\prime}=0\right)=\frac{n_{\mathrm{i}}^2}{N_{\mathrm{D}}}\left(e^{q v_{\mathrm{A}} / k T}-1\right)
+        \end{aligned}
         $$
-        p_p
+
+        From our previous discussions about the solution to the diffusion equation, we already know the general form of the solution
+
         $$
-        is the density of holes (majority carriers) on the p-side, and
-        $E$ is the electric field.
-        For the majority carrier current on the $\mathrm{n}$ side:
+        \begin{aligned}
+        \Delta p_{\mathrm{n}}\left(x^{\prime}\right) &= A_1 e^{-x^{\prime} / L_{\mathrm{P}}}+A_2 e^{x^{\prime} / L_{\mathrm{P}}} \\
+        L_{\mathrm{P}} &= \sqrt{D_{\mathrm{P}} \tau_{\mathrm{p}}} \\
+        A_1 &= \Delta p_n\left(x^{\prime}=0\right)
+        \end{aligned}
         $$
-        J_n=q \mu_n n_n E
+
+        We can simplify by getting rid of $A_2$
+
         $$
-        where
+        \begin{aligned}
+        \Delta p_{\mathrm{n}}\left(x^{\prime}\right) &= \frac{n_{\mathrm{i}}^2}{N_{\mathrm{D}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) e^{-x^{\prime} / L_{\mathrm{P}}} \\
+        J_{\mathrm{P}}\left(x^{\prime}\right) &= -q D_{\mathrm{P}} \frac{d \Delta p_{\mathrm{n}}}{d x^{\prime}}\\
+        &= q \frac{D_{\mathrm{P}}}{L_{\mathrm{P}}} \frac{n_{\mathrm{P}}^2}{N_{\mathrm{D}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) e^{-x^{\prime} / L_{\mathrm{P}}}
+        \end{aligned}
         $$
-        \mu_n
+
+        Now shift the origin again and deal with the p-side of the junction shown in figure \ref{fig:18ad_b} and we get the same forms of the equations for the minority carrier concentrations and the current density:
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=2.0in]{2018spring/figures/18ad_b.png}}
+        \caption{Shift origin to P edge}
+        \label{fig:18ad_b}
+        \end{figure}
+
         $$
-        is the mobility of electrons,
+        \begin{aligned}
+        \Delta n_{\mathrm{p}}\left(x^{\prime \prime}\right) &= \frac{n_{\mathrm{i}}^2}{N_{\mathrm{A}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) e^{-x^7 / L_{\mathrm{N}}}\\
+        J_{\mathrm{N}}\left(x^{\prime \prime}\right) &= -q D_{\mathrm{N}} \frac{d \Delta n_{\mathrm{P}}}{d x^{\prime \prime}}\\
+        &= q \frac{D_{\mathrm{N}}}{L_{\mathrm{N}}} \frac{n_{\mathrm{i}}^2}{N_{\mathrm{A}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) e^{-x^{\prime} / L_{\mathrm{N}}}
+        \end{aligned}
         $$
-        n_n
+
+        Now evaluate the current at the edges of the depletion region and sum the contributions:
+
         $$
-        is the density of electrons (majority carriers) on the $\mathrm{n}$-side.
+        \begin{aligned}            
+        J_{\mathrm{N}}\left(x=-x_{\mathrm{p}}\right) &= J_{\mathrm{N}}\left(x^{\prime \prime}=0\right)\\
+        &=q \frac{D_{\mathrm{N}}}{L_{\mathrm{N}}} \frac{n_i^2}{N_{\mathrm{A}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) \text{\quad electrons}\\
+        J_{\mathrm{P}}\left(x=x_{\mathrm{n}}\right) &= J_{\mathrm{P}}\left(x^{\prime}=0\right)\\
+        &=q \frac{D_{\mathrm{P}}}{L_{\mathrm{P}}} \frac{n_i^2}{N_{\mathrm{D}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) 
+        \text{\quad holes}
+        \end{aligned}
+        $$
+
+        Finally,
+
+        $$
+        \begin{aligned}
+        I &=AJ \\
+        &=qA\left(\frac{D_{\mathrm{N}}}{L_{\mathrm{N}}} \frac{n_{\mathrm{i}}^2}{N_{\mathrm{A}}}+\frac{D_{\mathrm{P}}}{L_{\mathrm{P}}} \frac{n_{\mathrm{i}}^2}{N_{\mathrm{D}}}\right)\left(e^{q V_{\mathrm{A}} / k T}-1\right)\\
+        I &=I_0\left(e^{q V_{\mathrm{A}} / k T}-1\right) \\
+        I_0 &\equiv q A\left(\frac{D_{\mathrm{N}}}{L_{\mathrm{N}}} \frac{n_{\mathrm{i}}^2}{N_{\mathrm{A}}}+\frac{D_{\mathrm{P}}}{L_{\mathrm{P}}} \frac{n_{\mathrm{i}}^2}{N_{\mathrm{D}}}\right)
+        \end{aligned}
+        $$
+
+        So what happens to the carriers. We expect minority carrier concentrations on each side to vary with the applied bias. Due to the variations in the diffusion of carriers across the junction.
+
+        $$
+        \frac{p_p}{p_n}=e^{q V_0 / k T}
+        $$
+
+        Equilibrium hole concentrations on each side of the barrier. With bias this becomes: 
+
+        $$
+        \begin{aligned}
+        \frac{p\left(-x_{p 0}\right)}{p\left(x_{n 0}\right)}=e^{q \left(V_0-V\right)/kT} \text{\quad altered barrier} 
+        \end{aligned}
+        $$
+
+        Valid for forward and reverse bias. We assume low level injection - majority charge concentrations do not change. With low level injection, we can begin to simplify. The carrier concentrations are still changing despite the fact that we are neglecting the changes in the majority concentrations. Absolute increase of the majority concentrations means that there is an increase of the minimum concentrations $\left(p_p \text{ and } n_n\right)$ required to maintain charge neutrality. Relative changes in $p_p$ and $n_n$ vary only slightly compared to equilibrium values $p_0$ and $n_0$. Take the ratio of the concentrations with and without bias $\frac{p\left(x_{n 0}\right)}{p_n}=e^{q V / k T}$ assuming $p\left(-x_{p 0}\right)=p_p$. This equation gives us insight into the carrier concentration behavior under bias conditions. Under forward bias: the equation suggests a greatly increased hole concentration at the edge of the $n$ side. Conversely, the hole concentration under reverse bias is much smaller than the equilibrium value. Exponential increase in hole concentration at $x_{n0}$ with forward bias is an example of minority Quantitative PN Junction Current. We can determine the excess electrons and holes. Subtract the equilibrium concentrations.
+
+        $$
+        \frac{p_p}{p_n}=e^{q V_0 / k T}
+        $$
+
+        From the concentrations under bias.
+
+        $$
+        \begin{aligned}
+        \frac{p\left(x_{n 0}\right)}{p_n} &= e^{q V / k T}\\
+        \Delta p_n &= p\left(x_{n 0}\right)-p_n\\
+        &= p_n\left(e^{q V / k T}-1\right)\\
+        \Delta n_p &= n\left(-x_{p 0}\right)-n_p\prime\\
+        &=n_p\left(e^{q V / k T}-1\right)
+        \end{aligned}
+        $$
+
+        Should produce a distribution of excess holes in the $n$ material. As the holes diffuse, they recombine so the solution is identical to the diffusion equation. So we can write down the solution to the diffusion equation on either side of the junction. Excess electrons on p-side: 
+        
+        $$
+        \delta n\left(x_p\right)=\Delta n_p e^{-x_p / L_n}=n_p\left(e^{q V / k T}-1\right) e^{-x_p / L_n}
+        $$
+
+        Excess holes on $n$-side:
+
+        $$
+        \delta p\left(x_n\right)=\Delta p_n e^{-x_n / L_p}=p_n\left(e^{q V / k T}-1\right) e^{-x_n / L_p}
+        $$
+
+        
+        Now we understand the hole diffusion current at any point.
+
+        $$
+        I_p\left(x_n\right) &= -q A D_p \frac{d \delta p\left(x_n\right)}{d x_n}=q A \frac{D_p}{L_p} \Delta p_n e^{-x_n L_p}=q A \frac{D_p}{L_p} \delta p\left(x_n\right)
+        $$
+
+        Hole diffusion proportional to excess hole concentration. So what is the total current injected into the $n$-material?
+
+        $$
+        \begin{aligned}
+        I_p\left(x_n=0\right) &= \frac{q A D_p}{L_p} \Delta p_n\\
+        &=\frac{q A D_p}{L_p} p_n\left(e^{q V / k T}-1\right)\\
+        I_n\left(x_p=0\right) &=-\frac{q A D_n}{L_n} \Delta n_p\\
+        &=-\frac{q A D_n}{L_n} n_p\left(e^{q V / k T}-1\right)
+        \end{aligned}
+        $$
+
+        Minus arises from current being directed opposite to $x_p$. Take $+x$ as the reference direction, what is the total current? The total current must be the sum of the electron and hole contributions.
+
+        $$
+        I=I_p\left(x_n=0\right)-I_n\left(x_p=0\right)=\frac{q A D_p}{L_p} \Delta p_n+\frac{q A D_n}{L_n} \Delta n_p
+        $$
+
+        Which can be simplified to the Diode Equation.
+
+        $$
+        I=q A\left(\frac{D_p}{L_p} p_n+\frac{D_n}{L_n} n_p\right)\left(e^{q V / k T}-1\right)=I_0\left(e^{q V / k T}-1\right)
+        $$
+
+        In arriving at this equation we have made no assumptions as to the sign of the bias voltage, and bias may be either forward or reverse. Let's check reverse bias $\left(V=-V_r\right)$. The total current then becomes: $I=q A\left(\frac{D_p}{L_p} p_n+\frac{D_n}{L_n} n_p\right)\left(e^{-q V_r / k T}-1\right)$. If $V_r$ is larger than a few $k T / q$: $I=-q A\left(\frac{D_p}{L_p} p_n+\frac{D_n}{L_n} n_p\right)=-I_0$. But what does the diode equation imply? The current is dominated by the injection of carriers from the more heavily doped side. We can, in most cases, simplify the diode equation to include only the contribution from the more heavily doped side. There are two ways to calculate current, slope of minority carrier concentrations (shown), and steady state charge storage. Reference figure \ref{fig:18ad_c}.
+
+        \begin{figure}
+        \centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/18ad_c.png}}
+        \caption{Minority and majority carrier currents as a function of distance from the junction}
+        \label{fig:18ad_c}
+        \end{figure}
+
     \end{enumerate}
 
 \end{enumerate}
