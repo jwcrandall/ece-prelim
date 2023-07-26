@@ -71,7 +71,36 @@ function send_frame(frame):
 
         The binary exponential backoff algorithm works by choosing a random integer between 0 and $2^{\wedge} \mathrm{i}-1$, where $\mathrm{i}$ is the number of attempts so far, bounded by a maximum value. This integer is multiplied by the slot time, which is the time it takes for one bit to propagate across the maximum cable length. The resulting time is the waiting time before trying to send again. The algorithm ensures that after each collision, the probability of another collision decreases, as the stations are more likely to choose different waiting times. However, if the number of attempts exceeds a maximum value (usually 16), the station gives up and reports a failure.
 
-        \item \textbf{Q.} Describe CSMA/CA (through some pseudo code and sufficient explanation) as used in IEEE 802.11 WiFi. 
+        \item \textbf{Q.} Describe CSMA/CA (through some pseudo code and sufficient explanation) as used in IEEE 802.11 WiFi. \textbf{A.} Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by beginning transmission only after the channel is sensed to be "idle". CSMA/CA is a protocol that operates in the data link layer (Layer 2) of the OSI model 1.In IEEE 802.11 WiFi, CSMA/CA is used to improve the performance of the CSMA method by attempting to divide the channel somewhat equally among all transmitting nodes within the collision domain. The simplified algorithm of CSMA/CA is as follows :
+        \begin{enumerate}
+            \item Carrier Sense: prior to transmitting, a node first listens to the shared medium (such as listening for wireless signals in a wireless network) to determine whether another node is transmitting or not. Note that the hidden node problem means another node may be transmitting which goes undetected at this stage.
+            \item Collision Avoidance: if another node was heard, we wait for a period of time (usually random) for the node to stop transmitting before listening again for a free communications channel. Request to Send/Clear to Send (RTS/CTS) may optionally be used at this point to mediate access to the shared medium. This goes some way to alleviating the problem of hidden nodes because, for instance, in a wireless network, the Access Point only issues a Clear to Send to one node at a time. However, wireless 802.11 implementations do not typically implement RTS/CTS for all transmissions; they may turn it off completely, or at least not use it for small packets (the overhead of RTS, CTS and transmission is too great for small data transfers).
+            \item Transmission: if the medium was identified as being clear or the node received a CTS to explicitly indicate it can send, it sends the frame in its entirety. Unlike CSMA/CD, it is very challenging for a wireless node to listen at the same time as it transmits (its transmission will dwarf any attempt to listen). Continuing the wireless example, the node awaits receipt of an acknowledgement packet from the Access Point to indicate the packet was received and checksummed correctly. If such acknowledgement does not arrive in a timely manner, it assumes the packet collided with some other transmission, causing the node to enter a period of binary exponential backoff prior to attempting to re-transmit.
+        \end{enumerate}
+
+\begin{verbatim}
+    # CSMA/CA simplified pseudo-code 
+    N=1 
+    while N<= max : 
+        waitUntil(free(channel)) 
+        if correct(last_frame) : 
+          wait(channel_free_during_t >=DIFS) 
+        else: 
+          wait(channel_free_during_t >=EIFS) 
+    
+        back-off_time = int(random[0,min(255,7*(2^(N-1)))])*slotTime 
+        wait(channel free during backoff_time) 
+        # backoff timer is frozen while channel is sensed to be busy 
+        send(frame) 
+        wait(ack or timeout) 
+        if received(ack) 
+          # frame received correctly 
+          break 
+        else: 
+          # retransmission required 
+          N=N+1 
+\end{verbatim}
+        
     \end{enumerate}
     
 \item[20.] M terminals are attached by a dedicated pair of lines to a hub in a star topology (Figure \ref{fig:20q_a}). The distance from each terminal to the hub is d meters, the speed of the transmission lines is R bits/second, all frames are f length 12,500 Bytes, and the signal propagates on the line at speed of $2.5^{*} 10^{8}$ meters/second. For M=6 terminals, d=25 meters and R = 10Gbps, what is the maximum network throughput achievable when the hub is implementing slotted ALOHA?
