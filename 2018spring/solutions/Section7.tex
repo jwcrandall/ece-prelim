@@ -103,13 +103,90 @@ function send_frame(frame):
         
     \end{enumerate}
     
-\item[20.] M terminals are attached by a dedicated pair of lines to a hub in a star topology (Figure \ref{fig:20q_a}). The distance from each terminal to the hub is d meters, the speed of the transmission lines is R bits/second, all frames are f length 12,500 Bytes, and the signal propagates on the line at speed of $2.5^{*} 10^{8}$ meters/second. For M=6 terminals, d=25 meters and R = 10Gbps, what is the maximum network throughput achievable when the hub is implementing slotted ALOHA?
+\item[20.] \textbf{Q.} M terminals are attached by a dedicated pair of lines to a hub in a star topology (Figure \ref{fig:20q_a}). The distance from each terminal to the hub is d meters, the speed of the transmission lines is R bits/second, all frames are f length 12,500 Bytes, and the signal propagates on the line at speed of $2.5^{*} 10^{8}$ meters/second. For M=6 terminals, d=25 meters and R = 10Gbps, what is the maximum network throughput achievable when the hub is implementing slotted ALOHA? 
 
 \begin{figure}
 \centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/20q_a.png}}
 \caption{Star Topology}
 \label{fig:20q_a}
 \end{figure}
+
+\textbf{Theory.} Slotted ALOHA is an improved version of the pure ALOHA protocol that aims to make communication networks more efficient. In this version, the channel is divided into small, fixed-length time slots and users are only allowed to transmit data at the beginning of each time slot. This synchronization of transmissions reduces the chances of collisions between devices, increasing the overall efficiency of the network. To calculate the throughput of Slotted ALOHA let $\mathrm{T}$ be the frame time, i.e. the time required for 1 frame to be transmitted. Let $\mathrm{G}$ be the number of transmission attempts per frame time. The probability that $k$ frames are generated during the frame time is given by the Poisson distribution-
+
+$$
+P(k)=\frac{G^k e^{-G}}{k !}
+$$
+
+From this we can say that the probability that 0 frames are generated $(k=0)$ during the frame time is $e^{-G}$. In case of slotted ALOHA, the vulnerable time period for collision between two frames is equal to time duration of 1 slot, which is equal to 1 frame time, i.e. $T$. In $T$ time, average number of transmission attempts is $\mathrm{G}$. The probability that 0 frames are initiated in the vulnerable time period will be
+
+$$
+P(0)=e^{-G}
+$$
+
+The throughput, $S$, is calculated as the number of transmission attempts per frame time, $G$, multiplied by the probability of success, $P P(0)$.
+
+$$
+S=G \cdot P(0)
+$$
+
+or
+
+$$
+S=G e^{-G}
+$$
+
+The maximum throughput of Slotted ALOHA occurs when $\mathrm{G}=1$. The maximum throughput is thus
+
+$$
+S_{\max }=1 \times e^{-1}=\frac{1}{e}=0.368
+$$
+
+Thus, it can be seen that the maximum throughput is $36.8 \%$ in slotted ALOHA,which is an improvement over maximum throughput of $18.4 \%$ in pure ALOHA. Throughput $(s)=G \times e-G$. The maximum Throughput occurs at $G=1$, i.e. $S=1 / e=0.368$. Where: $\mathrm{G}=$ the offered load (or the number of packets being transmitted per time slot). The offered load is a measure of the number of nodes attempting to transmit in a given time slot. The throughput is a function of the offered load and it ranges from 0 to 1. As the offered load increases, the throughput decreases as more collisions occur, resulting in less successful transmissions. The maximum throughput is achieved when the offered load is equal to 0.37 and it is approximately 0.184. It is important to note that the above equation assumes that all the packets are of the same length and that the channel is error-free. In practice, the throughput is usually much lower than this due to a number of factors such as packet errors, channel noise, and the overhead of re transmissions.
+
+\textbf{A.} The maximum network throughput achievable can be calculated as,
+
+$$
+\rho_{\max }=\frac{1}{e} \times\left[\frac{R \mathrm{bits} / \mathrm{s}}{L \text { bits } / \text { packet }}\right]=z \text { packets } / \text { sec }
+$$
+
+For $M=6$ terminals, $d=25$ meters and $R=10 \mathrm{Gbps}$, we can calculate the offered load as follows. The time taken for a signal to travel from a terminal to the hub is 
+
+$$
+\frac{\mathrm{d}}{(2.5\times 10^{8} \si{m.s^{-1}})}
+$$ 
+
+seconds. The time taken for a frame of length $f=12500$ Bytes to be transmitted is 
+
+$$
+\frac{12500 \times 8}{R}
+$$ 
+
+seconds. The number of frames that can be transmitted per second is 
+
+$$
+\frac{\mathrm{R}}{(12500 \times 8)}
+$$
+
+frames/second. Therefore, the number of frames that can be transmitted in 
+
+$$
+\frac{\mathrm{d}}{(2.5\times 10^{8} \si{m.s^{-1}})}
+$$ 
+
+seconds is 
+
+$$
+\frac{\mathrm{R}}{(12500 \times 8)} * \frac{\mathrm{d}}{(2.5\times 10^{8} \si{m.s^{-1}})}
+$$ 
+
+frames. The offered load is the number of frames being transmitted per time slot which is equal to 
+
+$$
+\frac{1}{M}\left(\frac{\mathrm{R}}{(12500 \times 8)} * \frac{\mathrm{d}}{(2.5\times 10^{8} \si{m.s^{-1}})}\right)
+$$ 
+
+frames/time slot. Substituting M=6, $d=25$ meters and $R=10 \mathrm{Gbps}$ in the above formula gives us an offered load of approximately $\mathbf{0.0000000004}$ frames/time slot. Substituting this value in the formula for maximum throughput gives us a maximum throughput of approximately $0.00000000015$ or $1.5 \times 10^{-10}$.
+
 
 \item[21.] Consider a data link layer with the following parameters: Frame transmission time at the sender is $\mathrm{t}_\mathrm{f}=20$ microseconds. ACK or NAK transmission time at the receiver is $\mathrm{t}_\mathrm{ack} = 10$ microseconds. Link propagation delay on both directions is $\mathrm{t}_{\mathrm{prop}} = 25$ microseconds. Suppose frame processing time at both sender and receiver is negligible, i.e., $\mathrm{t}_{\mathrm{prop}] = 0$. Finally, overall round-trip probability of frame error on the link is $r=0.04$. 
 
