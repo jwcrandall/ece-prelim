@@ -71,7 +71,7 @@ function send_frame(frame):
 
         The binary exponential backoff algorithm works by choosing a random integer between 0 and $2^{\wedge} \mathrm{i}-1$, where $\mathrm{i}$ is the number of attempts so far, bounded by a maximum value. This integer is multiplied by the slot time, which is the time it takes for one bit to propagate across the maximum cable length. The resulting time is the waiting time before trying to send again. The algorithm ensures that after each collision, the probability of another collision decreases, as the stations are more likely to choose different waiting times. However, if the number of attempts exceeds a maximum value (usually 16), the station gives up and reports a failure.
 
-        \item \textbf{Q.} Describe CSMA/CA (through some pseudo code and sufficient explanation) as used in IEEE 802.11 WiFi. \textbf{A.} Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by beginning transmission only after the channel is sensed to be "idle". CSMA/CA is a protocol that operates in the data link layer (Layer 2) of the OSI model 1.In IEEE 802.11 WiFi, CSMA/CA is used to improve the performance of the CSMA method by attempting to divide the channel somewhat equally among all transmitting nodes within the collision domain. The simplified algorithm of CSMA/CA is as follows :
+        \item \textbf{Q.} Describe CSMA/CA (through some pseudo code and sufficient explanation) as used in IEEE 802.11 WiFi. \textbf{A.} Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by beginning transmission only after the channel is sensed to be "idle". CSMA/CA is a protocol that operates in the data link layer (Layer 2) of the OSI model 1.In IEEE 802.11 WiFi, CSMA/CA is used to improve the performance of the CSMA method by attempting to divide the channel somewhat equally among all transmitting nodes within the collision domain. The simplified algorithm of CSMA/CA is as follows:
         \begin{enumerate}
             \item Carrier Sense: prior to transmitting, a node first listens to the shared medium (such as listening for wireless signals in a wireless network) to determine whether another node is transmitting or not. Note that the hidden node problem means another node may be transmitting which goes undetected at this stage.
             \item Collision Avoidance: if another node was heard, we wait for a period of time (usually random) for the node to stop transmitting before listening again for a free communications channel. Request to Send/Clear to Send (RTS/CTS) may optionally be used at this point to mediate access to the shared medium. This goes some way to alleviating the problem of hidden nodes because, for instance, in a wireless network, the Access Point only issues a Clear to Send to one node at a time. However, wireless 802.11 implementations do not typically implement RTS/CTS for all transmissions; they may turn it off completely, or at least not use it for small packets (the overhead of RTS, CTS and transmission is too great for small data transfers).
@@ -188,12 +188,70 @@ $$
 frames/time slot. Substituting M=6, $d=25$ meters and $R=10 \mathrm{Gbps}$ in the above formula gives us an offered load of approximately $\mathbf{0.0000000004}$ frames/time slot. Substituting this value in the formula for maximum throughput gives us a maximum throughput of approximately $0.00000000015$ or $1.5 \times 10^{-10}$.
 
 
-\item[21.] Consider a data link layer with the following parameters: Frame transmission time at the sender is $\mathrm{t}_\mathrm{f}=20$ microseconds. ACK or NAK transmission time at the receiver is $\mathrm{t}_\mathrm{ack} = 10$ microseconds. Link propagation delay on both directions is $\mathrm{t}_{\mathrm{prop}} = 25$ microseconds. Suppose frame processing time at both sender and receiver is negligible, i.e., $\mathrm{t}_{\mathrm{prop}] = 0$. Finally, overall round-trip probability of frame error on the link is $r=0.04$. 
+\item[21.] Consider a data link layer with the following parameters: Frame transmission time at the sender is $\mathrm{t}_\mathrm{f}=20$ microseconds. ACK or NAK transmission time at the receiver is $\mathrm{t}_\mathrm{ack} = 10$ microseconds. Link propagation delay on both directions is $\mathrm{t}_{\mathrm{prop}} = 25$ microseconds. Suppose frame processing time at both sender and receiver is negligible, i.e., $\mathrm{t}_\mathrm{prop} = 0$. Finally, overall round-trip probability of frame error on the link is $r=0.04$. 
 
     \begin{enumerate}
-        \item Assume that for the Stop-and-wait ARQ scheme, the TIMEOUT at the sender is chosen optimally. What is the resulting throughput (frames/second)?
-        \item  In the Go-Back-N ARQ scheme, if the link is error free, what is the minimum window size $N$ that is able to keep the link busy?
-        \item Choose window size in Part b and now consider the link error probability $r=0.04$. What the throughput (frames/second) of the Go-Back-N ARQ scheme?
+        \item \textbf{Q.} Assume that for the Stop-and-wait ARQ scheme, the TIMEOUT at the sender is chosen optimally. What is the resulting throughput (frames/second)? \textbf{Theory.}  \textbf{A.} The throughput of the Stop-and-wait ARQ scheme can be calculated as follows:
+        
+        $$
+        \text { Throughput }=\frac{1}{2 \mathrm{RTT}}
+        $$
+        
+        where RTT is the round-trip time. The round-trip time is the sum of the transmission time of a frame and the ACK or NAK transmission time at the receiver plus the link propagation delay on both directions. In this case, we have:
+        
+        $$
+        \mathrm{RTT}=2 \mathrm{t}_{\mathrm{f}}+2 \mathrm{t}_{\mathrm{ack}}+2 \mathrm{t}_{\mathrm{prop}}=2(20+10+25)=110 \text { microseconds }
+        $$
+        
+        The probability of frame error is $r=0.04$, so the probability of no error is $1-r=0.96$. The throughput is then:
+        
+        $$
+        \text { Throughput }=\frac{1}{2 \times 110 \times 10^{-6}} \times 0.96=4363.64 \text { frames } / \text { second }
+        $$
+        
+        Therefore, the resulting throughput is approximately $\mathbf{4 3 6 3 . 6 4}$ frames/second.
+        
+        \item \textbf{Q.}  In the Go-Back-N ARQ scheme, if the link is error free, what is the minimum window size $N$ that is able to keep the link busy? \textbf{A.} The minimum window size $N$ that is able to keep the link busy in the GoBack-N ARQ scheme depends on the round-trip time (RTT) and the transmission time of a frame $\left(\mathrm{T}_{\mathrm{f}}\right)$. The link is busy if the sender can transmit $N$ frames before receiving the first acknowledgement. This means that the window size $N$ must satisfy the following inequality:
+        
+        $$
+        N \geq \frac{\mathrm{RTT}}{\mathrm{T}_{\mathrm{f}}}+1
+        $$
+        
+        The round-trip time is the sum of the transmission time of a frame and the ACK or NAK transmission time at the receiver plus the link propagation delay on both directions. In this case, we have:
+        
+        $$
+        \mathrm{RTT}=2 \mathrm{t}_{\mathrm{f}}+2 \mathrm{t}_{\mathrm{ack}}+2 \mathrm{t}_{\text {prop }}=2(20+10+25)=110 \text { microseconds }
+        $$
+        
+        The transmission time of a frame is given by:
+        
+        $$
+        \mathrm{T}_{\mathrm{f}}=\frac{\text { frame size }}{\text { link speed }}=\frac{12,500 \times 8}{10 \times 10^9}=10 \text { microseconds }
+        $$
+        
+        Therefore, the minimum window size $N$ is:
+        
+        $$
+        N \geq \frac{\mathrm{RTT}}{\mathrm{T}_{\mathrm{f}}}+1=\frac{110}{10}+1=12
+        $$
+        
+        Hence, the minimum window size $N$ that is able to keep the link busy in the Go-Back-N ARQ scheme is 12.
+        \item \textbf{Q.} Choose window size in Part b and now consider the link error probability $r=0.04$. What the throughput (frames/second) of the Go-Back-N ARQ scheme? \textbf{A.} The throughput of the Go-Back-N ARQ scheme is given by:
+        
+        $$
+        \text { Throughput }=\frac{N p(1-r)^{N-1}}{1+2 N p(1-r)^{N-1}} \times \frac{1}{\text { RTT }}
+        $$
+        
+        where $N$ is the window size, $p$ is the probability of a frame being transmitted without error, $r$ is the probability of a frame being transmitted with an error, and RTT is the round-trip time.
+        In this case, we have $N=12, p=1-r=0.96$, and RTT $=110$ microseconds. Substituting these values into the formula above, we get:
+        
+        $$
+        \begin{aligned}
+        \text { Throughput }&=\frac{12 \times 0.96 \times(1-0.04)^{12-1}}{1+2 \times 12 \times 0.96 \times(1-0.04)^{12-1}} \times \frac{1}{110 \times 10^{-6}}\\ &\approx 5.16 \text { frames } / \text { second }
+        \end{aligned}
+        $$
+        
+        Therefore, the throughput of the Go-Back-N ARQ scheme is approximately 5.16 frames/second.
     \end{enumerate}
 
 \end{enumerate}
