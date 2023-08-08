@@ -1,0 +1,1261 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\begin{enumerate}
+
+\subsection*{Section 2}
+
+\item [4.] Given \textbf{A} =
+\begin{bmatrix} 
+1 & 2 & 3 & 4 \\
+-1 & 1 & 3 & 2\\
+2 & 2 & 2 & 4 \\
+\end{bmatrix},
+\textbf{y\textsubscript{1}} =
+\begin{bmatrix} 
+2\\
+-2\\
+4\\
+\end{bmatrix},
+\textbf{y\textsubscript{2}} = 
+\begin{bmatrix} 
+1\\
+1\\
+1\\
+\end{bmatrix}
+
+\begin{enumerate}
+    \item \textbf{Q.} Find a basis for the range space of \textbf{A}, R(\textbf{A}) 
+    
+    \textbf{A.} To find the basis of the range space, also referred to as the column space, solve for the echelon form and reduced row echelon form of \textbf{A}. Start by row reducing the augmented matrix
+    
+    $$ 
+    \left[\begin{array}{ll}\textbf{A} & \textbf{b} \end{array}\right]  = \begin{bmatrix} 
+    1 & 2 & 3 & 4 & b_1\\
+    -1 & 1 & 3 & 2 & b_2\\
+    2 & 2 & 2 & 4 & b_3\\
+    \end{bmatrix}
+    $$
+    
+    $$R_1 + R_2 \Rightarrow R_2$$  
+    $$-2R_1 + R_3 \Rightarrow R_3$$
+     
+    $$
+    \begin{bmatrix} 
+    1 & 2 & 3 & 4 & b_1\\
+    0 & 3 & 6 & 6 & b_1 + b_2 \\
+    0 & -2 & -4 & -4 & -2b_1 + b_3 \\
+    \end{bmatrix}
+    $$
+    
+    $$\frac{2}{3}R_2 + R_3 \Rightarrow R_3$$
+    
+    $$
+    \left[\begin{array}{ll} \textbf{U} & \textbf{c} \end{array}\right] =
+    \begin{bmatrix} 
+    1 & 2 & 3 & 4 & b_1\\
+    0 & 3 & 6 & 6 & b_1 + b_2 \\
+    0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+    \end{bmatrix}
+    $$
+    
+    From the above echelon form matrix, if the system $\textbf{A} \textbf{x}=\textbf{b}$ has a solution, then $-\frac{4}{3}b_1 + \frac{2}{3}b_2 + b_3 = 0$. We can also continue to solve for the reduced row echelon form
+    
+    $$
+    \text{rref(\textbf{A})} = \begin{bmatrix} 
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 2 & 2 \\
+    0 & 0 & 0 & 0 \\
+    \end{bmatrix}
+    $$
+    
+    The dimension of the column space is rank $r=2$ defined by pivot columns 1 and 2. The basis (linearly independent vectors that span the space) for the range space are the pivot columns from the original matrix.
+    
+    $$
+    R(\textbf{A}) = \left\{\left[\begin{array}{r}
+    1 \\
+    -1 \\
+    2
+    \end{array}\right],\left[\begin{array}{l}
+    2 \\
+    1 \\
+    2
+    \end{array}\right]\right\}
+    $$
+    
+    \item \textbf{Q.} Find a basis for the null space \textbf{A}, N(\textbf{A}) \textbf{A.}
+    
+    \begin{aligned}
+    \textbf{A}\textbf{x} & = \textbf{0} \\
+    \text{rref(\textbf{A})} 
+    \left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    x_{4}
+    \end{array}\right] 
+    & = \left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    x_1 - x_3 & = 0\\
+    x_2 + 2x_3 + 2x_4 & = 0\\
+    \text{rref(\textbf{A})} 
+    \left[\begin{array}{l}
+    x_3 \\
+    -2x_3 -2x_4 \\
+    x_3 \\
+    x_4
+    \end{array}\right] 
+    & = \left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    \textbf{x} & = 
+    x_3 \left[\begin{array}{l}
+    1 \\
+    -2 \\
+    1 \\
+    0
+    \end{array}\right]
+    + x_4 \left[\begin{array}{l}
+    0 \\
+    -2 \\
+    0 \\
+    1
+    \end{array}\right]\\
+    \text{N}(\textbf{A}) & =\operatorname{Span}\left\{\left[\begin{array}{c}
+    1 \\
+    -2 \\
+    1 \\
+    0
+    \end{array}\right],\left[\begin{array}{c}
+    0 \\
+    -2 \\
+    0 \\
+    1
+    \end{array}\right]\right\}
+    \end{aligned}
+    
+    \item \textbf{Q.} Find the rank and nullity of \textbf{A}. 
+    
+    \textbf{A.} The rank of \textbf{A} is the number of pivots. By examining the $\text{rref(\textbf{A})}$ we see \textbf{A} has two pivot columns ($c_1$ and $c_2$) and two free columns ($c_3$ and $c_4$). Therefore the rank $r=2$. The nullity of a matrix is the dimension of the null space of \textbf{A}, also called the kernel of \textbf{A}. The nullspace dimension is calculated by subtracting the $n$ columns by the rank $r$ where $n-r = 4-2 = 2$, indicating we have 2 free variables.
+    
+    \item \textbf{Q.} For the equation \textbf{y\textsubscript{1}} = \textbf{A}\textbf{x\textsubscript{1}}, where \textbf{x\textsubscript{1}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{1}}? 
+    
+    \textbf{A.} Linear equations given by $Ax = b$ have a solution if and only if the rank of the matrix and the rank of the augmented matrix are equal. $\text{rank}(A)=\text{rank}(A|b)$. 
+
+    \begin{equation}
+    \begin{aligned}
+        \left[\begin{array}{ll} \textbf{A} & \textbf{y\textsubscript{1}}\end{array}\right] & =
+        \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 2 \\
+        -1 & 1 & 3 & 2 & -2 \\
+        2 & 2 & 2 & 4 & 4
+        \end{array}\right]\\
+        R_1 + R_2 & \Rightarrow R_2\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 2 \\
+        0 & 3 & 6 & 6 & 0 \\
+        2 & 2 & 2 & 4 & 4
+        \end{array}\right]\\
+        -2R_1 + R_3 & \Rightarrow R_3\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 2 \\
+        0 & 3 & 6 & 6 & 0 \\
+        0 & -2 & -4 & -4 & 0
+        \end{array}\right]\\
+        \frac{1}{3}R_2 & \Rightarrow R_2\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 2 \\
+        0 & 1 & 2 & 2 & 0 \\
+        0 & -2 & -4 & -4 & 0
+        \end{array}\right]\\
+        -2R_2 + R_1 & \Rightarrow R_1\\
+        & \left[\begin{array}{lllll}
+        1 & 0 & -1 & 0 & 2 \\
+        0 & 1 & 2 & 2 & 0 \\
+        0 & -2 & -4 & -4 & 0
+        \end{array}\right]\\
+        2R_2 + R_3 & \Rightarrow R_3\\
+        \operatorname{rref}(\textbf{A} \textbf{y\textsubscript{1}}) 
+        & = \left[\begin{array}{lllll}
+        1 & 0 & -1 & 0 & 2 \\
+        0 & 1 & 2 & 2 & 0 \\
+        0 & 0 & 0 & 0 & 0
+        \end{array}\right]\\
+        \text{rank}(\textbf{A}) = \text{rank}(\textbf{A} \textbf{y\textsubscript{1}}) & = 2
+    \end{aligned}
+    \end{equation}
+
+    A solution exist for \textbf{x\textsubscript{1}}.
+    
+    \item \textbf{Q.} For the equation \textbf{y\textsubscript{2}} = \textbf{A}\textbf{x\textsubscript{2}}, where \textbf{x\textsubscript{2}} is a $4\times1$ vector, does a solution exist for \textbf{x\textsubscript{2}}?
+    
+    \textbf{A.} Linear equations given by $Ax = b$ have a solution if and only if the rank of the matrix and the rank of the augmented matrix are equal. $\text{rank}(A)=\text{rank}(A|b)$. 
+
+    \begin{equation}
+    \begin{aligned}
+        \left[\begin{array}{ll} \textbf{A} & \textbf{y\textsubscript{2}}\end{array}\right] & =
+        \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 1 \\
+        -1 & 1 & 3 & 2 & 1 \\
+        2 & 2 & 2 & 4 & 1
+        \end{array}\right]\\
+        R_1 + R_2 & \Rightarrow R_2\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 1 \\
+        0 & 3 & 6 & 6 & 2 \\
+        2 & 2 & 2 & 4 & 1
+        \end{array}\right]\\
+        -2R_1 + R_3 & \Rightarrow R_3\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 1 \\
+        0 & 3 & 6 & 6 & 2 \\
+        0 & -2 & -4 & -4 & -1
+        \end{array}\right]\\
+        \frac{1}{3}R_2 & \Rightarrow R_2\\
+        & \left[\begin{array}{lllll}
+        1 & 2 & 3 & 4 & 1 \\
+        0 & 1 & 2 & 2 & \frac{2}{3} \\
+        0 & -2 & -4 & -4 & -1
+        \end{array}\right]\\
+        -2R_2 + R_1 & \Rightarrow R_1\\
+        & \left[\begin{array}{lllll}
+        1 & 0 & -1 & 0 & \frac{-1}{3} \\
+        0 & 1 & 2 & 2 & \frac{2}{3} \\
+        0 & -2 & -4 & -4 & -1
+        \end{array}\right]\\
+        2R_2 + R_3 & \Rightarrow R_3\\
+        \operatorname{rref}(\textbf{A} \textbf{y\textsubscript{1}}) = & \left[\begin{array}{lllll}
+        1 & 0 & -1 & 0 & \frac{-1}{3} \\
+        0 & 1 & 2 & 2 & \frac{2}{3} \\
+        0 & 0 & 0 & 0 & \frac{1}{3}
+        \end{array}\right]\\
+        \text{rank}(\textbf{A}) = 2 \neq \text{rank}(\textbf{A} \textbf{y\textsubscript{2}}) & = 3
+    \end{aligned}
+    \end{equation}
+
+    A solution does not exist for \textbf{x\textsubscript{2}}.
+    
+    \item \textbf{Q.} If a solution \textbf{x\textsubscript{1}} and/or \textbf{x\textsubscript{2}} exist in parts (d) and (e), find \underline{all} solutions.
+
+    \textbf{A.} The complete solution to \textbf{A}\textbf{x} = \textbf{y\textsubscript{1}} is composed of the particular and nullspace solutions. \textbf{x} = \textbf{x\textsubscript{p}} + \textbf{x\textsubscript{n}}. To solve for the null space solution consider 
+
+    $$
+    \text{rref(\textbf{A})} = \begin{bmatrix} 
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 2 & 2 \\
+    0 & 0 & 0 & 0 \\
+    \end{bmatrix}
+    $$
+
+    Solve for the special solutions to \textbf{A}\textbf{x}=0:
+
+    $$
+    \left[\begin{array}{llll}
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 2 & 2 \\
+    0 & 0 & 0 & 0 \\
+    \end{array}\right]\left[\begin{array}{l}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    x_4
+    \end{array}\right]=\left[\begin{array}{l}
+    0 \\
+    0 \\
+    0 \\
+    0
+    \end{array}\right]
+    $$
+
+    which is equivalent to 
+
+    $$
+    \begin{array}{r}
+    x_1 - x_3 = 0 \\
+    x_2 + 2x_3 + 2x_4 = 0
+    \end{array}
+    $$
+
+    Set free variables $x_3=1, x_4=0$ and substitute
+
+    $$
+    \begin{array}{r}
+    x_1 - 1 = 0 \\
+    x_1 = -1 \\
+    x_2 + 2 = 0 \\
+    x_2 = -2
+    \end{array}
+    $$
+
+    One of the special solutions is
+    
+    $$\textbf{s}_1=\left[\begin{array}{c}-1 \\ -2 \\ 1 \\ 0\end{array}\right]$$
+
+    Set free variables $x_3=0, x_4=1$ and substitute
+
+    $$
+    \begin{array}{r}
+    x_1 = 0 \\
+    x_2 + 2 = 0 \\
+    x_2 = -2 \\
+    \end{array}
+    $$
+
+    Therefore, the additional special solutions is 
+    
+    $$\textbf{s}_2=\left[\begin{array}{c}0 \\ -2 \\ 0 \\ 1\end{array}\right]$$
+    
+    Therefore, the null space  \text{N}(\textbf{A}) in $R^4$ contains all $\textbf{x}_n=c_1 \textbf{s}_1+c_2 \textbf{s}_2$.\\ 
+    
+    For the particular solution $\textbf{x}_p$, free variables $x_3=0$ and $x_4=0$, consider row echelon form $\textbf{U} x=\textbf{c}$
+
+    $$
+    \left[\begin{array}{ll} \textbf{U} & \textbf{c} \end{array}\right] =
+    \begin{bmatrix} 
+    1 & 2 & 3 & 4 & b_1\\
+    0 & 3 & 6 & 6 & b_1 + b_2 \\
+    0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+    \end{bmatrix}
+    $$
+
+    $$\frac{1}{3} R_2 \Rightarrow R_2$$  
+
+    $$
+    \begin{bmatrix} 
+    1 & 2 & 3 & 4 & b_1\\
+    0 & 1 & 2 & 2 & \frac{1}{3}b_1 + \frac{1}{3}b_2 \\
+    0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+    \end{bmatrix}
+    $$
+
+    $$R_1 - 2R_2 \Rightarrow R_1$$ 
+
+    $$
+    \begin{bmatrix} 
+    1 & 0 & -1 & 0 & \frac{1}{3}b_1 - \frac{2}{3}b_2 \\
+    0 & 1 & 2 & 2 & \frac{1}{3}b_1 + \frac{1}{3}b_2 \\
+    0 & 0 & 0 & 0 & \frac{-4}{3}b_1 + \frac{2}{3}b_2 + b_3 \\
+    \end{bmatrix}
+    $$
+
+    With the matrix in reduced row echelon form, and with $\textbf{b}=\left(b_1, b_2, b_3\right)=(2,-2,4)$, 
+
+    $$
+    \left[\begin{array}{ll}
+    \mathbf{R} & \boldsymbol{d}
+    \end{array}\right]=\left[\begin{array}{ccccc}
+    1 & 0 & -1 & 0 & 2 \\
+    0 & 1 & 2 & 2 & 0 \\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
+
+    Therefore, $\boldsymbol{d}=(2,0,0)$, and the particular solution is 
+    
+    $$\textbf{x}_p=\left[\begin{array}{c}2 \\ 0 \\ 0 \\ 0\end{array}\right]$$
+    
+    The complete solution is
+    
+    $$
+    \begin{aligned}
+    \textbf{x} & =\textbf{x}_n+\textbf{x}_p \\
+    & = c_1 \textbf{s}_1 + c_2 \textbf{s}_2 + \textbf{x}_p \\
+    & = c_1\left[\begin{array}{c}
+    -1 \\
+    -2 \\
+    1 \\
+    0
+    \end{array}\right]+c_2\left[\begin{array}{c}
+    0 \\
+    -2 \\
+    0 \\
+    1
+    \end{array}\right]+\left[\begin{array}{c}
+    2 \\
+    0 \\
+    0 \\
+    0
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+
+\item [5.] For the system \textbf{A} =
+    \begin{bmatrix} 
+	-1 & 8\\
+	0.5 & -1\\
+	\end{bmatrix},
+	\textbf{b} =
+	\begin{bmatrix} 
+	1\\
+	0.5\\
+	\end{bmatrix},
+	\textbf{c} = 
+	\begin{bmatrix} 
+	-1 & 1
+	\end{bmatrix}
+	
+	\begin{enumerate}
+	    \item \textbf{Q.} Design a state observer; \textbf{A.} State observer matrix
+
+        $$
+        \textbf{Q}_O=\left[\begin{array}{c}
+        \textbf{c} \\
+        \textbf{c} \textbf{A} \\
+        \vdots \\
+        \textbf{c} \textbf{A}^{n-1}
+        \end{array}\right]
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_O & = \left[\begin{array}{l}
+        \textbf{c} \\
+        \textbf{c} \textbf{A}
+        \end{array}\right]_{2 \times 2} \\
+        \textbf{c} \textbf{A} &= \left[\begin{array}{ll}
+        -1 & 1
+        \end{array}\right]\left[\begin{array}{ll}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right] \\
+        \textbf{c} \textbf{A} &= \left[\begin{array}{ll}
+        1.5 & 7
+        \end{array}\right] \\
+        \textbf{Q}_O &= \left[\begin{array}{ll}
+        -1 & 1 \\
+        1.5 & 7
+        \end{array}\right] \\ 
+        |\textbf{Q}_O| &= -7 - 1.5 \\
+        & = - 8.5 \\
+        & \neq 0
+        \end{aligned}
+        $$
+
+        The determinant of the state observer matrix $\textbf{Q}_O$ is not zero, so the system is completely observable. 
+     
+	    \item \textbf{Q.} Using the state estimates from part a), find an appropriate state feedback such that the system will have a purely oscillatory response with a natural frequency of oscillation $\omega_n = 2$ radians/second. \textbf{A.} Solve for the state controller matrix
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C &= \left[\begin{array}{llll}
+        \textbf{b} & \textbf{A}\textbf{b} & \cdots &  \textbf{A}^{n-1} \textbf{b}
+        \end{array}\right] \text {. }
+        \end{aligned}
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C &= [\textbf{b} : \textbf{A}\textbf{b}] \\
+        \textbf{A} \textbf{b} &= \left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\left[\begin{array}{l}
+        1 \\
+        0.5
+        \end{array}\right] \\
+        & =\left[\begin{array}{c}
+        -5 \\
+        0
+        \end{array}\right] \\
+        \textbf{Q}_c &= \left[\begin{array}{cc}
+        1 & -5 \\
+        0.5 & 0
+        \end{array}\right] \\
+        |\textbf{Q}_C| &= 2.5\\
+        & \neq 0
+        \end{aligned}
+        $$
+
+        The determinant of the state controller matrix $\textbf{Q}_C$ is not zero, so the system is completely controllable. Solve for the characteristic polynomial 
+
+        $$
+        \begin{aligned}
+        |\lambda I-A| &= 0 \\
+        \left|\left[\lambda\left[\begin{array}{ll}
+        1 & 0 \\
+        0 & 1
+        \end{array}\right]-\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\right]\right| &=0 \\
+        \left|\left[\begin{array}{ll}
+        \lambda & 0 \\
+        0 & \lambda
+        \end{array}\right]-\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right]\right| &=0 \\
+        \left|\left[\begin{array}{ll}
+        \lambda+1 & 8 \\
+        -0.5 & \lambda+1
+        \end{array}\right]\right| &= 0 \\
+        (\lambda+1)^2+0.5 \times 8  &= 0 \\
+        \lambda^2+1+2 \lambda+4 &= 0 \\
+        x^2+2 \lambda+5 &= 0
+        \end{aligned}
+        $$
+
+        By comparing the standard 2nd order equation $\lambda^2+a_1 \lambda+a_2=0$ we define $a_1=2, a_2=5$. From the given system oscillation the poles of the system are $s_1, s_2= \pm j 2$. From the poles solve for the desired characteristic equation is 
+
+        $$
+        \begin{aligned}
+        (\lambda-j 2)(\lambda-(-j 2)) &= 0 \\
+        (\lambda-j 2)\left(\lambda+\lambda^2\right) &= 0 \\
+        \lambda^2-(j 2)^2 &= 0 \\
+        \lambda^2+2 &= 0
+        \end{aligned}
+        $$
+
+        Compare the standard equation $\lambda^2+\alpha_1 \lambda+\alpha_2=0$ and determine $\alpha_1=0, \alpha_2=2$. Solve for the inverse of the state controller matrix
+
+        $$
+        \begin{aligned}
+        \textbf{Q}_C^{-1} & =\left[\begin{array}{cc}
+        1 & -5 \\
+        0.5 & 0
+        \end{array}\right]^{-1} \\
+        & =\frac{\text { Adjoint } \textbf{Q}_c}{\text { det } \textbf{Q}_C} \\
+        & =\frac{1}{+2.5}\left[\begin{array}{ll}
+        0 & 5 \\
+        -0.5 & 1
+        \end{array}\right] \\
+        & =\left[\begin{array}{cc}
+        0 & 2 \\
+        -0.2 & 0.4
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the transformation vector
+
+        $$
+        \begin{aligned}
+        \textbf{P}_1 &= \left[\begin{array}{llll}
+        0 & 0 & \cdots & 1
+        \end{array}\right]_{1 \times n} \textbf{Q}_c^{-1} \\
+        &=\left[\begin{array}{ll}
+        0 & 1
+        \end{array}\right]_{1 \times 2}\left[\begin{array}{cc}
+        0 & 2 \\
+        -0.2 & 0.4
+        \end{array}\right]_{2 \times 2} \\
+        &=[0 \times 0+(1 \times-0.2) \quad (0 \times 2+1 \times 0.4)] \\
+        &=\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the transformation matrix 
+
+        $$
+        \textbf{P}_C=\left[\begin{array}{cc}
+        \textbf{P}_1 \\
+        \textbf{P}_1 \textbf{A} \\
+        \vdots \\
+        \textbf{P}_1 \textbf{A}^{n-1}
+        \end{array}\right]
+        $$
+
+        where $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{P}_C & =\left[\begin{array}{l}
+        \textbf{P}_1 \\
+        \textbf{P}_1 \textbf{A}
+        \end{array}\right] \\
+        \textbf{P}_1 & =\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right] \\
+        \textbf{P}_1 \textbf{A} & =\left[\begin{array}{ll}
+        -0.2 & 0.4
+        \end{array}\right]\left[\begin{array}{cc}
+        -1 & -8 \\
+        0.5 & -1
+        \end{array}\right] \\
+        & =[-0.2 \times-1)+(0.0 \times 0.5) \quad (-0.2 \times-8)+(0.4 \times-1)] \\
+        & =\left[\begin{array}{ll}
+        0.4 & 1.2
+        \end{array}\right] \\
+        \textbf{P}_C & =\left[\begin{array}{ll}
+        -0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right]
+        \end{aligned}
+        $$
+
+        Solve for the state feedback matrix
+
+        $$
+        \textbf{K}_f=\left[\begin{array}{llll}
+        \alpha_n-a_n & \alpha_{n-1}-\alpha_{n-1} & \cdots & \alpha_1-a_1
+        \end{array}\right] \textbf{P}_c
+        $$
+
+        when $n=2$
+
+        $$
+        \begin{aligned}
+        \textbf{K}_f & =\left[\begin{array}{ll}
+        a_2-a_2 & \alpha_1-a_1
+        \end{array}\right] \textbf{P}_c \\
+        & =\left[\begin{array}{ll}
+        2-5 & 0-2
+        \end{array}\right]\left[\begin{array}{cc}
+        -0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right] \\
+        & =\left[\begin{array}{ll}
+        -3 & -2
+        \end{array}\right]\left[\begin{array}{ll}
+        0.2 & 0.4 \\
+        0.4 & 1.2
+        \end{array}\right] \\
+        & =\left[\begin{array}{ll}
+        -0.2 & -3.6
+        \end{array}\right]
+        \end{aligned}
+        $$
+	\end{enumerate}
+	
+\item [6.] Consider a system with a transfer function 
+$$\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$$
+Is it possible, using \underline{state feedback} to change it to (a) and or (b). If yes, do it. Are the resulting systems controllable? observable? If no, explain why not.
+
+\begin{enumerate}
+    \item \textbf{Q.} $\mathrm{G}(s)=\frac{(s-5)}{(s+1)(s+4)}$?
+    \textbf{A.} a.) If the closed-loop dynamics can be represented by the state space equation 
+    
+    $$\dot{x} = \mathbf{A} x + \mathbf{B} u$$
+    
+    with output equation 
+    
+    $$y = \mathbf{C} x + \mathbf{D} u$$ 
+    
+    then the poles of the system transfer function are the roots of the characteristic equation given by 
+    
+    $$|s \mathbf{I}-\mathbf{A}|=0.$$ 
+    
+    Full state feedback (FSF), or pole placement, is utilized by commanding the input vector $u$. Consider an input proportional (in the matrix sense) to the state vector, $u=-\mathbf{K} x$. Substituting into the state space equations above, we have
+    
+    $$
+    \begin{aligned}
+    \dot{x} &= (\mathbf{A}-\mathbf{B K}) x \\
+    {y} &= (\mathbf{C}-\mathbf{D K}) x.
+    \end{aligned}
+    $$
+    
+    The poles of the FSF system are given by the characteristic equation of the matrix $\mathbf{A}-\mathbf{B K}$,
+    
+    $$
+    |s \mathbf{I}-(\mathbf{A}-\mathbf{B K})|=0.
+    $$
+    
+    Comparing the terms of this equation with those of the desired characteristic equation yields the values of the feedback matrix $\mathbf{K}$ which force the closed-loop eigenvalues to the pole locations specified by the desired characteristic equation. Start by converting the given transfer function $\mathrm{G}(s)$ into controllable canonical form.
+    
+    $$
+    \begin{aligned}
+    \frac{Y(s)}{U(s)} &= \frac{b_o s^n+b_1 s^{n-1}+\cdots+b_{n-1} s+b_n}{s^n+a_1 s^{n-1}+\cdots+a_{n-1} s+a_n}\\
+    G(s) &= \frac{s^2 - 7s + 10}{s^3+2 s^2-11 s-12}\\
+    \left[\begin{array}{c}
+    \dot{x}_1 \\
+    \dot{x}_2 \\
+    \vdots \\
+    \dot{x}_{n-1} \\
+    \dot{x}_n
+    \end{array}\right] &= \left[\begin{array}{ccccc}
+    0 & 1 & 0 & \cdots & 0 \\
+    0 & 0 & 1 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \cdots & \vdots \\
+    0 & 0 & 0 & \cdots & 1 \\
+    -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
+    \end{array}\right]\left[\begin{array}{c}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_{n-1} \\
+    x_n
+    \end{array}\right]+\left[\begin{array}{c}
+    0 \\
+    0 \\
+    \vdots \\
+    0 \\
+    1
+    \end{array}\right] u\\
+    \dot{x} &= \left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    12 & 11 & -2
+    \end{array}\right] x + \left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] u \\
+    y &= \left[\begin{array}{lllll}
+    b_n-a_n b_o & b_{n-1}-a_{n-1} b_o & \ldots & b_2-a_2 b_o & b_1-a_1 b_o
+    \end{array}\right]\left[\begin{array}{c}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_{n-1} \\
+    x_n
+    \end{array}\right]+b_o u \\
+    y &= \left[\begin{array}{lll}
+    10 & -7 & 1
+    \end{array}\right] x
+    \end{aligned}
+    $$
+    
+    The original transfer function $G(s)$ has open-loop poles at $s=-1$, $s=3$, and $s=-4$. These poles are the eigenvalues of the $\mathbf{A}$ matrix and they are the roots of $|s \mathbf{I}-\mathbf{A}|$. To change the transfer function into the desired form the system eigenvalues need to be located at $s=-1$, $s=2$, and $s=-4$, which are not the poles we currently have. The desired characteristic equation is then  
+    
+    $$(s-2)(s+1)(s+4) = s^3+3 s^2-6 s-8$$. 
+    
+    The full state feedback (FSF), or pole placement, controlled system characteristic equation, where $\mathbf{K}=\left[\begin{array}{lll}k_1 & k_2 & k_3 \end{array}\right]$, is
+    
+    $$
+    \begin{aligned}
+    |s \mathbf{I}-(\mathbf{A}-\mathbf{B K})| &= \left|\left[\begin{array}{ccc}
+    s & 0 & 0 \\
+    0 & s & 0 \\
+    0 & 0 & s
+    \end{array}\right] - \left(\left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    12 & 11 & -2
+    \end{array}\right] - \left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] \left[\begin{array}{lll}
+    k_1 & k_2 & k_3
+    \end{array}\right] \right) \right| \\
+    & = \left|\left[\begin{array}{ccc}
+    s & 0 & 0 \\
+    0 & s & 0 \\
+    0 & 0 & s
+    \end{array}\right] - \left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    12 - k_1 & 11 - k_2 & -2 - k_3
+    \end{array}\right] \right| \\
+    & = \left| \left[\begin{array}{ccc}
+    s & 1 & 0 \\
+    0 & s & 1 \\
+    k_1 - 12 & k_2 - 11 & s + k_3 + 2
+    \end{array}\right]\right| \\
+    & = s \left|\left[\begin{array}{cc}
+    s & 1 \\
+    k_2-11 & s+k_3+2
+    \end{array}\right]\right| \\
+    & + 1 \left|\left[\begin{array}{cc}
+    0 & 1 \\
+    k_1-12 & s+k_3+2
+    \end{array}\right]\right| \\
+    & + 0 \left|\left[\begin{array}{cc}
+    0 & s \\
+    k_1-12 & k_2-11
+    \end{array}\right]\right| \\
+    & = s(s^2 + k_3s + 2s) - s(k_2-11)) - (k_1-12) \\
+    & = s^3 + (2+k_3)s^2 + (11-k_2)s + (12-k_1)
+    \end{aligned}
+    $$        
+    
+    Using the poles of the FSF system given by the characteristic equation of the matrix we change the transfer function to
+    
+    $$
+    G(s)=\frac{(s-2)(s-5)}{s^3 + (2+k_3)s^2 + (11-k_2)s + (12-k_1)}
+    $$
+    
+    Solve for the gain vector $\mathbf{K}$ by comparing the FSF system characteristic equation $s^3 + (2+k_3)s^2 + (11-k_2)s + (12-k_1)$ with the desired characteristic equation $s^3+3 s^2-6 s-8$. 
+    
+    $$
+    \begin{aligned}
+    2+k_3 = 3\\
+    11-k_2 = -6\\
+    12-k_1 = -8
+    \end{aligned}
+    $$
+    
+    $\mathbf{K} = \left[\begin{array}{lll}4 & 5 & 1\end{array}\right]$ changes the transfer function to the desired value. 
+    
+    
+    $$
+    \begin{aligned}
+    G(s) &= \frac{(s-2)(s-5)}{s^3+\left(2+1\right) s^2+\left(-11+5\right) s+\left(-12+4\right)}\\
+    &= \frac{(s-2)(s-5)}{s^3 + 3s^2 - 6s -8}\\
+    &= \frac{(s-2)(s-5)}{(s-2)(s+1)(s+4)}\\
+    &= \frac{(s-5)}{(s+1)(s+4)}
+    \end{aligned}
+    $$
+    
+    Use the CCF (Controllable Canonical Form) to check the controllability. 
+    
+    $$
+    \begin{aligned}
+    G(s) &= \frac{s-5}{s^2+5s+4}\\
+    \dot{x}(t) & =\underbrace{\left[\begin{array}{ccc}
+    0 & 1 \\
+    -a_0 & -a_1
+    \end{array}\right]}_{A_c}x(t)+\underbrace{\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right]}_{B_c} u(t) \\
+    & =\left[\begin{array}{cc}
+    0 & 1 \\
+    -4 & -5
+    \end{array}\right]x(t)+\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right] u(t) \\
+    y(t) & =\underbrace{\left[\begin{array}{ll}
+    b_0 & b_1
+    \end{array}\right]}_{C_c}x(t)\\
+    & =\left[\begin{array}{ll}
+    -5 & 1
+    \end{array}\right]x(t)
+    \end{aligned}
+    $$
+    
+    The rank of
+    
+    $$
+    \begin{aligned}  
+    Q_c &= \left[B A B A^2 B \ldots A^{n-1} B\right]\\
+    &= \left[\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right] \left[\begin{array}{cc}
+    0 & 1 \\
+    -4 & -5
+    \end{array}\right] \left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right] \right]\\
+    & = \left[\begin{array}{cc}
+    0 & 1 \\
+    1 & -5
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    is 2 which is the same as the rank of $A_c$, therefor the system is Controllable. Use the OCF (Observable Canonical form) to check the observability.
+    
+    $$
+    \begin{aligned}
+    G(s) &= \frac{s-5}{s^2+5s+4}\\
+    \dot{x}(t) &= \underbrace{\left[\begin{array}{ll}
+    -a_1 & 1 \\
+    -a_0 & 0
+    \end{array}\right]}_{A_o} x(t)+\underbrace{\left[\begin{array}{l}
+    b_1 \\
+    b_0
+    \end{array}\right]}_{B_0} u(t) \\
+    \dot{x}(t) &= \left[\begin{array}{lll}
+    -5 & 1 \\
+    -4 & 0
+    \end{array}\right] x(t) + \left[\begin{array}{l}
+    1 \\
+    -5
+    \end{array}\right] u(t) \\
+    y(t) &= \underbrace{\left[\begin{array}{lll}
+    1 & 0
+    \end{array}\right]}_{C_o} x(t) \\
+    y(t) &= \left[\begin{array}{ll}
+    1 & 0
+    \end{array}\right] x(t)
+    \end{aligned}
+    $$
+    
+    The rank of
+    
+    $$
+    \begin{aligned}
+    Q_o &= \left[C^T A^T C^T\left(A^2\right)^T C^2 \ldots\left(A^{n-1}\right)^T C^T\right]\\
+    &= \left[ \left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right] \left[\begin{array}{ll}
+    -5 & -4 \\
+    1 & 0
+    \end{array}\right] \left[\begin{array}{l}
+    1 \\ 0
+    \end{array}\right] \right] \\
+    & = \left[\begin{array}{ll}
+    1 & -5 \\
+    0 & 1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    is 2 which is the same as $A_o$, and therefor the system is Observable.
+    
+    \item \textbf{Q.} $\mathrm{G}(s)=\frac{s-5}{(s+1)(s+3)(s+4)}$? \textbf{A.} To find the state-space representation of the transfer function $\mathrm{G}(s)=\frac{(s-2)(s-5)}{(s+1)(s-3)(s+4)}$, we can start by writing it in the following form:
+    
+    $$
+    \mathrm{G}(s)=\frac{b_2 s^2+b_1 s+b_0}{a_3 s^3+a_2 s^2+a_1 s+a_0}=\frac{s^2-7s+10}{s^3-2s^2-5s-12}
+    $$
+    
+    where $b_2=1, b_1=-7, b_0=10, a_3=1, a_2=-2, a_1=-5$, and $a_0=-12$. The controllable-canonical form is as follows:
+    
+    $$
+    \begin{aligned}
+    A &= \left[\begin{array}{cccccc}
+    -a_1 & -a_2 & -a_3 & \cdots & -a_{n-1} & -a_n \\
+    1 & 0 & 0 & \cdots & 0 & 0 \\
+    0 & 1 & 0 & \cdots & 0 & 0 \\
+    0 & 0 & 1 & \cdots & 0 & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & \cdots & 1 & 0
+    \end{array}\right] = \left[\begin{array}{ccc}
+    2 & 5 & 12 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right] \\
+    B &= \left[\begin{array}{c}
+    1 \\
+    0 \\
+    \vdots \\
+    0
+    \end{array}\right] = \left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right] \\
+    C &= \left[\begin{array}{lllll}
+    b_1 & b_2 & b_3 & \cdots & b_n
+    \end{array}\right] = \left[\begin{array}{lll}
+    1 & -7 & 10
+    \end{array}\right] \\
+    D &= \left[b_0\right] = \left[\begin{array}{ll}
+    0
+    \end{array}\right]\\
+    \end{aligned}
+    $$
+    
+    Next, we need to find the state feedback gain matrix $\mathrm{K}$ that will place the closed-loop poles of the system at the desired locations. The closed-loop transfer function of the system with state feedback is given by:
+    
+    $$
+    \mathrm{G}_{\text {closed }}(s)=\frac{\mathrm{G}(s) \mathrm{K}}{1+\mathrm{G}(s) \mathrm{K}}
+    $$
+    
+    where $\mathrm{G}(s)$ is the original transfer function of the system. The desired closed-loop poles are $-1,-3$, and $-4$. Consider a linear continuous-time invariant system with a state-space representation
+    
+    $$
+    \begin{aligned}
+    \dot{x}(t) & =A x(t)+B u(t)\\
+    y(t) & =C x(t)
+    \end{aligned}
+    $$
+    
+    where $x$ is the state vector, $U$ is the input vector, and $A, B$ and $C$ are matrices of compatible dimensions that represent the dynamics of the system. Consider
+    
+    $$
+    \begin{aligned}
+    \dot{x} &= \left[\begin{array}{ccc}
+    2 & 5 & 12 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right] x+\left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right] u
+    \end{aligned}
+    $$
+    
+    Then
+    
+    $$
+    \begin{aligned}
+    \operatorname{det}(s I-A) &= \operatorname{det}\left(\left[\begin{array}{ccc}
+    s & 0 & 0 \\
+    0 & s & 0 \\
+    0 & 0 & s
+    \end{array}\right] - \left[\begin{array}{ccc}
+    2 & 5 & 12 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right] \right)\\
+    &= \operatorname{det}\left(\left[\begin{array}{ccc}
+    s-2 & -5 & -12 \\
+    -1 & s & 0 \\
+    0 & -1 & s
+    \end{array}\right] \right)\\
+    & =(s-2)\left|\begin{array}{cc}
+    s & 0 \\
+    -1 & s
+    \end{array}\right|+5\left|\begin{array}{cc}
+    -1 & 0 \\
+    0 & s
+    \end{array}\right|-12 \left|\begin{array}{cc}
+    -1 & s \\
+    0 & -1
+    \end{array}\right|\\
+    & =(s-2)\left(s^2\right)+5(-1)(s)-12(-1)(-1) \\
+    & =s^3-2 s^2-5 s - 12
+    \end{aligned}
+    $$
+    
+    Define $u= -K x = -\left[\begin{array}{lll}k_1 & k_2 & k_3 \end{array}\right] x$, then
+    
+    $$
+    \begin{aligned}            
+    A_{c l}&=A-B K\\
+    &=\left[\begin{array}{ccc}
+    2 & 5 & 12 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right]-\left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right]\left[\begin{array}{lll}
+    k_1 & k_2 & k_3
+    \end{array}\right]\\
+    &=\left[\begin{array}{ccc}
+    2-k_1 & 5-k_2 & 12-k_3 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    So then we have that
+    
+    $$
+    \begin{aligned}
+    \operatorname{det}\left(s I-A_{c l}\right) &= \operatorname{det}\left(\left[\begin{array}{ccc}
+    s & 0 & 0 \\
+    0 & s & 0 \\
+    0 & 0 & s
+    \end{array}\right] - \left[\begin{array}{ccc}
+    2-k_1 & 5-k_2 & 12-k_3 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+    \end{array}\right] \right)\\
+    &=\operatorname{det}\left(\left[\begin{array}{ccc}
+    s-\left(2-k_1\right) & -5+k_2 & -12+k_3 \\
+    -1 & s & 0 \\
+    0 & -1 & s
+    \end{array}\right]\right) \\
+    &=\left(s-\left(2-k_1\right)\right) \operatorname{det}\left(\left[\begin{array}{cc}
+    s & 0 \\
+    -1 & s
+    \end{array}\right]\right)\\
+    &+\left(-5+k_2\right) \operatorname{det}\left(\left[\begin{array}{cc}
+    -1 & 0 \\
+    0 & s
+    \end{array}\right]\right)\\
+    &+\left(-12+k_3\right) \operatorname{det}\left(\left[\begin{array}{cc}
+    -1 & s \\
+    0 & -1
+    \end{array}\right]\right) \\
+    & = \left(s-\left(2-k_1\right)\right)\left(s^2\right)+\left(-5+k_2\right)(-s)+\left(-12+k_3\right)(1)\\
+    & = s^3 + (k_1-2)s^2 + (-k_2 + 5)s + (k_3 - 12)\\
+    & = 0
+    \end{aligned}
+    $$
+    
+    Thus, by choosing $k_1$, $k_2$, and $k_3$ we can put $\lambda_i\left(A_{c l}\right)$ anywhere in the complex plane (assuming complex conjugate pairs of poles). To put the poles at $-1, 3$, and $-4$, compare the desired characteristic equation
+    
+    $$
+    (s+1)(s-3)(s+4)= s^3 + 2s^2 - 11s - 12 = 0
+    $$
+    
+    with the closed-loop one
+    
+    $$
+    s^3 + (k_1-2)s^2 + (-k_2 + 5)s + (k_3 - 12) = 0
+    $$
+    
+    to conclude that
+    
+    $$
+    \left.\begin{array}{c}
+    k_1-3 = 2 \\
+    -k_2 + 5 = -11 \\
+    k_3 - 12 = -12
+    \end{array}\right\} \begin{aligned}
+    & k_1 = 5 \\
+    & k_2 = 16 \\
+    & k_3 = 0
+    \end{aligned}
+    $$
+    
+    so that $K=\left[\begin{array}{lll}5 & 6 & 0\end{array}\right]$, which is called Pole Placement. Use the CCF (Controllable Canonical Form) to check the controllability. 
+    
+    $$
+    \begin{aligned}
+    G(s) &= \frac{s-5}{(s+1)(s+3)(s+4)}\\
+    &= \frac{s-5}{s^3+8 s^2+19 s+12}\\
+    \dot{x}(t) & =\underbrace{\left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -a_0 & -a_1 & -a_2
+    \end{array}\right]}_{A_c}x(t)+\underbrace{\left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right]}_{B_c} u(t) \\
+    & =\left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -12 & -19 & -8
+    \end{array}\right]x(t)+\left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] u(t) \\
+    y(t) & =\underbrace{\left[\begin{array}{lll}
+    b_0 & b_1 & b_2
+    \end{array}\right]}_{C_c}x(t)\\
+    & =\left[\begin{array}{lll}
+    -5 & 1 & 0
+    \end{array}\right]x(t)
+    \end{aligned}
+    $$
+    
+    The rank of
+    
+    $$
+    \begin{aligned}  
+    Q_c &= \left[B A B A^2 B \ldots A^{n-1} B\right]\\
+    A^2 & = \left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -12 & -19 & -8
+    \end{array}\right] \left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -12 & -19 & -8
+    \end{array}\right] \\
+    & = \left[\begin{array}{ccc}
+    0 & 0 & 1 \\
+    -12 & -19 & -8 \\
+    96 & 140 & 45
+    \end{array}\right]\\
+    Q_c &= \left[\left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] \left[\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -12 & -19 & -8
+    \end{array}\right] \left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] \left[\begin{array}{ccc}
+    0 & 0 & 1 \\
+    -12 & -19 & -8 \\
+    96 & 140 & 45
+    \end{array}\right] \left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] \right]\\
+    & = \left[\begin{array}{ccc}
+    0 & 0 & 1 \\
+    0 & 1 & -8 \\
+    1 & -8 & 45
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    is 3 which is the same as the rank of $A_c$, therefor the system is Controllable. Use the OCF (Observable Canonical form) to check the observability.
+    
+    $$
+    \begin{aligned}
+    G(s) &= \frac{s-5}{(s+1)(s+3)(s+4)}\\
+    &= \frac{s-5}{s^3+8 s^2+19 s+12}\\
+    \dot{x}(t) &= \underbrace{\left[\begin{array}{lll}
+    -a_2 & 1 & 0 \\
+    -a_1 & 0 & 1 \\
+    -a_0 & 0 & 0
+    \end{array}\right]}_{A_o} x(t)+\underbrace{\left[\begin{array}{l}
+    b_2 \\
+    b_1 \\
+    b_0
+    \end{array}\right]}_{B_o} u(t) \\
+    \dot{x}(t) &= \left[\begin{array}{lll}
+    -8 & 1 & 0 \\
+    -19 & 0 & 1 \\
+    -12 & 0 & 0
+    \end{array}\right] x(t) + \left[\begin{array}{l}
+    0 \\
+    1 \\
+    -5
+    \end{array}\right] u(t) \\
+    y(t) &= \underbrace{\left[\begin{array}{lll}
+    1 & 0 & 0
+    \end{array}\right]}_{C_o} x(t) \\
+    y(t) &= \left[\begin{array}{lll}
+    1 & 0 & 0
+    \end{array}\right] x(t)
+    \end{aligned}
+    $$
+    
+    The rank of
+    
+    $$
+    \begin{aligned}
+    Q_o &= \left[C^T A^T C^T\left(A^2\right)^T C^2 \ldots\left(A^{n-1}\right)^T C^T\right]\\
+    A^2 &= \left[\begin{array}{lll}
+    -8 & 1 & 0 \\
+    -19 & 0 & 1 \\
+    -12 & 0 & 0
+    \end{array}\right] \left[\begin{array}{lll}
+    -8 & 1 & 0 \\
+    -19 & 0 & 1 \\
+    -12 & 0 & 0
+    \end{array}\right]\\
+    & = \left[\begin{array}{ccc}
+    45 & -8 & 1 \\
+    140 & -19 & 0 \\
+    96 & -12 & 0
+    \end{array}\right] \\
+    Q_o &= \left[ \left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right] \left[\begin{array}{lll}
+    -8 & 1 & 0 \\
+    -19 & 0 & 1 \\
+    -12 & 0 & 0
+    \end{array}\right] \left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right] \left[\begin{array}{ccc}
+    45 & -8 & 1 \\
+    140 & -19 & 0 \\
+    96 & -12 & 0
+    \end{array}\right] \left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right] \right] \\
+    & = \left[\begin{array}{lll}
+    1 & -8 & 45\\
+    0 & -19 & 140 \\
+    0 & -12 & 96
+    \end{array} \right]
+    \end{aligned}
+    $$
+    is 3 which is the same as the rank of $A_o$, and therefor the system is Observable.    
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
