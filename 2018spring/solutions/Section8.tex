@@ -4,14 +4,162 @@
 
 \subsection*{Section 8: Electrical Power \& Energy}
 
-\item[22.] A three-phase 250MVA, 20kV, 60Hz salient pole synchronous machine has parameters Xd = 1.1 pu, Xq = 0.6 pu and Ra~0. The machine delivers 230MW at 0.9 lagging power factor to an infinite busbar. Calculate the excitation voltage and power angle. Draw the phasor diagram. (Hint: use per unit values and give your answers in pu).
+\item[22.] \textbf{Q.} A three-phase 250MVA, 20kV, 60Hz salient pole synchronous machine has parameters $Xd = 1.1$ pu, $Xq = 0.6$ pu and $\operatorname{Ra} \sim 0$. The machine delivers 230MW at 0.9 lagging power factor to an infinite busbar. Calculate the excitation voltage and power angle. Draw the phasor diagram. (Hint: use per unit values and give your answers in pu). 
 
-\item[23.] A wind turbine is to be designed with an electrical power output of 7.0MW. The rated upwind free wind speed is 13 m/s. Determine the length of the rotor blades and the height of the supporting tower in meters and the rotational speed of the rotor in rev/min if the tip-speed ratio whose value as 7.0 determines the maximum Power Coefficient of 0.45. Use the density of air as $\num{1.225}\unit{kg/m^3}$
-
-\item[24.] A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram.
+\textbf{Theory.} A Salient Pole Synchronous Generator, is distinguished from a round rotor machine by constructional features of field poles which project with a large interpolar air gap. This type of construction is commonly employed in machines coupled to hydroelectric turbines which are inherently slow-speed ones so that the Salient Pole Synchronous Generator has multiple pole pairs as different from machines coupled to high-speed steam turbines (3,000/1,500 rpm) which have a two- or four-pole structure. Salient Pole Synchronous Generator analysis is made through the two-reaction theory. In a salient-pole rotor synchronous machine, the air-gap is highly non-uniform. Consider a synchronous machine having a 2-pole salient-pole rotor rotating in the anti-clockwise direction within a 2-pole stator, as shown in Figure \ref{fig:22a_a}. 
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=4.0in]{figures/2018s/24q_a.png}}
+\centering\fbox{\includegraphics[width=4.0in]{2018spring/figures/22a_a.png}}
+\caption{Salient Pole Synchronous Generator}
+\label{fig:22a_a}
+\end{figure}
+
+In Figure \ref{fig:22a_a}, the axis shown along the axis of the rotor is known as direct axis or $d$-axis and the axis perpendicular to the $d$-axis is called quadrature axis or q-axis. It can be seen that the two small air-gaps are involved in the path of $d$ axis flux $\left(\varphi_d\right)$, thus the reluctance of the path is minimum. The q-axis flux $\left(\varphi_q\right)$ path has two large air-gaps and it is the path of maximum reluctance. The rotor magnetic field $\left(\boldsymbol{B}_r\right)$ is shown directed vertically upward in Figure \ref{fig:22a_a}. This rotor magnetic field induces an EMF in the armature (or stator winding). If a lagging power factor load is connected to the alternator, an armature current $\left(\boldsymbol{I}_{\boldsymbol{a}}\right)$ will flow. The armature current $\left(\boldsymbol{I}_a\right)$ lags behind the excitation voltage $\left(\boldsymbol{E}_f\right)$ by an angle $\Psi$ (see Figure \ref{fig:22a_a}). The armature current $\left(\boldsymbol{I}_a\right)$ produces the stator MMF $\left(F_S\right)$ which lags behind $\boldsymbol{I}_{\boldsymbol{a}}$ by $90^{\circ}$. The stator MMF $\left(F_s\right)$ produces the stator magnetic field $\left(\boldsymbol{B}_s\right)$ along the direction of $F_S$. According to Blondel's Two Reaction Theory, the stator MMF $\left(F_S\right)$ can be resolved into two components viz. the direct axis component $\left(F_d\right)$ and the quadrature axis component $\left(F_q\right)$. If $\varphi_d=$ Direct axis flux, $\varphi_q=$ Quadrature axis flux, $S_d=$ Reluctance of direct axis flux path and $S_q=$ Reluctance of quadrature axis flux path, then the Direct axis flux is
+
+$$
+\varphi_d=\frac{F_d}{S_d}
+$$
+
+and the Qaudrature axis flux is
+
+$$
+\varphi_q=\frac{F_q}{S_q}.
+$$
+
+Since $S_d<S_q$, the direct axis component $\left(F_d\right)$ of stator MMF produces more flux than the quadrature axis component $\left(F_q\right)$ of the stator MMF. The direct axis and quadrature axis components of the stator fluxes produce voltages in the stator winding by armature reaction. Let, $\boldsymbol{E}_{a d}=$ Direct axis component of armature reaction voltage and $\boldsymbol{E}_{a q}=$ Quadrature axis component of armature reaction voltage. Since each armature reaction voltage is directly proportional to respective armature current and lags behind the armature current by $90^{\circ}$, the armature reaction voltages can be written as,
+
+$$
+\boldsymbol{E}_{a d}=-j \boldsymbol{I}_d X_{a d} 
+$$
+
+$$
+\boldsymbol{E}_{a q}=-j \boldsymbol{I}_q X_{a q} 
+$$
+
+Where, $\because X_{a d}$ is the armature reaction reactance in the direct axis per phase.
+$X_{a q}$ is the armature reaction reactance in the quadrature axis per phase.
+Here, $X_{a q}<X_{a d}$ because the EMF induced by a given MMF acting on the direct axis is smaller than the EMF on the quadrature axis due to its higher reluctance.
+Now, the resultant EMF induced in the machine is,
+
+$$
+\boldsymbol{E}_R=\boldsymbol{E}_f+\boldsymbol{E}_{a d}+\boldsymbol{E}_{a q}
+$$
+
+$$
+\Rightarrow \boldsymbol{E}_R=\boldsymbol{E}_f-j \boldsymbol{I}_d X_{a d}-j \boldsymbol{I}_q X_{a q}
+$$
+
+Also, the resultant voltage $\left(\boldsymbol{E}_R\right)$ is equal to the phasor sum of terminal voltage and the voltage drops in the resistance and leakage reactance of the armature, thus,
+
+$$
+\boldsymbol{E}_R=\boldsymbol{V}+\boldsymbol{I}_a \boldsymbol{R}_a+j \boldsymbol{I}_a X_l
+$$
+
+The armature current $\left(\boldsymbol{I}_a\right)$ is split into two components, one in phase with the excitation voltage $\left(\boldsymbol{E}_f\right)$ and the other in phase quadrature to it.
+If $\boldsymbol{I}_q=$ quadrature axis component of $\boldsymbol{I}_a$ in phase with $\boldsymbol{E}_f$, $\boldsymbol{I}_d=$ direct axis component of $\boldsymbol{I}_a$ lagging $\boldsymbol{E}_f$ by $90^{\circ}$. Then, the total armature current is the phasor sum of $\boldsymbol{I}_q$ and $\boldsymbol{I}_d$, i.e.,
+
+$$
+\boldsymbol{I}_a=\boldsymbol{I}_q+\boldsymbol{I}_d
+$$
+
+Now, from equations we get,
+
+$$
+\boldsymbol{E}_f=\boldsymbol{V}+\boldsymbol{I}_a \boldsymbol{R}_a+j \boldsymbol{I}_a X_l+j \boldsymbol{I}_d X_{ad}+j \boldsymbol{I}_q X_{aq} 
+$$
+
+And, from equations we get,
+
+$$
+\begin{aligned}
+\boldsymbol{E}_f&=\boldsymbol{V}+\left(\boldsymbol{I}_q+\boldsymbol{I}_d\right) \boldsymbol{R}_a+j\left(\boldsymbol{I}_q+\boldsymbol{I}_d\right) X_l+j \boldsymbol{I}_d X_{a d}+j \boldsymbol{I}_q X_{a q}\\
+&=\boldsymbol{V}+\left(\boldsymbol{I}_q+\boldsymbol{I}_d\right) \boldsymbol{R}_a+j \boldsymbol{I}_d\left(X_l+X_{a d}\right)+j \boldsymbol{I}_q\left(X_l+X_{a q}\right)\\
+&=\boldsymbol{V}+\left(\boldsymbol{I}_q+\boldsymbol{I}_d\right) \boldsymbol{R}_a+j \boldsymbol{I}_d X_d+j \boldsymbol{I}_q X_q
+\end{aligned}
+$$
+
+Where,
+
+$$
+X_d=X_l+X_{a d} \quad \text { and } \quad X_q=X_l+X_{a q}
+$$
+
+The reactance $X_d$ is known as the direct-axis synchronous reactance and the reactance $X_q$ is called the quadrature-axis synchronous reactance.
+
+$$
+\therefore \boldsymbol{E}_f=\boldsymbol{V}+\boldsymbol{I}_a \boldsymbol{R}_a+j \boldsymbol{I}_d X_d+j \boldsymbol{I}_q X_q
+$$
+
+The final form of the voltage equation for a salient-pole synchronous generator. Reference Figure \ref{fig:22a_b} for the phasor diagram.
+
+\begin{figure}
+\centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/22a_b.png}}
+\caption{The complete phasor diagram of a salient-pole synchronous generator based on the Blondel’s Two Reaction Theory.}
+\label{fig:22a_b}
+\end{figure}
+
+\textbf{A.} Given that the machine delivers $230 \mathrm{MW}$ at 0.9 lagging power factor to an infinite busbar, we can calculate the apparent power $\mathrm{S}$ as follows:
+
+$$
+S=\frac{P}{p f}=\frac{230 M W}{0.9}=255.56 M V A
+$$
+
+Since the machine is rated at 250MVA, we can convert the apparent power to per unit (pu) as follows:
+
+$$
+S_{p u}=\frac{S}{S_{\text {base }}}=\frac{255.56 \mathrm{MVA}}{250 \mathrm{MVA}}=1.022 p u
+$$
+
+The current I can be calculated as follows:
+
+$$
+I=\frac{J}{V}=\frac{\angle \supset J . J 0 M V A}{20 k V}=12.778 \mathrm{kA}
+$$
+
+Since the power factor is lagging, the current I lags the voltage $\mathrm{V}$ by an angle of $\cos ^{\wedge}-1(0.9)=25.84^{\circ}$. We can represent the current $I$ in rectangular form as follows:
+
+$$
+I=12.778 k A \angle-25.84^{\circ}=11.5 k A-j 4.5 k A
+$$
+
+Converting the current to pu, we get:
+
+$$
+I_{p u}=\frac{I}{I_{\text {base }}}=\frac{12.778 \mathrm{kA}}{12.5 \mathrm{kA}}=1.022 p u \angle-25.84^{\circ}=0.92 p u-j 0.36 p u
+$$
+
+Since $\mathrm{Ra} \sim 0$, we can ignore the armature resistance and calculate the internal voltage $\mathrm{E}$ as follows:
+
+$$
+\begin{gathered}
+E=V+j X q I q+j X d I d \\
+E=V+j X q I \sin (\theta)+j X d I V \cos (\theta)
+\end{gathered}
+$$
+
+where $\mathrm{V}$ is the terminal voltage, $\mathbf{X q}$ and $\mathbf{X d}$ are the quadrature-axis and direct-axis reactances respectively, and $I$ and $\theta$ are the magnitude and angle of the current respectively.
+Substituting the given values, we get:
+
+$$
+\begin{gathered}
+E=1+j 0.6(1.022)(-0.36)+j 1.1(1.022)(0.92) \\
+E=1+j(-0.221)+j 1.1242 \\
+E=1+j 0.9032 p u
+\end{gathered}
+$$
+
+The power angle $\delta$ can be calculated as follows:
+
+$$
+\delta=\tan ^{-1}\left(\frac{\operatorname{Im}(E)}{\operatorname{Re}(E)}\right)=\tan ^{-1}\left(\frac{0.9032}{1}\right)=41.99^{\circ}
+$$
+
+\item[23.] \textbf{Q.} A wind turbine is to be designed with an electrical power output of 7.0MW. The rated upwind free wind speed is 13 m/s. Determine the length of the rotor blades and the height of the supporting tower in meters and the rotational speed of the rotor in rev/min if the tip-speed ratio whose value as 7.0 determines the maximum Power Coefficient of 0.45. Use the density of air as $\num{1.225}\unit{kg/m^3}$ \textbf{A.}
+
+\item[24.] \textbf{Q.} A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram. \textbf{A.}
+
+\begin{figure}
+\centering\fbox{\includegraphics[width=4.0in]{2018spring/figures/24q_a.png}}
 \caption{Transient Torque Angle}
 \label{fig:24q_a}
 \end{figure}

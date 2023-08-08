@@ -191,7 +191,7 @@ frames/time slot. Substituting M=6, $d=25$ meters and $R=10 \mathrm{Gbps}$ in th
 \item[21.] Consider a data link layer with the following parameters: Frame transmission time at the sender is $\mathrm{t}_\mathrm{f}=20$ microseconds. ACK or NAK transmission time at the receiver is $\mathrm{t}_\mathrm{ack} = 10$ microseconds. Link propagation delay on both directions is $\mathrm{t}_{\mathrm{prop}} = 25$ microseconds. Suppose frame processing time at both sender and receiver is negligible, i.e., $\mathrm{t}_\mathrm{prop} = 0$. Finally, overall round-trip probability of frame error on the link is $r=0.04$. 
 
     \begin{enumerate}
-        \item \textbf{Q.} Assume that for the Stop-and-wait ARQ scheme, the TIMEOUT at the sender is chosen optimally. What is the resulting throughput (frames/second)? \textbf{Theory.}  \textbf{A.} The throughput of the Stop-and-wait ARQ scheme can be calculated as follows:
+        \item \textbf{Q.} Assume that for the Stop-and-wait ARQ scheme, the TIMEOUT at the sender is chosen optimally. What is the resulting throughput (frames/second)? \textbf{Theory} ACK -- short for acknowledgement -- refers to a signal that a device sends to indicate that data has been received successfully. The signal is sent by a receiving station (destination) to the sending station (source) after the receipt of a recognizable block of data of specific and expected size. NACK, or NAK, an abbreviation for negative acknowledgment or not acknowledged, is a signal used by computers or other devices to indicate that data transmitted over a network was received with errors or was otherwise unreadable. NACK is sometimes conflated with automatic repeat request (ARQ) or with the rejected (REJ) message, though the terms differ. Stop-and-wait ARQ, also referred to as alternating bit protocol, is a method in telecommunications to send information between two connected devices. It ensures that information is not lost due to dropped packets and that packets are received in the correct order. It is the simplest automatic repeat-request (ARQ) mechanism. A stop-and-wait ARQ sender sends one frame at a time; it is a special case of the general sliding window protocol with transmit and receive window sizes equal to one in both cases. After sending each frame, the sender doesn't send any further frames until it receives an acknowledgement (ACK) signal. After receiving a valid frame, the receiver sends an ACK. If the ACK does not reach the sender before a certain time, known as the timeout, the sender sends the same frame again. The timeout countdown is reset after each frame transmission. \textbf{A.} The throughput of the Stop-and-wait ARQ scheme can be calculated as follows:
         
         $$
         \text { Throughput }=\frac{1}{2 \mathrm{RTT}}
@@ -211,7 +211,7 @@ frames/time slot. Substituting M=6, $d=25$ meters and $R=10 \mathrm{Gbps}$ in th
         
         Therefore, the resulting throughput is approximately $\mathbf{4 3 6 3 . 6 4}$ frames/second.
         
-        \item \textbf{Q.}  In the Go-Back-N ARQ scheme, if the link is error free, what is the minimum window size $N$ that is able to keep the link busy? \textbf{A.} The minimum window size $N$ that is able to keep the link busy in the GoBack-N ARQ scheme depends on the round-trip time (RTT) and the transmission time of a frame $\left(\mathrm{T}_{\mathrm{f}}\right)$. The link is busy if the sender can transmit $N$ frames before receiving the first acknowledgement. This means that the window size $N$ must satisfy the following inequality:
+        \item \textbf{Q.}  In the Go-Back-N ARQ scheme, if the link is error free, what is the minimum window size $N$ that is able to keep the link busy? \textbf{Theory} Go-Back-N ARQ is a specific instance of the automatic repeat request (ARQ) protocol, in which the sending process continues to send a number of frames specified by a window size even without receiving an acknowledgement (ACK) packet from the receiver. It is a special case of the general sliding window protocol with the transmit window size of N and receive window size of 1. It can transmit N frames to the peer before requiring an ACK. \textbf{A.} The minimum window size $N$ that is able to keep the link busy in the GoBack-N ARQ scheme depends on the round-trip time (RTT) and the transmission time of a frame $\left(\mathrm{T}_{\mathrm{f}}\right)$. The link is busy if the sender can transmit $N$ frames before receiving the first acknowledgement. This means that the window size $N$ must satisfy the following inequality:
         
         $$
         N \geq \frac{\mathrm{RTT}}{\mathrm{T}_{\mathrm{f}}}+1
@@ -236,6 +236,7 @@ frames/time slot. Substituting M=6, $d=25$ meters and $R=10 \mathrm{Gbps}$ in th
         $$
         
         Hence, the minimum window size $N$ that is able to keep the link busy in the Go-Back-N ARQ scheme is 12.
+        
         \item \textbf{Q.} Choose window size in Part b and now consider the link error probability $r=0.04$. What the throughput (frames/second) of the Go-Back-N ARQ scheme? \textbf{A.} The throughput of the Go-Back-N ARQ scheme is given by:
         
         $$
