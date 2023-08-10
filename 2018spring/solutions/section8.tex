@@ -154,7 +154,48 @@ $$
 \delta=\tan ^{-1}\left(\frac{\operatorname{Im}(E)}{\operatorname{Re}(E)}\right)=\tan ^{-1}\left(\frac{0.9032}{1}\right)=41.99^{\circ}
 $$
 
-\item[23.] \textbf{Q.} A wind turbine is to be designed with an electrical power output of 7.0MW. The rated upwind free wind speed is 13 m/s. Determine the length of the rotor blades and the height of the supporting tower in meters and the rotational speed of the rotor in rev/min if the tip-speed ratio whose value as 7.0 determines the maximum Power Coefficient of 0.45. Use the density of air as $\num{1.225}\unit{kg/m^3}$ \textbf{A.}
+\item[23.] \textbf{Q.} A wind turbine is to be designed with an electrical power output of 7.0MW. The rated upwind free wind speed is 13 m/s. Determine the length of the rotor blades and the height of the supporting tower in meters and the rotational speed of the rotor in rev/min if the tip-speed ratio whose value as 7.0 determines the maximum Power Coefficient of 0.45. Use the density of air as $\num{1.225}\unit{kg/m^3}$. \textbf{A.} The power output of a wind turbine can be calculated using the formula: 
+
+$$
+P=\frac{1}{2} \rho A C_p v^3
+$$
+
+where $\rho$ is the density of air, $A$ is the swept area of the rotor, $C_p$ is the power coefficient, and $v$ is the wind speed. Given: $P =4 \mathrm{MW}=4 \times 10^6 \mathrm{~W}$, $\rho = 1.225 \unit{kg/m^3}$ $C_p=0.45$, $v = 13 \mathrm{m} / \mathrm{s}$. Calculate area swept by the blades 
+
+$$
+\begin{aligned}
+4 \times 10^6 & =\frac{1}{2} \times 1.225 \times A \times 0.45 \times (13)^3. \\
+A &= 6,605.59 \mathrm{~m}^2
+\end{aligned}
+$$
+
+Area $=\pi r^2$ where $r=$ length of the blades
+
+$$
+\begin{aligned}
+6,605.59 \mathrm{~m}^2 &= \pi r^2 \\
+r^2 &= \frac{6,605.59}{\pi}\mathrm{~m}^2\\
+r &= \frac{81.2748}{\sqrt{\pi}} \mathrm{~m}\\
+&= 45.8544 \mathrm{~m}
+\end{aligned}
+$$
+
+Current design standards set a fixed rate of 1-1.3 for the height to diameter ratio as this is the estimated best ratio to receive the most power output for the least cost. The tip speed ratio is defined as
+
+$$
+\lambda = \frac{\text{Tip speed of Blade}}{\text{Wind Speed}} =  \frac{2 \pi r N}{v}
+$$
+
+where $N=$ speed in rps (revolutions per second), $r=$ length of the blade, and $v=$ free wind velocity. Calculate revolutions per minute
+
+$$
+\begin{aligned}
+7 &= \frac{2 \pi \times 45.8 \times N}{13} \\ 
+N &= \frac{7 \times 13}{2 \pi \times 45.8}\\
+&= 0.32 \mathrm{~rps}\\
+&= 0.32 \times 60 = 18.97 \mathrm{~rpm}
+\end{aligned}
+$$
 
 \item[24.] \textbf{Q.} A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram. \textbf{A.}
 
