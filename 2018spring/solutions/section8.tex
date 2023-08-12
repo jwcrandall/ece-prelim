@@ -197,13 +197,74 @@ N &= \frac{7 \times 13}{2 \pi \times 45.8}\\
 \end{aligned}
 $$
 
-\item[24.] \textbf{Q.} A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram. \textbf{A.}
+\item[24.] \textbf{Q.} A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram. 
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=4.0in]{2018spring/figures/24q_a.png}}
-\caption{Transient Torque Angle}
+\centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/24q_a.png}}
+\caption{Transient Torque Angle characteristics, per unit torque or power}
 \label{fig:24q_a}
 \end{figure}
+
+\textbf{Theory.} A single circuit transmission line has three sets of conductors, while a double circuit transmission line is two independent circuits on the same structure with each circuit made up of three sets of conductors. An infinite busbar has a fixed voltage and frequency even after a variation in the load. A synchronous generator is a synchronous machine which converts mechanical power into AC electric power through the process of electromagnetic induction. Synchronous generators are also referred to as alternators or AC generators. The equal area criterion is a simple graphical method for concluding the transient stability of two-machine systems or a single machine against an infinite bus. This principle does not require the swing equation for the determination of stability conditions. The stability conditions are recognized by equating the areas of segments on the power angle diagram between the p-curve and the new power transfer line of the given curve.
+
+\textbf{A.} To determine the critical switching times for a $3 \varphi$ (phase) fault solve for the inital torque angle
+
+$$
+\begin{aligned}
+\delta_0 &= \sin ^{-1}\left(\frac{1}{2.1}\right)\\
+&=28.43^{\circ} \\
+\end{aligned}
+$$
+
+and max torque angle 
+
+$$
+\begin{aligned}
+\delta_{\text{max}} &= 180-\sin ^{-1}\left(\frac{1}{1.6}\right)\\
+&=141.31^{\circ}.
+\end{aligned}
+$$
+
+Use $\delta_0$ and $\delta_{\text{max}}$ to calculate critical clearing torque angle $\delta_{cr}$
+
+$$
+\begin{aligned}
+\int_{\delta_0}^{\delta_{cr}}(1-0.4 \sin \delta) d\delta &= \int_{\delta_{cr}}^{\delta_{max}}(1.6 \sin \delta-1) d\delta \\
+\left(-18.43^{\circ}+\delta_{c r}\right) \frac{x \pi}{180}-0.4(\cos \delta)_{\delta c r}^{29.43} &= 1.6(\cos \delta)_{141.31^{\circ}}^{\delta_{c r}}-\left(141.31^{\circ}-\delta_{c r}\right) \frac{\pi}{180^{\circ}} \\
+\left(-28.43+\delta_{c r}\right) \frac{\pi}{180^{\circ}}-0.4\left(0.879-\cos \delta_{c r}\right) &= 1.6\left(\cos \delta_{c r}+0.78\right)-\left(141.31-\delta_{c r}\right) \\
+1.9701-0.3516+0.4 \cos \delta_{c r} &= 1.6 \cos \delta_{c r}+1.248 \\
+0.3705 &= 1.2 \cos \delta_{c r} \\
+\delta_{c r} &= 72.010^{\circ}.
+\end{aligned}
+$$
+
+Use $\delta_{cr}$ to calculation the critical time $t_{cr}$ for $\delta=\delta_{c r}$ for a $3\varphi$ fault
+
+$$
+\begin{aligned}
+H &= 5\\
+t_{cr} &= \left(\frac{2 H}{\pi f} \frac{\left(S_{c r}-S_0\right)}{P_m}\right)^{1 / 2} \\
+t_{cr} &= \left(\frac{2 \times 5}{\pi \times 60} \frac{(72.016-28.43) \times \pi / 180}{ \pm}\right)^{1 / 2} \\
+t_{cr} &= 0.1556 \mathrm{~s} 
+\end{aligned}
+$$
+
+For a Line to Line fault 
+
+$$
+\begin{aligned}
+& \delta_0=28.43^{\circ} \\
+& \delta_{\text {un }}=141.31^{\circ} .
+\end{aligned}
+$$
+
+\begin{aligned}
+& \cos \delta_{c r}=\frac{1(141.31-28.43) \pi / 180+1.6 \cos \delta_{M M}}{1.6-1} \\
+& \cos \delta_{c r}=\frac{1.9701-1.248-0.8794}{0.6} \\
+& \left.\delta_{c r}=129.0685^{\circ}\right] \\
+& t_{c r}=\left(\frac{2 \times 3}{\pi \times 60 \frac{(129.0685-28.93) \times \pi / 180}{1}}\right]^{1 / 2} . \\
+& t_{c r}=0.23645 \mathrm{sec}
+\end{aligned}
 
 \end{enumerate}
 \end{document}
