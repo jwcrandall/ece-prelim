@@ -207,7 +207,54 @@ $$
 
 \textbf{Theory.} A single circuit transmission line has three sets of conductors, while a double circuit transmission line is two independent circuits on the same structure with each circuit made up of three sets of conductors. An infinite busbar has a fixed voltage and frequency even after a variation in the load. A synchronous generator is a synchronous machine which converts mechanical power into AC electric power through the process of electromagnetic induction. Synchronous generators are also referred to as alternators or AC generators. The equal area criterion is a simple graphical method for concluding the transient stability of two-machine systems or a single machine against an infinite bus. This principle does not require the swing equation for the determination of stability conditions. The stability conditions are recognized by equating the areas of segments on the power angle diagram between the p-curve and the new power transfer line of the given curve.
 
-\textbf{A.} To determine the critical switching times for a $3 \varphi$ (phase) fault solve for the inital torque angle
+\textbf{A.} To determine the critical switching time for a $3 \varphi$ fault, we need to find the intersection point between the "3P Fault" line and the line representing the input torque from the turbine. The area under these two lines represents the kinetic energy stored in the rotor during the fault. The critical switching time is then determined by finding the point at which this area is equal to the area under the "3P Fault" line after the fault has been cleared. In $p-\delta$ plot shown in Figure \ref{fig:24q_a} at the critical clearing angle, denoted $\delta_{\mathrm{cr}}$, the fault is extinguished. The power angle then increases to a maximum value $\delta_{max} =$ which gives the maximum decelerating area. Plots of electrical power $p_e$ and mechanical power $p_m$ versus power angle $\delta$ are shown in Figure \ref{fig:24q_a}. $p_e$ is a sinusoidal function of $\delta$, as given by $p_e = P_{\max } \sin \delta$. Solve for the initial power angle $\delta_0$ and max power angle $\delta_max = \pi-\delta_0$ which bound the accelerating and decelerating areas
+
+\begin{figure}
+\centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/24a_a.png}}
+\caption{$3 \varphi$ fault Equal Area Criterion}
+\label{fig:24a_a}
+\end{figure}
+
+$$
+\begin{aligned}
+p_m &= P_{\max} \sin \delta\\
+\delta_0 &= \sin^{-1}\left(\frac{1}{2.1}\right)\\
+&= 0.4963\\
+\delta_{\max} &= \pi - \sin^{-1}\left(\frac{1}{1.6}\right)\\
+&= \pi - 0.6751\\
+&= 2.4664
+\end{aligned}
+$$
+
+Solve for the critical power angle $\delta_{\mathrm{cr}}$ where the fault is extinguished by using the equal area criterion by equating the accelerating and decelerating areas 
+
+$$
+\begin{aligned}
+\mathrm{A}_1=\int_{\delta_0}^{\delta_{cr}} (p_m - P_{3 \varphi max} \sin \delta) d\delta 
+&= \mathrm{A}_2 = \int_{\delta_{cr}}^{\delta_{max}} (P_{cmax} \sin \delta - p_m) d \delta \\
+\int_{0.4963}^{\delta_{cr}} (1.0-0.4 \sin \delta) d\delta &= \int_{\delta_{cr}}^{2.4664}(1.6 \sin \delta-1.0) d \delta \\
+(\delta_{cr} - 0.4963) - 0.4(-\cos \delta)_{0.4963}^{\delta_{cr}} &= 1.6(-\cos \delta)_{\delta_{c r}}^{2.4664}-\left(2.4664-\delta_{c r}\right) \\
+\left(\delta_{cr} - 0.4963\right) - 0.4\left(-\cos \delta_{cr} + 0.8793 \right) &= 1.6\left(0.78 + \cos \delta_{cr}\right) - \left(2.4664-\delta_{cr}\right) \\
+-0.4963 + 0.4 \cos \delta_{cr} - 0.3517 &= 1.248 + 1.6 \cos \delta_{cr} - 2.4664 \\
+0.3704 &= 1.2 \cos \delta_{c r} \\
+\delta_{c r} &= 1.257 \mathrm{~rad}.
+\end{aligned}
+$$
+
+
+From the solution to the swing equation given in Example 13.4.
+
+$$
+\delta(t)=\frac{\omega_{\text {syn }} p_{m p . u .}}{4 \mathrm{H}} t^2+\delta_0
+$$
+
+Solving
+
+$$
+t=\sqrt{\frac{4 \mathrm{H}}{\omega_{\text {syn }} p_{m p . u}}\left(\delta(t)-\delta_0\right)}
+$$
+
+to determine the critical switching times for a $3 \varphi$ (phase) fault solve for the initial power (torque) angle
 
 $$
 \begin{aligned}
@@ -216,7 +263,7 @@ $$
 \end{aligned}
 $$
 
-and max torque angle 
+and final power (torque) angle 
 
 $$
 \begin{aligned}
@@ -243,13 +290,19 @@ Use $\delta_{cr}$ to calculation the critical time $t_{cr}$ for $\delta=\delta_{
 $$
 \begin{aligned}
 H &= 5\\
-t_{cr} &= \left(\frac{2 H}{\pi f} \frac{\left(S_{c r}-S_0\right)}{P_m}\right)^{1 / 2} \\
+t_{cr} &= \left(\frac{2 H}{\pi f} \frac{\left(\delta_{cr}-\delta_0\right)}{P_m}\right)^{1 / 2} \\
 t_{cr} &= \left(\frac{2 \times 5}{\pi \times 60} \frac{(72.016-28.43) \times \pi / 180}{ \pm}\right)^{1 / 2} \\
 t_{cr} &= 0.1556 \mathrm{~s} 
 \end{aligned}
 $$
 
-For a Line to Line fault 
+To determine the critical switching time for a Line to Line fault, we need to find the intersection point between the " $\mathrm{L}-\mathrm{L}$ Fault" line and the line representing the input torque from the turbine. The area under these two lines represents the kinetic energy stored in the rotor during the fault. The critical switching time is then determined by finding the point at which this area is equal to the area under the "L-L Fault" line after the fault has been cleared. Refer to figure \ref{fig:24a_b}.
+
+\begin{figure}
+\centering\fbox{\includegraphics[width=5.0in]{2018spring/figures/24q_a.png}}
+\caption{Line to Line fault Equal Area Criterion}
+\label{fig:24a_b}
+\end{figure}
 
 $$
 \begin{aligned}
