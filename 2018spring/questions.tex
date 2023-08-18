@@ -18,7 +18,7 @@ Solve each problem in a \underline{separate} blue book. Write the section number
 
 \begin{enumerate}
 
-\subsection{Section 1}
+\subsection*{Section 1}
 
 \item After graduating, you are asked to become the lead computer designer at New Computers Inc. You have invented a scheme that reduces the loads and stores normally associated with procedure calls and returns. The first thing you do is run some experiments with and without this optimization. Your experiments use the same state-of-the-art optimizing compiler that will be used with either version of the computer. These experiment reveal the following information:
 \begin{itemize}
@@ -33,7 +33,7 @@ Which is faster? The optimized version or the un-optimized one. Justify your dec
 \item The IEEE 754 Floating point number standard format for single precision floating-point numbers can be summarized as follows. The 32 bits number is divided as shown in figure \ref{fig:f1}. A number is normalized if the exponent value is between 1 and 254, and is denormalized if the exponent value is 0 and the fraction value is not 0. The value of a normalized number is $(-1)^S \times (1+Fraction) \times 2^{(Exponent-bias)}$ and the value of a denormalized number is $(-1)^S \times (0+Fraction) \times 2^{(1-bias)}$. Where the bias value is 127. Please answer the following questions:
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=4.0in]{figures/2018s/02q_a.png}}
+\centering\fbox{\includegraphics[width=4.0in]{2018spring/figures/02q_a.png}}
 \caption{32 bits number}
 \label{fig:f1}
 \end{figure}
@@ -57,7 +57,7 @@ Which is faster? The optimized version or the un-optimized one. Justify your dec
 
 \item For a hypothetical CPU which has 64 bit virtual address and 41 bit physical address with two levels of cache. The L1 cache is virtually indexed and physically tagged. The L1 size is 8KB. The page size is 8KB. The L2 cache is 4MB. The block size is 64 bytes. Please illustrate the translation of virtual address to physical address, as well as the interactions to the TLB and L1/L2 Cache. Indicate how many bits are used for page number, page offset, TLB index, TLB tag, cache index, cache tag, etc.
 
-\subsection{Section 2}
+\subsection*{Section 2}
 
 \item Given \textbf{A} =
     \begin{bmatrix} 
@@ -119,7 +119,7 @@ Is it possible, using \underline{state feedback} to change it to
     
 If yes, do it. Are the resulting systems controllable? observable? If no, explain why not.
 
-\subsection{Section 3}
+\subsection*{Section 3}
 
 \item A binary source generates a sequence of symbols with probabilities p and 1-p, respectively. Given the first symbol in the sequence, the source continues to generate symbols until the opposite symbol is generated. Let X denote the length of the sequence, including the first symbol.
 
@@ -146,7 +146,7 @@ If yes, do it. Are the resulting systems controllable? observable? If no, explai
         \item Find the autocorrelation function of Yn, $\mathrm{R}\{\mathrm{Y}(\mathrm{n}, \mathrm{n}+\mathrm{k})\}=\mathrm{E}\{\mathrm{Yn} \mathrm{Yn}+\mathrm{k}\}$
     \end{enumerate}
     
-\subsection{Section 4}
+\subsection*{Section 4}
 
 \item The magnetic field of a particular mode in a parallel-plate air waveguide with a plate separation of 2.5 cm is given by
 $$H_{z}(x, y)=C e^{-j 640 \pi x / 3} \cos (160 \pi y)$$
@@ -179,7 +179,7 @@ $$\begin{aligned}
 \item A plane wave is incident in the interface between two dielectrics $\varepsilon_1$ and $\varepsilon_2$, $\varepsilon_1 > \varepsilon_2$ as shown in figure \ref{fig:12q_a}.
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=2.0in]{figures/2018s/12q_a.png}}
+\centering\fbox{\includegraphics[width=2.0in]{2018spring/figures/12q_a.png}}
 \caption{Plane wave incident incident in the interface between two dielectrics}
 \label{fig:12q_a}
 \end{figure}
@@ -190,7 +190,7 @@ $$\begin{aligned}
         \item If \underline{$E$} is perpendicular to the plane of the incidence, $\underline{E} = E_y \hat{y}$, find the phase of the reflection coefficient.
     \end{enumerate}
 
-\subsection{Section 5} 
+\subsection*{Section 5} 
 
 \item In the following:
 
@@ -216,7 +216,7 @@ $$\begin{aligned}
     $$y^{\prime \prime}(t)+2 y^{\prime}(t)+y(t)=u(t-1)$$
 for $t \geq 0$ using the Laplace transform. $u(t)$ is the unit step function and the initial conditions are $y\left(0^{-}\right)=y^{\prime}\left(0^{-}\right)=1$.
 
-\subsection{Section 6}
+\subsection*{Section 6}
 
 \item Provide clear explanations to the following questions:
 
@@ -235,7 +235,7 @@ for $t \geq 0$ using the Laplace transform. $u(t)$ is the unit step function and
     \end{enumerate}
     
 \begin{figure}
-\centering\fbox{\includegraphics[width=3.0in]{figures/2018s/17q_a.png}}
+\centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/17q_a.png}}
 \caption{Schematic of the poly depletion capacitances upon gating this MOS capacitor. $\mathrm{T}=300\mathrm{K}$}. Gate and body are Silicon. The gate ocide is \ch{SiO2}, $\mathrm{t}_{\mathrm{ox}} = 2 \mathrm{~nm}$}
 \label{fig:17q_a}
 \end{figure}
@@ -251,7 +251,7 @@ Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon dio
         \item Under bias condition, calculate and plot the minority and majority carrier currents as a function of distance from the junction.
     \end{enumerate}
 
-\subsection{Section 7}
+\subsection*{Section 7}
 	
 \item Answer the following questions about LANs (wired and wireless):
 
@@ -263,7 +263,7 @@ Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon dio
 \item M terminals are attached by a dedicated pair of lines to a hub in a star topology (Figure \ref{fig:20q_a}). The distance from each terminal to the hub is d meters, the speed of the transmission lines is R bits/second, all frames are f length 12,500 Bytes, and the signal propagates on the line at speed of $2.5^{*} 10^{8}$ meters/second. For M=6 terminals, d=25 meters and R = 10Gbps, what is the maximum network throughput achievable when the hub is implementing slotted ALOHA?
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=3.0in]{figures/2018s/20q_a.png}}
+\centering\fbox{\includegraphics[width=3.0in]{2018spring/figures/20q_a.png}}
 \caption{Star Topology}
 \label{fig:20q_a}
 \end{figure}
@@ -276,7 +276,7 @@ Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon dio
         \item Choose window size in Part b and now consider the link error probability $r=0.04$. What the throughput (frames/second) of the Go-Back-N ARQ scheme?
     \end{enumerate}
 
-\subsection{Section 8}
+\subsection*{Section 8}
 
 \item A three-phase 250MVA, 20kV, 60Hz salient pole synchronous machine has parameters Xd = 1.1 pu, Xq = 0.6 pu and Ra~0. The machine delivers 230MW at 0.9 lagging power factor to an infinite busbar. Calculate the excitation voltage and power angle. Draw the phasor diagram. (Hint: use per unit values and give your answers in pu).
 
@@ -285,7 +285,7 @@ Consider the ideal so-called "long-base" abrupt \textit{pn}-junction silicon dio
 \item A 450MVA, 20kV, 60-Hz round-rotor synchronous generator has an Inertia constant H = 5s. Displayed on the axes in Figure \ref{fig:24q_a} are Torque/Angle characteristics for various faults occurring on a double circuit transmission line when connected between a synchronous generator and an infinite busbar. Using the Equal Area Criterion, determine the critical switching times for both a $3 \varphi$ fault and a Line to Line fault when the input and torque from the turbine is 1.0 pu as shown in the diagram.
 
 \begin{figure}
-\centering\fbox{\includegraphics[width=4.0in]{figures/2018s/24q_a.png}}
+\centering\fbox{\includegraphics[width=4.0in]{2018spring/figures/24q_a.png}}
 \caption{Transient Torque Angle}
 \label{fig:24q_a}
 \end{figure}
